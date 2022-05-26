@@ -1,0 +1,40 @@
+.Announcement {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  padding: 4px 12px 12px 12px;
+  margin: 5px 0;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
+  border-radius: 5px;
+  animation: move 1.5s;
+}
+
+.Announcement > span:first-child {
+  margin-top: 6px;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.Announcement > span:first-child:hover {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+.Announcement > h3 {
+  font-size: 14px;
+}
+
+.Announcement > span:not(:first-child) {
+  font-size: 12px;
+}
+
+@keyframes move {
+  from {
+    right: -500px;
+  }
+  to {
+    right: 0;
+  }
+}

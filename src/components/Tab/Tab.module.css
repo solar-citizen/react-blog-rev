@@ -1,0 +1,46 @@
+.Tab {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Tab > ul {
+  padding: 0;
+  justify-self: center;
+}
+
+.Tab > ul li {
+  list-style: none;
+  margin-bottom: 1px;
+}
+
+.Tab > ul li button {
+  width: 100%;
+}
+
+.Tab > ul li button.active {
+  color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.Tab > div {
+  width: 80%;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 880px) {
+  .Tab {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Tab > ul {
+    display: flex;
+    align-self: flex-start;
+  }
+
+  .Tab > div {
+    width: 100%;
+  }
+}

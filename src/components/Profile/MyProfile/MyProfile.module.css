@@ -1,0 +1,15 @@
+.MyProfile > div {
+  display: flex;
+  align-items: center;
+}
+
+.MyProfile > div > span {
+  margin-left: 10px;
+  font-size: 1.5rem;
+}
+
+.MyProfile > span {
+  margin-top: 6px;
+  display: block;
+  font-size: 1rem;
+}

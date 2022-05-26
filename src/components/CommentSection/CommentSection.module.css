@@ -1,0 +1,18 @@
+.CommentSection {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.CommentSection > div {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgb(218, 218, 218);
+}
+
+.CommentSection textarea {
+  resize: none;
+}

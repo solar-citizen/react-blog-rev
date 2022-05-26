@@ -1,0 +1,32 @@
+.MyAnnouncements {
+  width: 100%;
+}
+
+.MyAnnouncements > div {
+  margin-top: 1rem;
+}
+
+.MyAnnouncements > div:first-of-type {
+  padding: 1rem;
+  border: 1px solid #b4b4b4;
+  border-radius: 3px;
+}
+
+.MyAnnouncements > div:not(:first-of-type) {
+  margin-top: 2rem;
+}
+
+.MyAnnouncements > div:last-of-type > div {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+}
+
+.MyAnnouncements > div:last-of-type > div > div {
+  margin-top: 1rem;
+}
+
+.MyAnnouncements > div:not(:first-of-type) button {
+  margin-right: 3px;
+}

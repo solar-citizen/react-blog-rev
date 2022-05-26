@@ -1,0 +1,33 @@
+.Comment {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgb(218, 218, 218);
+}
+
+.Comment > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(235, 235, 235, 0.486);
+  box-shadow: 0 0 5px rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
+.Comment > div:first-of-type > div a {
+  text-decoration: none;
+}
+
+.Comment > div:first-of-type > div a:hover {
+  text-decoration: underline;
+}
+
+.Comment > div:last-of-type {
+  margin-top: 1rem;
+}
+
+.Comment > button:first-of-type {
+  margin-top: 1rem;
+  margin-right: 3px;
+}

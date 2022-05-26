@@ -1,0 +1,20 @@
+.Search {
+  width: 80%;
+}
+
+.Search > input {
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  outline: none;
+}
+
+.Search:focus {
+  border-color: rgb(221, 221, 221);
+}
+
+.Search > button {
+  height: 34px;
+  width: 34px;
+  border-radius: 2px;
+}

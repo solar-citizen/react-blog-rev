@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Input from '../UI/Input/Input';
 import { Button } from 'antd';
 import UserContext from '../../context/user/userContext';
+import Avatar from '../Avatar/Avatar';
 
 const Comment = ({ comments, setComments, getComments, comment, i }) => {
   const { user, token } = useContext(UserContext);
@@ -166,9 +167,10 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
       <div>
         <div>
           <Link to=''>
+            <Avatar size='small' />
             {`${comment.user && comment.user.firstname}
             ${comment.user && comment.user.lastname} ${
-              user && comment.user && comment.user.id === user.id ? '(You)' : ''
+              user && comment.user && comment.user.id === user.id ? '(you)' : ''
             }`}
           </Link>
           &nbsp;at&nbsp;

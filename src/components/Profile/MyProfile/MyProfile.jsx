@@ -1,17 +1,18 @@
 import styles from './MyProfile.module.css';
 import { useContext } from 'react';
 import UserContext from '../../../context/user/userContext';
+import Avatar from '../../Avatar/Avatar';
 
 const MyProfile = () => {
   const { user } = useContext(UserContext);
-  const { email, firstname, lastname, age, avatar } = user;
+  const { email, firstname, lastname, age } = user;
 
   return (
     <div className={styles.MyProfile}>
       <h2>My profile</h2>
 
       <div>
-        <img src={avatar} width={100} alt='avatar' />
+        <Avatar size='large' />
         <span>
           {firstname} {lastname}
         </span>

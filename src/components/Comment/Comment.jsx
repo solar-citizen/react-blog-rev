@@ -167,7 +167,7 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
       <div>
         <div>
           <Link to=''>
-            <Avatar size='small' />
+            <Avatar size='small' comment={comment} />
             {`${comment.user && comment.user.firstname}
             ${comment.user && comment.user.lastname} ${
               user && comment.user && comment.user.id === user.id ? '(you)' : ''

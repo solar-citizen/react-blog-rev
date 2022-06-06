@@ -2,3 +2,7 @@
   display: inline-block;
   margin-right: 5px;
 }
+
+.Avatar img {
+  border-radius: 50%;
+}

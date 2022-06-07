@@ -20,7 +20,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
             <a
               style={currentPage === pageNumber ? activeStyles : null}
               onClick={(event) => paginate(event, pageNumber)}
-              href='!#'
+              href={`blog/page${pageNumber}`}
             >
               {pageNumber}
             </a>

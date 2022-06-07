@@ -14,6 +14,7 @@ const Announcements = ({ isNotification }) => {
     if (width <= 850) {
       return;
     }
+
     if (announcements?.length) {
       // for logged user (won't see announcement made by himself)
       if (user) {

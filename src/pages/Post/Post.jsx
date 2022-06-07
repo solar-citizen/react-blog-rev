@@ -114,7 +114,7 @@ const Post = () => {
     );
   };
 
-  console.log(posts);
+  // console.log(posts);
 
   const cancelEditHandler = () => {
     setIsEditInputVisible(false);

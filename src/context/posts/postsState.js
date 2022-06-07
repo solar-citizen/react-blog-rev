@@ -159,7 +159,7 @@ export const PostsState = ({ children }) => {
       payload: clonedPosts,
     });
 
-    console.log('respdata', response.data);
+    // console.log('respdata', response.data);
 
     // getPosts();
     // setPosts(getPosts());

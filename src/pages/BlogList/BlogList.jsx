@@ -15,8 +15,7 @@ const BlogList = () => {
   const { posts } = useContext(PostsContext);
   const { loading } = useContext(LoadingContext);
 
-  // console.log(posts);
-
+  // for Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 5;
 
@@ -27,6 +26,7 @@ const BlogList = () => {
 
   const paginate = (e, pageNumber) => {
     e.preventDefault();
+
     setCurrentPage(pageNumber);
   };
 

@@ -3,7 +3,7 @@ import styles from './Tab.module.css';
 import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 
-const Tab = ({ children, active = 0 }) => {
+const Tab = ({ children, active }) => {
   const [activeTab, setActiveTab] = useState(active);
   const [tabsData, setTabsData] = useState([]);
 

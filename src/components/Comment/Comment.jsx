@@ -6,7 +6,8 @@ import PostsContext from '../../context/posts/postsContext';
 import convertDate from '../../helpers/convertDate';
 import { Link } from 'react-router-dom';
 import Input from '../UI/Input/Input';
-import { Button } from 'antd';
+// import { Button } from 'antd';
+import Button from '../UI/Button/Button';
 import UserContext from '../../context/user/userContext';
 import Avatar from '../Avatar/Avatar';
 
@@ -143,22 +144,27 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
 
   // buttons
   const editButton = (
-    <Button size='small' onClick={editCommentHandler}>
+    <Button type='primary' size='small' onClick={editCommentHandler}>
       Edit
     </Button>
   );
   const acceptButton = (
-    <Button size='small' onClick={acceptEditHandler} disabled={!isFormValid}>
+    <Button
+      type='primary'
+      size='small'
+      onClick={acceptEditHandler}
+      disabled={!isFormValid}
+    >
       Accept
     </Button>
   );
   const cancelButton = (
-    <Button size='small' onClick={cancelEditHandler}>
+    <Button type='primary' size='small' onClick={cancelEditHandler}>
       Cancel
     </Button>
   );
   const deleteCommentButton = (
-    <Button danger size='small' onClick={deleteCommentHandler}>
+    <Button type='danger' size='small' onClick={deleteCommentHandler}>
       Delete
     </Button>
   );

@@ -1,11 +1,15 @@
 .Button {
+  appearance: button;
   height: 2rem;
   border: none;
   border-radius: 2px;
-  padding: 4px 15px;
+  padding: 0 15px;
   cursor: pointer;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.7);
   background-color: rgba(90, 90, 90, 0.7);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  user-select: none;
 }
 
 .Button:hover {
@@ -58,4 +62,57 @@
   align-items: center;
   font-weight: bold;
   background-color: rgba(43, 187, 164, 0.8);
+}
+
+/* new buttons to replace one's from library */
+/* primary */
+.primary {
+  border: 1px solid rgb(217, 217, 217);
+  color: #000;
+  background-color: #fff;
+}
+
+.primary:hover {
+  color: #1890ff;
+  border-color: #1890ff;
+}
+
+.primary-filled {
+  border: 1px solid #1890ff;
+  color: #fff;
+  background-color: #1890ff;
+}
+
+.primary-filled:hover {
+  border-color: #40a9ff;
+  background: #40a9ff;
+}
+
+.danger {
+  border: 1px solid #ff4d4f;
+  color: #ff4d4f;
+  background-color: #fff;
+}
+
+.danger:hover {
+  border: 1px solid #ff7875;
+  color: #ff7875;
+}
+
+.primary-filled {
+  border: 1px solid #ff4d4f;
+  color: #fff;
+  background-color: #ff4d4f;
+}
+
+.primary-filled:hover {
+  border-color: #ff7875;
+  background: #ff7875;
+}
+
+.btnSmall {
+  height: 1.5rem;
+  padding: 0px 7px;
+  font-size: 14px;
+  border-radius: 2px;
 }

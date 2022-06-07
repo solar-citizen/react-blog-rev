@@ -109,6 +109,11 @@ export const PostsState = ({ children }) => {
       type: EDIT_POST,
       payload: response.data,
     });
+
+    setPosts(response.data);
+
+    // ...
+    getPosts();
   };
 
   // delete post

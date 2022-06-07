@@ -105,6 +105,7 @@ const Post = () => {
   const acceptEditHandler = () => {
     setIsEditInputVisible(false);
     const timestamp = new Date();
+
     editPost(
       formControls?.title?.value,
       formControls?.body?.value,
@@ -112,6 +113,8 @@ const Post = () => {
       urlId
     );
   };
+
+  console.log(posts);
 
   const cancelEditHandler = () => {
     setIsEditInputVisible(false);

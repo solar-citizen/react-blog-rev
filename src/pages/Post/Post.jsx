@@ -106,8 +106,8 @@ const Post = () => {
     setIsEditInputVisible(false);
     const timestamp = new Date();
     editPost(
-      formControls.title.value,
-      formControls.body.value,
+      formControls?.title?.value,
+      formControls?.body?.value,
       timestamp,
       urlId
     );
@@ -201,9 +201,9 @@ const Post = () => {
           renderInputs()
         ) : (
           <>
-            <h2>{post.title}</h2>
+            <h2>{post?.title}</h2>
 
-            <p>{post.body}</p>
+            <p>{post?.body}</p>
           </>
         )}
 
@@ -212,23 +212,23 @@ const Post = () => {
             ''
           ) : (
             <div>
-              <div>{`Created at ${convertDate(new Date(post.createdAt))} by ${
-                post.user && post.user.firstname
-              } ${post.user && post.user.lastname}`}</div>
-              {post.updatedAt ? (
+              <div>{`Created at ${convertDate(new Date(post?.createdAt))} by ${
+                post?.user?.firstname
+              } ${post?.user?.lastname}`}</div>
+              {post?.updatedAt ? (
                 <div>{`Updated at ${convertDate(
-                  new Date(post.updatedAt)
+                  new Date(post?.updatedAt)
                 )}`}</div>
               ) : null}
             </div>
           )}
 
-          {user && user.id === post.userId
+          {user?.id === post?.userId
             ? isEditInputVisible
               ? acceptButton
               : editPostBtn
             : null}
-          {user && user.id === post.userId
+          {user?.id === post?.userId
             ? isEditInputVisible
               ? cancelButton
               : deletePostBtn

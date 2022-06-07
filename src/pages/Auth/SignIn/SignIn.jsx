@@ -82,12 +82,6 @@ const SignIn = () => {
 
     clonedFormControls[controlName] = control;
 
-    let isFormValid = true;
-
-    Object.keys(clonedFormControls).forEach((nameOfControl) => {
-      isFormValid = formControls[nameOfControl].valid && isFormValid;
-    });
-
     setFormControls(clonedFormControls);
   };
 

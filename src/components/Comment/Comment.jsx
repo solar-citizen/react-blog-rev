@@ -38,7 +38,7 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     let isValid = true;
 
     // invalid if empty
-    if (validation.required) {
+    if (validation?.required) {
       isValid = value.trim() !== '' && isValid;
     }
 

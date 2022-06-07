@@ -126,7 +126,7 @@ const Post = () => {
     let isValid = true;
 
     // invalid if empty
-    if (validation.required) {
+    if (validation?.required) {
       isValid = value.trim() !== '' && isValid;
     }
 

@@ -54,18 +54,18 @@ const SignIn = () => {
     let isValid = true;
 
     // invalid if empty
-    if (validation.required) {
+    if (validation?.required) {
       isValid = value.trim() !== '' && isValid;
     }
 
     // invalid if not email
-    if (validation.email) {
+    if (validation?.email) {
       isValid = is.email(value) && isValid;
     }
 
     // invalid shorter than minimal length (8)
-    if (validation.minLength) {
-      isValid = value.length >= validation.minLength && isValid;
+    if (validation?.minLength) {
+      isValid = value.length >= validation?.minLength && isValid;
     }
 
     return isValid;

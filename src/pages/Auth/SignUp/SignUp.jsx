@@ -100,27 +100,27 @@ const SignUp = () => {
     let isValid = true;
 
     // invalid if empty
-    if (validation.required) {
+    if (validation?.required) {
       isValid = value.trim() !== '' && isValid;
     }
 
     // invalid if not email
-    if (validation.email) {
+    if (validation?.email) {
       isValid = is.email(value) && isValid;
     }
 
     // invalid shorter than minimal length (8)
-    if (validation.minLength) {
-      isValid = value.length >= validation.minLength && isValid;
+    if (validation?.minLength) {
+      isValid = value.length >= validation?.minLength && isValid;
     }
 
     // invalid if valuse less than 1
-    if (validation.min) {
+    if (validation?.min) {
       isValid = value >= 1 && isValid;
     }
 
     // invalid if valuse more than 150
-    if (validation.max) {
+    if (validation?.max) {
       isValid = value <= 150 && isValid;
     }
 

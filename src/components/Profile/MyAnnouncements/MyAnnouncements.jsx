@@ -100,16 +100,16 @@ const MyAnnouncements = () => {
   // made by logged user
   const renderUserAnnouncements = () => {
     const userAnnouncements =
-      announcements.length &&
+      announcements?.length &&
       announcements.filter(
-        (announcementItem) => announcementItem.userId === user.id
+        (announcementItem) => announcementItem?.userId === user?.id
       );
 
     if (loading) {
       return <Loader />;
     }
 
-    if (!userAnnouncements || !userAnnouncements.length) {
+    if (!userAnnouncements?.length) {
       return <div>No announcements here yet...</div>;
     }
 

@@ -126,7 +126,7 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
 
     const timestamp = new Date();
 
-    editComment(formControls.body.value, timestamp, comment.id, post.id);
+    editComment(formControls?.body?.value, timestamp, comment?.id, post?.id);
   };
 
   const cancelEditHandler = () => {
@@ -135,10 +135,10 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
 
   const deleteCommentHandler = () => {
     setComments(
-      comments.filter((commentItem) => commentItem.id !== comment.id)
+      comments.filter((commentItem) => commentItem?.id !== comment?.id)
     );
 
-    deleteComment(comment.id);
+    deleteComment(comment?.id);
   };
 
   // buttons
@@ -169,23 +169,23 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
         <div>
           <Link to=''>
             <Avatar size='small' comment={comment} />
-            {`${comment.user && comment.user.firstname}
-            ${comment.user && comment.user.lastname} ${
-              user && comment.user && comment.user.id === user.id ? '(you)' : ''
+            {`${comment?.user?.firstname}
+            ${comment?.user?.lastname} ${
+              comment?.user?.id === user?.id ? '(You)' : ''
             }`}
           </Link>
           &nbsp;at&nbsp;
-          {convertDate(new Date(comment.createdAt))}
+          {convertDate(new Date(comment?.createdAt))}
         </div>
         <div>{i + 1}</div>
       </div>
-      <div>{!isEditInputVisible ? comment.body : renderInputs()}</div>
-      {user && user.id === comment.userId
+      <div>{!isEditInputVisible ? comment?.body : renderInputs()}</div>
+      {user?.id === comment?.userId
         ? isEditInputVisible
           ? acceptButton
           : editButton
         : null}
-      {user && user.id === comment.userId
+      {user?.id === comment?.userId
         ? isEditInputVisible
           ? cancelButton
           : deleteCommentButton

@@ -120,11 +120,11 @@ const CommentSection = ({ comments, setComments, getComments }) => {
       return <Loader />;
     }
 
-    if (!!comments && !comments.length) {
+    if (!comments?.length) {
       return <div>No comments here yet...</div>;
     }
 
-    if (comments && comments.length) {
+    if (comments?.length) {
       return comments.map((comment, i) => (
         <Comment
           comments={comments}

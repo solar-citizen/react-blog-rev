@@ -18,38 +18,37 @@ const MyPosts = () => {
   // made by logged user
   const renderUserPosts = () => {
     const userPosts =
-      posts &&
-      posts.length &&
-      posts.filter((postItem) => postItem.userId === user.id);
+      posts?.length &&
+      posts.filter((postItem) => postItem?.userId === user?.id);
 
     if (loading) {
       return <Loader />;
     }
 
-    if (userPosts.length === 0) {
+    if (!userPosts?.length) {
       return <span>No posts here yet...</span>;
     }
 
     if (userPosts) {
       return userPosts.map((userPost) => {
         return (
-          <article key={userPost.id}>
-            <h2>{userPost.title}</h2>
+          <article key={userPost?.id}>
+            <h2>{userPost?.title}</h2>
             <p>
-              {userPost.body.length >= 250
-                ? userPost.body.substring(0, 250) + '...'
-                : userPost.body}
+              {userPost?.body.length >= 250
+                ? userPost?.body.substring(0, 250) + '...'
+                : userPost?.body}
             </p>
             <div>
-              {`Created at ${convertDate(new Date(userPost.createdAt))}`}
+              {`Created at ${convertDate(new Date(userPost?.createdAt))}`}
             </div>
-            {userPost.updatedAt ? (
+            {userPost?.updatedAt ? (
               <div>{`Updated at ${convertDate(
-                new Date(userPost.updatedAt)
+                new Date(userPost?.updatedAt)
               )}`}</div>
             ) : null}
 
-            <Link to={`/blog/post/${userPost.id}`}>Go to</Link>
+            <Link to={`/blog/post/${userPost?.id}`}>Go to</Link>
           </article>
         );
       });

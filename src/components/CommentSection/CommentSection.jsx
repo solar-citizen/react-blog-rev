@@ -4,7 +4,8 @@ import { baseURL } from '../../urls';
 import { useContext, useState } from 'react';
 import PostsContext from '../../context/posts/postsContext';
 import Loader from '../UI/Loader/Loader';
-import { Button } from 'antd';
+// import { Button } from 'antd';
+import Button from '../UI//Button/Button';
 import Input from '../UI/Input/Input';
 import Comment from '../Comment/Comment';
 import UserContext from '../../context/user/userContext';
@@ -147,7 +148,7 @@ const CommentSection = ({ comments, setComments, getComments }) => {
           <h3>Write a comment</h3>
           {renderInputs()}
           <Button
-            type='primary'
+            type='primary-filled'
             onClick={writeCommentHandler}
             disabled={!isFormValid}
           >

@@ -23,7 +23,7 @@ const BlogList = () => {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts =
-    posts && posts.length && posts.slice(indexOfFirstPost, indexOfLastPost);
+    posts?.length && posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (e, pageNumber) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ const BlogList = () => {
 
       <Pagination
         postsPerPage={postsPerPage}
-        totalPosts={posts.length}
+        totalPosts={posts?.length}
         paginate={paginate}
         currentPage={currentPage}
       />

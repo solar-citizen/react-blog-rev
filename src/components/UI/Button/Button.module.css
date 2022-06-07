@@ -10,6 +10,11 @@
   background-color: rgba(90, 90, 90, 0.7);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   user-select: none;
+  white-space: nowrap;
+}
+
+.Button > span {
+  display: inline-block;
 }
 
 .Button:hover {
@@ -99,13 +104,13 @@
   color: #ff7875;
 }
 
-.primary-filled {
+.danger-filled {
   border: 1px solid #ff4d4f;
   color: #fff;
   background-color: #ff4d4f;
 }
 
-.primary-filled:hover {
+.danger-filled:hover {
   border-color: #ff7875;
   background: #ff7875;
 }

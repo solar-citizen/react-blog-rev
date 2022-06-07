@@ -6,7 +6,8 @@ import { useParams } from 'react-router-dom';
 import PostsContext from '../../context/posts/postsContext';
 import Loader from '../../components/UI/Loader/Loader';
 import convertDate from '../../helpers/convertDate';
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
+import Button from '../../components/UI/Button/Button';
 import { DeleteOutlined } from '@ant-design/icons';
 import CommentSection from '../../components/CommentSection/CommentSection';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -180,22 +181,26 @@ const Post = () => {
 
   // buttons
   const deletePostBtn = (
-    <Button
-      onClick={showDeleteConfirm}
-      type='primary'
-      danger
-      icon={<DeleteOutlined />}
-    >
-      Delete Post
+    <Button onClick={showDeleteConfirm} type='danger-filled'>
+      <DeleteOutlined />
+      &nbsp; Delete Post
     </Button>
   );
-  const editPostBtn = <Button onClick={showEditInput}>Edit Post</Button>;
+  const editPostBtn = (
+    <Button type='primary' onClick={showEditInput}>
+      Edit Post
+    </Button>
+  );
   const acceptButton = (
-    <Button onClick={acceptEditHandler} disabled={!isFormValid}>
+    <Button type='primary' onClick={acceptEditHandler} disabled={!isFormValid}>
       Accept
     </Button>
   );
-  const cancelButton = <Button onClick={cancelEditHandler}>Cancel</Button>;
+  const cancelButton = (
+    <Button type='primary' onClick={cancelEditHandler}>
+      Cancel
+    </Button>
+  );
 
   return (
     <>

@@ -6,7 +6,6 @@ import PostsContext from '../../context/posts/postsContext';
 import convertDate from '../../helpers/convertDate';
 import { Link } from 'react-router-dom';
 import Input from '../UI/Input/Input';
-// import { Button } from 'antd';
 import Button from '../UI/Button/Button';
 import UserContext from '../../context/user/userContext';
 import Avatar from '../Avatar/Avatar';

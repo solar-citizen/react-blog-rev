@@ -14,7 +14,7 @@ const Button = ({ onClick, children, type, disabled, size }) => {
       onClick={onClick}
       disabled={disabled}
     >
-      {children}
+      <span>{children}</span>
     </button>
   );
 };

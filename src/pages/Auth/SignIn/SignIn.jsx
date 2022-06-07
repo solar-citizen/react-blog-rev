@@ -40,7 +40,9 @@ const SignIn = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    auth(true, formControls.email.value, formControls.password.value);
+    const isLogin = true;
+
+    auth(isLogin, formControls.email.value, formControls.password.value);
   };
 
   // validation of input field

@@ -78,8 +78,10 @@ const SignUp = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    const isLogin = false;
+
     auth(
-      false,
+      isLogin,
       formControls.email.value,
       formControls.password.value,
       formControls.firstname.value,

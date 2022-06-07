@@ -46,10 +46,10 @@ const Navbar = () => {
         {user ? (
           <li>
             <NavLink
-              to={`/profile/${user && user.firstname}_${user && user.lastname}`}
+              to={`/profile/${user?.firstname}_${user?.lastname}`}
               className={({ isActive }) => (isActive ? styles.active : null)}
             >
-              {`${user.firstname} ${user.lastname}`}
+              {`${user?.firstname} ${user?.lastname}`}
             </NavLink>
           </li>
         ) : (

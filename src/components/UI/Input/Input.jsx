@@ -16,24 +16,28 @@ const Input = (props) => {
 
   return (
     <div className={cls.join(' ')}>
-      <label htmlFor={htmlFor}>{props.label}</label>
+      <label htmlFor={htmlFor}>{props?.label}</label>
 
       {inputType === 'textarea' ? (
-        <textarea id={htmlFor} value={props.value} onChange={props.onChange} />
+        <textarea
+          id={htmlFor}
+          value={props?.value}
+          onChange={props?.onChange}
+        />
       ) : (
         <input
           type={inputType}
           id={htmlFor}
-          value={props.value}
-          onChange={props.onChange}
-          min={props.min}
-          max={props.max}
-          onSubmit={props.onSubmit}
+          value={props?.value}
+          onChange={props?.onChange}
+          min={props?.min}
+          max={props?.max}
+          onSubmit={props?.onSubmit}
         />
       )}
 
       {isInvalid(props) ? (
-        <span>{props.errorMessage || 'Enter correct value.'}</span>
+        <span>{props?.errorMessage || 'Enter correct value.'}</span>
       ) : null}
     </div>
   );

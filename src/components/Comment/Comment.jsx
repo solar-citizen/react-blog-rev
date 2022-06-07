@@ -20,9 +20,8 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     body: {
       value: comment.body,
       type: 'textarea',
-      label: '',
       errorMessage: 'This field cannot be empty.',
-      valid: false,
+      valid: true,
       touched: false,
       validation: {
         required: true,
@@ -45,6 +44,8 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
 
     return isValid;
   };
+
+  // console.log(formControls);
 
   // fixation of changes of input field
   const onChangeHandler = (event, controlName) => {

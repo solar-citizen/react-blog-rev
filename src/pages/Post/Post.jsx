@@ -29,7 +29,7 @@ const Post = () => {
   const [isFormValid, setIsFormValid] = useState(true);
   const [formControls, setFormControls] = useState({
     title: {
-      value: post.title,
+      value: post?.title || '',
       type: 'text',
       label: 'Edit title',
       errorMessage: 'This field cannot be empty.',
@@ -40,7 +40,7 @@ const Post = () => {
       },
     },
     body: {
-      value: post.body,
+      value: post?.body || '',
       type: 'textarea',
       label: 'Edit post',
       errorMessage: 'This field cannot be empty.',
@@ -55,6 +55,7 @@ const Post = () => {
   useEffect(() => {
     getPost(urlId, user);
     getComments(urlId);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -160,7 +161,6 @@ const Post = () => {
       return (
         <div key={index}>
           <Input
-            // key={controlName + index}
             type={control.type}
             value={control.value}
             valid={control.valid}

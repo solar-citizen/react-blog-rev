@@ -15,7 +15,7 @@ const BlogList = () => {
   const { posts } = useContext(PostsContext);
   const { loading } = useContext(LoadingContext);
 
-  console.log(posts);
+  // console.log(posts);
 
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 5;

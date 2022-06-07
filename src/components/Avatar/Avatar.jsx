@@ -8,20 +8,20 @@ const Avatar = ({ size, comment }) => {
 
   const userAvatar = () => {
     const src = () => {
-      if (user && !user.avatar && !comment) {
+      if (!user?.avatar && !comment) {
         return avatarBlank;
       }
 
       if (user && !comment) {
-        return user.avatar;
+        return user?.avatar;
       }
 
-      if (comment.user && !comment.user.avatar) {
+      if (!comment?.user?.avatar) {
         return avatarBlank;
       }
 
       if (comment) {
-        return comment.user.avatar;
+        return comment?.user?.avatar;
       }
     };
 

@@ -90,7 +90,7 @@ const Announcement = ({ announcement, isNotification }) => {
   const closeHandler = () => {
     setAnnouncements(
       announcements.filter(
-        (announcementItem) => announcementItem.id !== announcement.id
+        (announcementItem) => announcementItem?.id !== announcement?.id
       )
     );
   };
@@ -103,7 +103,7 @@ const Announcement = ({ announcement, isNotification }) => {
   const acceptEditHandler = () => {
     setIsEditInputVisible(false);
     const timestamp = new Date();
-    editAnnouncement(formControls.body.value, timestamp, announcement.id);
+    editAnnouncement(formControls?.body?.value, timestamp, announcement?.id);
   };
 
   const cancelEditHandler = () => {
@@ -111,11 +111,11 @@ const Announcement = ({ announcement, isNotification }) => {
   };
 
   const deleteHandler = () => {
-    deleteAnnouncement(announcement.id);
+    deleteAnnouncement(announcement?.id);
 
     setAnnouncements(
       announcements.filter(
-        (announcementItem) => announcementItem.id !== announcement.id
+        (announcementItem) => announcementItem?.id !== announcement?.id
       )
     );
   };
@@ -146,17 +146,17 @@ const Announcement = ({ announcement, isNotification }) => {
     <div className={isNotification ? styles.Announcement : null}>
       {isNotification ? <CloseSquareOutlined onClick={closeHandler} /> : null}
 
-      <h3>{announcement.title}</h3>
-      <span>{!isEditInputVisible ? announcement.body : renderInputs()}</span>
+      <h3>{announcement?.title}</h3>
+      <span>{!isEditInputVisible ? announcement?.body : renderInputs()}</span>
 
       {!isNotification ? (
         <div>
-          {user.id === announcement.userId
+          {user?.id === announcement?.userId
             ? isEditInputVisible
               ? acceptButton
               : editButton
             : null}
-          {user.id === announcement.userId
+          {user?.id === announcement?.userId
             ? isEditInputVisible
               ? cancelButton
               : deleteCommentButton

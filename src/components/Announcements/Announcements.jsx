@@ -14,11 +14,11 @@ const Announcements = ({ isNotification }) => {
     if (width <= 850) {
       return;
     }
-    if (announcements && announcements.length) {
+    if (announcements?.length) {
       // for logged user (won't see announcement made by himself)
       if (user) {
         const filteredAnnouncements = announcements.filter(
-          (announcement) => announcement.userId !== user.id
+          (announcement) => announcement?.userId !== user?.id
         );
 
         if (isNotification) {
@@ -26,7 +26,7 @@ const Announcements = ({ isNotification }) => {
             <Announcement
               isNotification={isNotification}
               announcement={filteredAnnouncement}
-              key={filteredAnnouncement.id}
+              key={filteredAnnouncement?.id}
             />
           ));
         }
@@ -38,7 +38,7 @@ const Announcements = ({ isNotification }) => {
           <Announcement
             isNotification={isNotification}
             announcement={announcementItem}
-            key={announcementItem.id}
+            key={announcementItem?.id}
           />
         ));
       }

@@ -24,8 +24,8 @@ const Tabs = () => {
     <div className={styles.Tabs}>
       <Tab active={0}>
         {tabContent.map((tab, i) => (
-          <Tab.TabPane key={`Tab-${i}`} tab={tab.title}>
-            {tab.content}
+          <Tab.TabPane key={`Tab-${i}`} tab={tab?.title}>
+            {tab?.content}
           </Tab.TabPane>
         ))}
       </Tab>

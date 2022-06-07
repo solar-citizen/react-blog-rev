@@ -38,7 +38,7 @@ const Tab = ({ children, active = 0 }) => {
         ))}
       </ul>
 
-      <div>{tabsData[activeTab] && tabsData[activeTab].children}</div>
+      <div>{tabsData[activeTab]?.children}</div>
     </div>
   );
 };

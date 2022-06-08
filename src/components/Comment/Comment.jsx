@@ -181,6 +181,10 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
           </Link>
           &nbsp;at&nbsp;
           {convertDate(new Date(comment?.createdAt))}
+          &nbsp;
+          {comment?.updatedAt
+            ? `(last update: ${convertDate(new Date(comment?.updatedAt))})`
+            : ''}
         </div>
         <div>{i + 1}</div>
       </div>

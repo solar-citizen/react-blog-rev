@@ -1,6 +1,6 @@
 import styles from './Announcement.module.css';
 import { useState, useContext } from 'react';
-import { Button } from 'antd';
+import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { CloseSquareOutlined } from '@ant-design/icons';
 import UserContext from '../../context/user/userContext';
@@ -122,22 +122,27 @@ const Announcement = ({ announcement, isNotification }) => {
 
   // buttons
   const editButton = (
-    <Button size='small' onClick={editHandler}>
+    <Button type='primary' size='small' onClick={editHandler}>
       Edit
     </Button>
   );
   const acceptButton = (
-    <Button size='small' onClick={acceptEditHandler} disabled={!isFormValid}>
+    <Button
+      type='primary'
+      size='small'
+      onClick={acceptEditHandler}
+      disabled={!isFormValid}
+    >
       Accept
     </Button>
   );
   const cancelButton = (
-    <Button size='small' onClick={cancelEditHandler}>
+    <Button type='primary' size='small' onClick={cancelEditHandler}>
       Cancel
     </Button>
   );
   const deleteCommentButton = (
-    <Button danger size='small' onClick={deleteHandler}>
+    <Button type='danger' size='small' onClick={deleteHandler}>
       Delete
     </Button>
   );

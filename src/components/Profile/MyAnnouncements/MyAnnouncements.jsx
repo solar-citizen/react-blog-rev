@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import Loader from '../../UI/Loader/Loader';
 import Announcement from '../../Announcement/Announcement';
 import Input from '../../UI/Input/Input';
-import { Button } from 'antd';
+import Button from '../../UI/Button/Button';
 import UserContext from '../../../context/user/userContext';
 import AnnouncementsContext from '../../../context/announcements/announcementsContext';
 import LoadingContext from '../../../context/loading/loadingContext';
@@ -147,7 +147,7 @@ const MyAnnouncements = () => {
   const createButton = (
     <Button
       size='small'
-      type='primary'
+      type='primary-filled'
       onClick={createHandler}
       disabled={!isFormValid}
     >

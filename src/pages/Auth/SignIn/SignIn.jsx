@@ -119,7 +119,6 @@ const SignIn = () => {
 
           <Button type='submit'>Sign in</Button>
 
-          <Link to='/recovery'>I forgot my password.</Link>
           <Link to='/sign-up'>No account yet? Register then!</Link>
         </form>
       </div>

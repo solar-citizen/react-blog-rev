@@ -30,3 +30,23 @@
   width: 64px;
   cursor: pointer;
 }
+
+p {
+  font-size: 0.875rem;
+}
+
+a {
+  color: #1890ff;
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #40a9ff;
+}
+
+a:active {
+  color: #096dd9;
+}

@@ -15,14 +15,6 @@
   padding: 2px 5px;
 }
 
-.Comment > div:first-of-type > div a {
-  text-decoration: none;
-}
-
-.Comment > div:first-of-type > div a:hover {
-  text-decoration: underline;
-}
-
 .Comment > div:last-of-type {
   margin-top: 1rem;
 }

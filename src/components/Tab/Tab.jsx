@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styles from './Tab.module.css';
 import React, { useState, useEffect } from 'react';
-import { Button } from 'antd';
+// import { Button } from 'antd';
+import Button from '../UI/Button/Button';
 
 const Tab = ({ children, active }) => {
   const [activeTab, setActiveTab] = useState(active);
@@ -29,7 +30,8 @@ const Tab = ({ children, active }) => {
         {tabsData.map(({ tab }, i) => (
           <li key={i}>
             <Button
-              className={i === activeTab ? styles.active : ''}
+              active={i === activeTab ? true : false}
+              type='primary'
               onClick={() => setActiveTab(i)}
             >
               {tab}

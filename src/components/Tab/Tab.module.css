@@ -17,11 +17,6 @@
   width: 100%;
 }
 
-.Tab > ul li button.active {
-  color: #40a9ff;
-  border-color: #40a9ff;
-}
-
 .Tab > div {
   width: 80%;
   padding: 2rem;

@@ -1,10 +1,14 @@
 import styles from './Button.module.css';
 
-const Button = ({ onClick, children, type, disabled, size }) => {
+const Button = ({ onClick, children, type, disabled, size, active }) => {
   const cls = [styles.Button, styles[type]];
 
   if (size === 'small') {
     cls.push(styles.btnSmall);
+  }
+
+  if (active) {
+    cls.push(styles.active);
   }
 
   return (

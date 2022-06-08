@@ -82,7 +82,8 @@
   background-color: #fff;
 }
 
-.primary:hover {
+.primary:hover,
+.primary.active {
   color: #1890ff;
   border-color: #1890ff;
 }

@@ -4,7 +4,7 @@ import PostsContext from '../../../context/posts/postsContext';
 import convertDate from '../../../helpers/convertDate';
 import Loader from '../../UI/Loader/Loader';
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
+import Button from '../../UI/Button/Button';
 import { PlusOutlined } from '@ant-design/icons';
 import UserContext from '../../../context/user/userContext';
 import LoadingContext from '../../../context/loading/loadingContext';
@@ -58,7 +58,7 @@ const MyPosts = () => {
   return (
     <div className={styles.MyPosts}>
       <h2>My posts</h2>
-      <Button type='primary'>
+      <Button type='primary-filled'>
         <Link to='/create-post'>
           <PlusOutlined /> Create new post
         </Link>

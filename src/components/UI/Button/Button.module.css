@@ -13,10 +13,6 @@
   white-space: nowrap;
 }
 
-.Button > span {
-  display: inline-block;
-}
-
 .Button:hover {
   filter: brightness(1.1);
 }

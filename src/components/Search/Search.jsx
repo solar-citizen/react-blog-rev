@@ -1,7 +1,7 @@
 import styles from './Search.module.css';
 import { useState, useContext } from 'react';
 import PostsContext from '../../context/posts/postsContext';
-import { Button } from 'antd';
+import Button from '../UI/Button/Button';
 import { SearchOutlined } from '@ant-design/icons';
 
 const Search = () => {
@@ -40,7 +40,9 @@ const Search = () => {
         onKeyPress={onSubmit}
         onChange={(event) => setValue(event.target.value)}
       />
-      <Button onClick={searchHandler} icon={<SearchOutlined />} />
+      <Button type='primary' onClick={searchHandler}>
+        <SearchOutlined />
+      </Button>
     </div>
   );
 };

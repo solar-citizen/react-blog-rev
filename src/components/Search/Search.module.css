@@ -1,5 +1,6 @@
 .Search {
   width: 80%;
+  display: flex;
 }
 
 .Search > input {
@@ -16,5 +17,7 @@
 .Search > button {
   height: 34px;
   width: 34px;
-  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

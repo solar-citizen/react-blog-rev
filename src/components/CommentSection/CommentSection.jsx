@@ -4,7 +4,6 @@ import { baseURL } from '../../urls';
 import { useContext, useState } from 'react';
 import PostsContext from '../../context/posts/postsContext';
 import Loader from '../UI/Loader/Loader';
-// import { Button } from 'antd';
 import Button from '../UI//Button/Button';
 import Input from '../UI/Input/Input';
 import Comment from '../Comment/Comment';

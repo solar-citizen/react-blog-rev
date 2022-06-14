@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import styles from './Tab.module.css';
 import React, { useState, useEffect } from 'react';
 import Button from '../UI/Button/Button';

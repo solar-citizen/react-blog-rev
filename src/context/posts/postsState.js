@@ -33,7 +33,7 @@ export const PostsState = ({ children }) => {
     // setLoading();
 
     const response = await axios({
-      url: `${baseURL}/posts?_expand=user`,
+      url: `${baseURL}/posts?_expand=user&_sort=createdAt&_order=desc&_limit=50`,
       method: 'get',
       headers: {
         Authorization: `Bearer ${token}`,

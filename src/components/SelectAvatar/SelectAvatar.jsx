@@ -10,13 +10,22 @@ import avatar8 from '../../assets/img/avatars/avatar8.png';
 import avatar9 from '../../assets/img/avatars/avatar9.png';
 import avatar10 from '../../assets/img/avatars/avatar10.png';
 import { Avatar, Button, Modal } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { UserOutlined, EditOutlined } from '@ant-design/icons';
+import { useState, useContext } from 'react';
+import UserContext from '../../context/user/userContext';
 
-const SelectAvatar = ({ imageChangeHandler, profileImage }) => {
+const SelectAvatar = ({
+  imageChangeHandler,
+  profileImage,
+  setProfileImage,
+  edit,
+  currentAvatar,
+}) => {
+  const { user, changeAvatar } = useContext(UserContext);
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const imagesArray = [
+  const userAvatars = [
     avatar1,
     avatar2,
     avatar3,
@@ -35,18 +44,44 @@ const SelectAvatar = ({ imageChangeHandler, profileImage }) => {
 
   const modalOkHandler = () => {
     setIsModalVisible(false);
+
+    if (edit) {
+      changeAvatar(profileImage, user?.id);
+    }
   };
 
   const cancelHandler = () => {
     setIsModalVisible(false);
+    setProfileImage(<UserOutlined />);
+
+    if (edit) {
+      setIsModalVisible(false);
+      setProfileImage(currentAvatar);
+    }
   };
+
+  // buttons
+  const selectAvatarButton = (
+    <Button onClick={showModalHandler} type='primary'>
+      Select Avatar
+    </Button>
+  );
+
+  const editAvatarButton = (
+    <Button className={styles.editBtn} onClick={showModalHandler}>
+      <EditOutlined />
+    </Button>
+  );
 
   return (
     <div className={styles.SelectAvatar}>
-      <Avatar size={64} icon={<UserOutlined />} src={profileImage} />
-      <Button onClick={showModalHandler} type='primary'>
-        Select Avatar
-      </Button>
+      <Avatar
+        size={edit ? 100 : 64}
+        icon={<UserOutlined />}
+        src={profileImage}
+      />
+      {!edit && selectAvatarButton}
+      {edit && editAvatarButton}
       <Modal
         title='Pick An Avatar:'
         visible={isModalVisible}
@@ -54,7 +89,7 @@ const SelectAvatar = ({ imageChangeHandler, profileImage }) => {
         onOk={modalOkHandler}
         onCancel={cancelHandler}
       >
-        {imagesArray.map((src, i) => (
+        {userAvatars.map((src, i) => (
           <img
             id={i}
             key={i}

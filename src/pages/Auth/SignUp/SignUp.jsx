@@ -190,6 +190,7 @@ const SignUp = () => {
             <SelectAvatar
               imageChangeHandler={imageChangeHandler}
               profileImage={profileImage}
+              setProfileImage={setProfileImage}
             />
           }
 

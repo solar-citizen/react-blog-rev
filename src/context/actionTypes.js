@@ -28,7 +28,8 @@ export const ADD_ANNOUNCEMENT = 'ADD_ANNOUNCEMENT';
 export const AUTH_LOGIN = 'AUTH_LOGIN';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-
+// // Profile edit
+export const GET_USER = 'GET_USER';
+export const CHANGE_AVATAR = 'CHANGE_AVATAR';
 //
 export const SEARCH_BLOGS = 'SEARCH_BLOGS';
-export const GET_USER = 'GET_USER';

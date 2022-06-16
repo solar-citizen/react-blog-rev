@@ -7,9 +7,18 @@
   margin-left: 5px;
   font-size: 1.5rem;
 }
+/* antd */
+.ant-avatar {
+  line-height: 0;
+}
 
 .MyProfile > span {
   margin-top: 6px;
   display: block;
   font-size: 1rem;
+}
+
+/* le temp kostyl */
+.MyProfile img {
+  width: 100px;
 }

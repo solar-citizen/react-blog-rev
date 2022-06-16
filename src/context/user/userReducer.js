@@ -1,4 +1,10 @@
-import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_SUCCESS } from '../actionTypes';
+import {
+  AUTH_LOGIN,
+  AUTH_LOGOUT,
+  AUTH_SUCCESS,
+  CHANGE_AVATAR,
+  GET_USER,
+} from '../actionTypes';
 
 const handlers = {
   // login
@@ -18,6 +24,19 @@ const handlers = {
   [AUTH_SUCCESS]: (state, { payload }) => ({
     ...state,
     token: payload,
+  }),
+
+  // get user
+  // // temporary solution?
+  [GET_USER]: (state, { payload }) => ({
+    ...state,
+    user: payload,
+  }),
+
+  // change avatar
+  [CHANGE_AVATAR]: (state, { payload }) => ({
+    ...state,
+    user: payload,
   }),
   // default
   DEFAULT: (state) => state,

@@ -1,11 +1,17 @@
 import axios from 'axios';
-import { loginURL, registerURL } from '../../urls';
+import { baseURL, loginURL, registerURL } from '../../urls';
 import { useReducer } from 'react';
 import UserContext from './userContext';
 import { userReducer } from './userReducer';
 import { useNavigate } from 'react-router-dom';
 
-import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_SUCCESS } from '../actionTypes';
+import {
+  AUTH_LOGIN,
+  AUTH_LOGOUT,
+  AUTH_SUCCESS,
+  CHANGE_AVATAR,
+  GET_USER,
+} from '../actionTypes';
 
 export const UserState = ({ children }) => {
   const initialState = {
@@ -131,6 +137,48 @@ export const UserState = ({ children }) => {
     }
   };
 
+  // --- Profile edit
+
+  // get user
+  // temporary solution?
+  const getUser = async (userId) => {
+    const response = await axios({
+      url: `${baseURL}/users/${userId}`,
+      method: 'get',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((error) => console.error(error));
+
+    dispatch({
+      type: GET_USER,
+      payload: response.data,
+    });
+  };
+
+  // change avatar
+  const changeAvatar = async (avatar, userId) => {
+    const response = await axios({
+      url: `${baseURL}/users/${userId}`,
+      method: 'patch',
+      data: {
+        avatar,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((error) => console.error(error));
+
+    dispatch({
+      type: CHANGE_AVATAR,
+      payload: response.data,
+    });
+
+    localStorage.setItem('user', JSON.stringify(user));
+
+    getUser(userId);
+  };
+
   const { user, token } = state;
 
   return (
@@ -142,6 +190,8 @@ export const UserState = ({ children }) => {
         autoLogin,
         auth,
         authSuccess,
+        changeAvatar,
+        getUser,
       }}
     >
       {children}

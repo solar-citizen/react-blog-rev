@@ -25,6 +25,10 @@ const Avatar = ({ size, comment }) => {
       }
     };
 
+    if (!size) {
+      return <img src={src()} width={64} alt='avatar' />;
+    }
+
     if (size === 'small') {
       return <img src={src()} width={24} alt='avatar' />;
     }

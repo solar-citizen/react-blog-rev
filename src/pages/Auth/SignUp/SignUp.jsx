@@ -114,12 +114,12 @@ const SignUp = () => {
       isValid = value.length >= validation?.minLength && isValid;
     }
 
-    // invalid if valuse less than 1
+    // invalid if values are less than 1
     if (validation?.min) {
       isValid = value >= 1 && isValid;
     }
 
-    // invalid if valuse more than 150
+    // invalid if values are more than 150
     if (validation?.max) {
       isValid = value <= 150 && isValid;
     }

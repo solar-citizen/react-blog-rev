@@ -11,6 +11,7 @@ import {
   AUTH_SUCCESS,
   CHANGE_AVATAR,
   GET_USER,
+  SET_NEW_USER_DATA,
 } from '../actionTypes';
 
 export const UserState = ({ children }) => {
@@ -156,8 +157,29 @@ export const UserState = ({ children }) => {
     });
   };
 
+  const setNewUserData = async (email, firstname, lastname, age, userId) => {
+    const response = await axios({
+      url: `${baseURL}/users/${userId}`,
+      method: 'patch',
+      data: {
+        email,
+        firstname,
+        lastname,
+        age,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((error) => console.error(error));
+
+    dispatch({
+      type: SET_NEW_USER_DATA,
+      payload: response.data,
+    });
+  };
+
   // change avatar
-  const changeAvatar = async (avatar, userId) => {
+  const setNewAvatar = async (avatar, userId) => {
     const response = await axios({
       url: `${baseURL}/users/${userId}`,
       method: 'patch',
@@ -190,8 +212,9 @@ export const UserState = ({ children }) => {
         autoLogin,
         auth,
         authSuccess,
-        changeAvatar,
+        setNewAvatar,
         getUser,
+        setNewUserData,
       }}
     >
       {children}

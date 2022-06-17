@@ -1,3 +1,8 @@
+.MyProfile > h2 {
+  display: inline-block;
+  margin-right: 5px;
+}
+
 .MyProfile > div {
   display: flex;
   align-items: center;
@@ -8,17 +13,22 @@
   font-size: 1.5rem;
 }
 /* antd */
-.ant-avatar {
-  line-height: 0;
+/* temporary */
+.MyProfile > div > div > span {
+  line-height: 0 !important;
 }
 
 .MyProfile > span {
-  margin-top: 6px;
+  margin: 6px 0px;
   display: block;
   font-size: 1rem;
 }
 
-/* le temp kostyl */
+/* le temporary kostyl */
 .MyProfile img {
   width: 100px;
+}
+
+.MyProfile button[type='primary-filled'] {
+  margin-left: 3px;
 }

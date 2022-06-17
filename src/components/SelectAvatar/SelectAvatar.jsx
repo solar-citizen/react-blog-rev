@@ -21,7 +21,7 @@ const SelectAvatar = ({
   edit,
   currentAvatar,
 }) => {
-  const { user, changeAvatar } = useContext(UserContext);
+  const { user, setNewAvatar } = useContext(UserContext);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -46,7 +46,7 @@ const SelectAvatar = ({
     setIsModalVisible(false);
 
     if (edit) {
-      changeAvatar(profileImage, user?.id);
+      setNewAvatar(profileImage, user?.id);
     }
   };
 

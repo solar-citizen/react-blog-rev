@@ -7,6 +7,10 @@ const Button = ({ onClick, children, type, disabled, size, active }) => {
     cls.push(styles.btnSmall);
   }
 
+  if (size === 'x-small') {
+    cls.push(styles.btnXSmall);
+  }
+
   if (active) {
     cls.push(styles.active);
   }

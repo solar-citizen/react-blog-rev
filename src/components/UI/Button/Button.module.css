@@ -121,5 +121,11 @@
   height: 1.5rem;
   padding: 0px 7px;
   font-size: 14px;
-  border-radius: 2px;
+}
+
+.btnXSmall {
+  height: 1.25rem;
+  padding: 0px 3px;
+  font-size: 14px;
+  line-height: 14px;
 }

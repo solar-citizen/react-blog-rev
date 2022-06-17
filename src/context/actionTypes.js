@@ -30,6 +30,7 @@ export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 // // Profile edit
 export const GET_USER = 'GET_USER';
+export const SET_NEW_USER_DATA = 'SET_NEW_USER_DATA';
 export const CHANGE_AVATAR = 'CHANGE_AVATAR';
 //
 export const SEARCH_BLOGS = 'SEARCH_BLOGS';

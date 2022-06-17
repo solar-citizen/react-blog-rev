@@ -3,12 +3,80 @@ import { useContext, useState, useEffect } from 'react';
 import UserContext from '../../../context/user/userContext';
 import Avatar from '../../Avatar/Avatar';
 import SelectAvatar from '../../SelectAvatar/SelectAvatar';
+import Button from '../../UI/Button/Button';
+import { EditOutlined } from '@ant-design/icons';
+import Input from '../../UI/Input/Input';
+import is from 'is_js';
 
 const MyProfile = () => {
   const [profileImage, setProfileImage] = useState(<Avatar />);
+  const [profileEditVisible, setProfileEditVisible] = useState(false);
 
-  const { user, getUser } = useContext(UserContext);
-  const { email, firstname, lastname, age, avatar } = user;
+  const { user, getUser, setNewUserData } = useContext(UserContext);
+  const { id, email, firstname, lastname, age, avatar } = user;
+
+  const [formControls, setFormControls] = useState({
+    email: {
+      value: email,
+      type: 'email',
+      label: 'Change email',
+      errorMessage: 'Enter correct email.',
+      valid: false,
+      touched: false,
+      validation: {
+        required: true,
+        email: true,
+      },
+    },
+    firstname: {
+      value: firstname,
+      type: 'text',
+      label: 'Change first name',
+      errorMessage: 'This field cannot be empty.',
+      valid: false,
+      touched: false,
+      validation: {
+        required: true,
+      },
+    },
+    lastname: {
+      value: lastname,
+      type: 'text',
+      label: 'Change last name',
+      errorMessage: 'This field cannot be empty.',
+      valid: false,
+      touched: false,
+      validation: {
+        required: true,
+      },
+    },
+    age: {
+      value: age,
+      type: 'number',
+      label: 'Change age',
+      errorMessage: 'Enter correct age.',
+      valid: false,
+      touched: false,
+      validation: {
+        required: true,
+      },
+      min: 1,
+      max: 150,
+    },
+  });
+
+  const [passwordControl, setPasswordControl] = useState({
+    value: '',
+    type: 'password',
+    label: 'Change password',
+    errorMessage: 'Enter correct password.',
+    valid: false,
+    touched: false,
+    validation: {
+      required: true,
+      minLength: 8,
+    },
+  });
 
   // temporary solution?
   useEffect(() => {
@@ -16,16 +84,139 @@ const MyProfile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
+
+  // validation of input field
+  const validateControl = (value, validation) => {
+    if (!validation) {
+      return true;
+    }
+
+    let isValid = true;
+
+    // invalid if empty
+    if (validation?.required) {
+      isValid = value.trim() !== '' && isValid;
+    }
+
+    // invalid if not email
+    if (validation?.email) {
+      isValid = is.email(value) && isValid;
+    }
+
+    // invalid shorter than minimal length (8)
+    if (validation?.minLength) {
+      isValid = value.length >= validation?.minLength && isValid;
+    }
+
+    // invalid if values are less than 1
+    if (validation?.min) {
+      isValid = value >= 1 && isValid;
+    }
+
+    // invalid if values are more than 150
+    if (validation?.max) {
+      isValid = value <= 150 && isValid;
+    }
+
+    return isValid;
+  };
+
+  // fixation of changes of input field
+  const onChangeHandler = (event, controlName) => {
+    const clonedFormControls = { ...formControls };
+    const control = { ...clonedFormControls[controlName] };
+
+    control.value = event.target.value;
+    control.touched = true;
+    control.valid = validateControl(control.value, control.validation);
+
+    clonedFormControls[controlName] = control;
+
+    setFormControls(clonedFormControls);
+  };
+
+  const renderInputs = () => {
+    return Object.keys(formControls).map((controlName, index) => {
+      const control = formControls[controlName];
+
+      return (
+        <Input
+          key={controlName + index}
+          type={control.type}
+          value={control.value}
+          valid={control.valid}
+          touched={control.touched}
+          label={control.label}
+          errorMessage={control.errorMessage}
+          shouldValidate={!!control.validation}
+          onChange={(event) => onChangeHandler(event, controlName)}
+          min={control.min}
+          max={control.max}
+        />
+      );
+    });
+  };
+
   const imageChangeHandler = (profileImg) => {
     setProfileImage(profileImg);
   };
 
-  return (
-    <div className={styles.MyProfile}>
-      <h2>My profile</h2>
+  const editProfileHandler = () => {
+    setProfileEditVisible(true);
+  };
 
-      <div styles={{ lineHeight: 0 }}>
-        {/* <Avatar size='large' /> */}
+  const acceptEditHandler = () => {
+    setProfileEditVisible(false);
+
+    setNewUserData(
+      formControls.email.value,
+      formControls.firstname.value,
+      formControls.lastname.value,
+      +formControls.age.value,
+      id
+    );
+  };
+
+  const cancelEditHandler = () => {
+    setProfileEditVisible(false);
+  };
+
+  // buttons
+  const editProfileButton = (
+    <Button type='primary' size='x-small' onClick={editProfileHandler}>
+      <EditOutlined />
+      Edit
+    </Button>
+  );
+
+  const changePasswordButton = (
+    <Button type='primary-filled' size='x-small' onClick={editProfileHandler}>
+      Change Password
+    </Button>
+  );
+
+  const acceptProfileEditButton = (
+    <Button type='primary-filled' onClick={acceptEditHandler}>
+      Accept Changes
+    </Button>
+  );
+
+  const cancelProfileEditButton = (
+    <Button type='primary' onClick={cancelEditHandler}>
+      Cancel
+    </Button>
+  );
+
+  const profileContent = (
+    <>
+      <h2>My profile</h2>
+      {editProfileButton}
+      {changePasswordButton}
+
+      <div>
         {
           <SelectAvatar
             imageChangeHandler={imageChangeHandler}
@@ -45,6 +236,35 @@ const MyProfile = () => {
       <span>
         <b>Age:</b> {age}
       </span>
+    </>
+  );
+
+  const editProfileContent = (
+    <>
+      <h2>Edit profile</h2>
+      {/* <span>
+        <b>First name:</b> {firstname}
+      </span>
+
+      <span>
+        <b>Last name:</b> {lastname}
+      </span>
+
+      <span>
+        <b>Email:</b> {email}
+      </span>
+      <span>
+        <b>Age:</b> {age}
+      </span> */}
+      {renderInputs()}
+      {cancelProfileEditButton}
+      {acceptProfileEditButton}
+    </>
+  );
+
+  return (
+    <div className={styles.MyProfile}>
+      {profileEditVisible ? editProfileContent : profileContent}
     </div>
   );
 };

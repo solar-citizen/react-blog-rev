@@ -4,6 +4,7 @@ import {
   AUTH_SUCCESS,
   CHANGE_AVATAR,
   GET_USER,
+  SET_NEW_USER_DATA,
 } from '../actionTypes';
 
 const handlers = {
@@ -29,6 +30,12 @@ const handlers = {
   // get user
   // // temporary solution?
   [GET_USER]: (state, { payload }) => ({
+    ...state,
+    user: payload,
+  }),
+
+  // set new user data
+  [SET_NEW_USER_DATA]: (state, { payload }) => ({
     ...state,
     user: payload,
   }),

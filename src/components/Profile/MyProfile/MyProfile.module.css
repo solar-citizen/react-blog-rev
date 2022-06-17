@@ -3,7 +3,7 @@
   margin-right: 5px;
 }
 
-.MyProfile > div {
+.profileContent {
   display: flex;
   align-items: center;
 }

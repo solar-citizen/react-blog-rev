@@ -10,6 +10,7 @@ import is from 'is_js';
 
 const MyProfile = () => {
   const [profileImage, setProfileImage] = useState(<Avatar />);
+  // const [activeContent, setActiveContent] = useState('');
   const [profileEditVisible, setProfileEditVisible] = useState(false);
 
   const { user, getUser, setNewUserData } = useContext(UserContext);
@@ -28,6 +29,18 @@ const MyProfile = () => {
         email: true,
       },
     },
+    // password: {
+    //   value: '',
+    //   type: 'password',
+    //   label: 'Change password',
+    //   errorMessage: 'Enter correct password.',
+    //   valid: false,
+    //   touched: false,
+    //   validation: {
+    //     required: true,
+    //     minLength: 8,
+    //   },
+    // },
     firstname: {
       value: firstname,
       type: 'text',
@@ -65,22 +78,10 @@ const MyProfile = () => {
     },
   });
 
-  const [passwordControl, setPasswordControl] = useState({
-    value: '',
-    type: 'password',
-    label: 'Change password',
-    errorMessage: 'Enter correct password.',
-    valid: false,
-    touched: false,
-    validation: {
-      required: true,
-      minLength: 8,
-    },
-  });
-
   // temporary solution?
   useEffect(() => {
     getUser(user?.id);
+    // setActiveContent(profileContent);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -111,12 +112,12 @@ const MyProfile = () => {
       isValid = value.length >= validation?.minLength && isValid;
     }
 
-    // invalid if values are less than 1
+    // invalid if valuse less than 1
     if (validation?.min) {
       isValid = value >= 1 && isValid;
     }
 
-    // invalid if values are more than 150
+    // invalid if valuse more than 150
     if (validation?.max) {
       isValid = value <= 150 && isValid;
     }
@@ -165,11 +166,13 @@ const MyProfile = () => {
   };
 
   const editProfileHandler = () => {
+    // setActiveContent(editProfileContent);
     setProfileEditVisible(true);
   };
 
   const acceptEditHandler = () => {
     setProfileEditVisible(false);
+    // setActiveContent(profileContent);
 
     setNewUserData(
       formControls.email.value,
@@ -182,6 +185,7 @@ const MyProfile = () => {
 
   const cancelEditHandler = () => {
     setProfileEditVisible(false);
+    // setActiveContent(profileContent);
   };
 
   // buttons
@@ -189,12 +193,6 @@ const MyProfile = () => {
     <Button type='primary' size='x-small' onClick={editProfileHandler}>
       <EditOutlined />
       Edit
-    </Button>
-  );
-
-  const changePasswordButton = (
-    <Button type='primary-filled' size='x-small' onClick={editProfileHandler}>
-      Change Password
     </Button>
   );
 
@@ -214,9 +212,8 @@ const MyProfile = () => {
     <>
       <h2>My profile</h2>
       {editProfileButton}
-      {changePasswordButton}
 
-      <div>
+      <div className={styles.profileContent}>
         {
           <SelectAvatar
             imageChangeHandler={imageChangeHandler}
@@ -242,21 +239,9 @@ const MyProfile = () => {
   const editProfileContent = (
     <>
       <h2>Edit profile</h2>
-      {/* <span>
-        <b>First name:</b> {firstname}
-      </span>
 
-      <span>
-        <b>Last name:</b> {lastname}
-      </span>
-
-      <span>
-        <b>Email:</b> {email}
-      </span>
-      <span>
-        <b>Age:</b> {age}
-      </span> */}
       {renderInputs()}
+
       {cancelProfileEditButton}
       {acceptProfileEditButton}
     </>
@@ -265,6 +250,7 @@ const MyProfile = () => {
   return (
     <div className={styles.MyProfile}>
       {profileEditVisible ? editProfileContent : profileContent}
+      {/* {activeContent} */}
     </div>
   );
 };

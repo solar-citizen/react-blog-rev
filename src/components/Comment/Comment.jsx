@@ -189,16 +189,10 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
         <div>{i + 1}</div>
       </div>
       <div>{!isEditInputVisible ? comment?.body : renderInputs()}</div>
-      {user?.id === comment?.userId
-        ? isEditInputVisible
-          ? acceptButton
-          : editButton
-        : null}
-      {user?.id === comment?.userId
-        ? isEditInputVisible
-          ? cancelButton
-          : deleteCommentButton
-        : null}
+      {user?.id === comment?.userId &&
+        (isEditInputVisible ? acceptButton : editButton)}
+      {user?.id === comment?.userId &&
+        (isEditInputVisible ? cancelButton : deleteCommentButton)}
     </div>
   );
 };

@@ -42,11 +42,11 @@ const MyPosts = () => {
             <div>
               {`Created at ${convertDate(new Date(userPost?.createdAt))}`}
             </div>
-            {userPost?.updatedAt ? (
+            {userPost?.updatedAt && (
               <div>{`Updated at ${convertDate(
                 new Date(userPost?.updatedAt)
               )}`}</div>
-            ) : null}
+            )}
 
             <Link to={`/blog/post/${userPost?.id}`}>Go to</Link>
           </article>

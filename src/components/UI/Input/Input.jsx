@@ -36,9 +36,9 @@ const Input = (props) => {
         />
       )}
 
-      {isInvalid(props) ? (
+      {isInvalid(props) && (
         <span>{props?.errorMessage || 'Enter correct value.'}</span>
-      ) : null}
+      )}
     </div>
   );
 };

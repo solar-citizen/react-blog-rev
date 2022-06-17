@@ -37,7 +37,7 @@ const Navbar = () => {
         <li>
           <NavLink
             to='/'
-            className={({ isActive }) => (isActive ? styles.active : null)}
+            className={({ isActive }) => (isActive ? styles.active : '')}
           >
             Blog
           </NavLink>
@@ -47,7 +47,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to={`/profile/${user?.firstname}_${user?.lastname}`}
-              className={({ isActive }) => (isActive ? styles.active : null)}
+              className={({ isActive }) => (isActive ? styles.active : '')}
             >
               {`${user?.firstname} ${user?.lastname}`}
             </NavLink>

@@ -223,24 +223,18 @@ const Post = () => {
               <div>{`Created at ${convertDate(new Date(post?.createdAt))} by ${
                 post?.user?.firstname
               } ${post?.user?.lastname}`}</div>
-              {post?.updatedAt ? (
+              {post?.updatedAt && (
                 <div>{`Updated at ${convertDate(
                   new Date(post?.updatedAt)
                 )}`}</div>
-              ) : null}
+              )}
             </div>
           )}
 
-          {user?.id === post?.userId
-            ? isEditInputVisible
-              ? acceptButton
-              : editPostBtn
-            : null}
-          {user?.id === post?.userId
-            ? isEditInputVisible
-              ? cancelButton
-              : deletePostBtn
-            : null}
+          {user?.id === post?.userId &&
+            (isEditInputVisible ? acceptButton : editPostBtn)}
+          {user?.id === post?.userId &&
+            (isEditInputVisible ? cancelButton : deletePostBtn)}
         </div>
       </div>
 

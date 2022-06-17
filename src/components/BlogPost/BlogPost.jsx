@@ -20,11 +20,11 @@ const BlogPost = ({ posts }) => (
               } ${post?.user?.lastname}
               `}
             </div>
-            {post?.updatedAt ? (
+            {post?.updatedAt && (
               <div>{`Updated at ${convertDate(
                 new Date(post?.updatedAt)
               )}`}</div>
-            ) : null}
+            )}
 
             <Link to={`/blog/post/${post?.id}`}>Read more</Link>
           </article>

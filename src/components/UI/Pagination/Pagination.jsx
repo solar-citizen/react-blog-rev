@@ -1,6 +1,9 @@
 import styles from './Pagination.module.css';
 
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
+  const baseStyles = {
+    color: '#5a5a5a',
+  };
   const activeStyles = {
     color: '#bebebe',
     borderBottom: '1px solid #bebebe',
@@ -18,7 +21,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
         {pageNumbers.map((pageNumber) => (
           <li key={pageNumber}>
             <a
-              style={currentPage === pageNumber ? activeStyles : null}
+              style={currentPage === pageNumber ? activeStyles : baseStyles}
               onClick={(event) => paginate(event, pageNumber)}
               href={`blog/page${pageNumber}`}
             >

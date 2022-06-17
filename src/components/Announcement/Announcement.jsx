@@ -148,26 +148,24 @@ const Announcement = ({ announcement, isNotification }) => {
   );
 
   return (
-    <div className={isNotification ? styles.Announcement : null}>
-      {isNotification ? <CloseSquareOutlined onClick={closeHandler} /> : null}
+    // it works, but it's weird:
+    // <div className={`${isNotification && styles.Announcement}`}>
+    <div className={isNotification ? styles.Announcement : ''}>
+      {isNotification && <CloseSquareOutlined onClick={closeHandler} />}
 
       <h3>{announcement?.title}</h3>
       <span>{!isEditInputVisible ? announcement?.body : renderInputs()}</span>
 
-      {!isNotification ? (
+      {!isNotification && (
         <div>
-          {user?.id === announcement?.userId
-            ? isEditInputVisible
-              ? acceptButton
-              : editButton
-            : null}
-          {user?.id === announcement?.userId
-            ? isEditInputVisible
-              ? cancelButton
-              : deleteCommentButton
-            : null}
+          {user?.id === announcement?.userId && isEditInputVisible
+            ? acceptButton
+            : editButton}
+          {user?.id === announcement?.userId && isEditInputVisible
+            ? cancelButton
+            : deleteCommentButton}
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

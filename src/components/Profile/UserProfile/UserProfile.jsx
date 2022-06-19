@@ -1,4 +1,4 @@
-import styles from './MyProfile.module.css';
+import styles from './UserProfile.module.css';
 import { useContext, useState, useEffect } from 'react';
 import UserContext from '../../../context/user/userContext';
 import Avatar from '../../Avatar/Avatar';
@@ -8,7 +8,7 @@ import { EditOutlined } from '@ant-design/icons';
 import Input from '../../UI/Input/Input';
 import is from 'is_js';
 
-const MyProfile = () => {
+const UserProfile = () => {
   const [profileImage, setProfileImage] = useState(<Avatar />);
   // const [activeContent, setActiveContent] = useState('');
   const [profileEditVisible, setProfileEditVisible] = useState(false);
@@ -29,18 +29,6 @@ const MyProfile = () => {
         email: true,
       },
     },
-    // password: {
-    //   value: '',
-    //   type: 'password',
-    //   label: 'Change password',
-    //   errorMessage: 'Enter correct password.',
-    //   valid: false,
-    //   touched: false,
-    //   validation: {
-    //     required: true,
-    //     minLength: 8,
-    //   },
-    // },
     firstname: {
       value: firstname,
       type: 'text',
@@ -248,11 +236,11 @@ const MyProfile = () => {
   );
 
   return (
-    <div className={styles.MyProfile}>
+    <div className={styles.UserProfile}>
       {profileEditVisible ? editProfileContent : profileContent}
       {/* {activeContent} */}
     </div>
   );
 };
 
-export default MyProfile;
+export default UserProfile;

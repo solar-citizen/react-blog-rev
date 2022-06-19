@@ -1,4 +1,4 @@
-import styles from './MyAnnouncements.module.css';
+import styles from './UserAnnouncements.module.css';
 import { useContext, useState } from 'react';
 import Loader from '../../UI/Loader/Loader';
 import Announcement from '../../Announcement/Announcement';
@@ -8,7 +8,7 @@ import UserContext from '../../../context/user/userContext';
 import AnnouncementsContext from '../../../context/announcements/announcementsContext';
 import LoadingContext from '../../../context/loading/loadingContext';
 
-const MyAnnouncements = () => {
+const UserAnnouncements = () => {
   const { user } = useContext(UserContext);
   const { announcements, addAnnouncement } = useContext(AnnouncementsContext);
   const { loading } = useContext(LoadingContext);
@@ -99,7 +99,7 @@ const MyAnnouncements = () => {
   // conditional render of announcements
   // made by logged user
   const renderUserAnnouncements = () => {
-    const userAnnouncements =
+    const currentUserAnnouncements =
       announcements?.length &&
       announcements.filter(
         (announcementItem) => announcementItem?.userId === user?.id
@@ -109,13 +109,12 @@ const MyAnnouncements = () => {
       return <Loader />;
     }
 
-    if (!userAnnouncements?.length) {
+    if (!currentUserAnnouncements?.length) {
       return <div>No announcements here yet...</div>;
     }
 
-    // userAnnouncements && userAnnouncements.length (???)
-    if (userAnnouncements) {
-      return userAnnouncements.map((userAnnouncementItem) => (
+    if (currentUserAnnouncements) {
+      return currentUserAnnouncements.map((userAnnouncementItem) => (
         <Announcement
           isNotification={false}
           announcement={userAnnouncementItem}
@@ -156,7 +155,7 @@ const MyAnnouncements = () => {
   );
 
   return (
-    <div className={styles.MyAnnouncements}>
+    <div className={styles.UserAnnouncements}>
       <h2>My announcements</h2>
 
       <div>
@@ -173,4 +172,4 @@ const MyAnnouncements = () => {
   );
 };
 
-export default MyAnnouncements;
+export default UserAnnouncements;

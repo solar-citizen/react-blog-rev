@@ -1,4 +1,4 @@
-import styles from './MyPosts.module.css';
+import styles from './UserPosts.module.css';
 import { useContext } from 'react';
 import PostsContext from '../../../context/posts/postsContext';
 import convertDate from '../../../helpers/convertDate';
@@ -9,7 +9,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import UserContext from '../../../context/user/userContext';
 import LoadingContext from '../../../context/loading/loadingContext';
 
-const MyPosts = () => {
+const UserPosts = () => {
   const { user } = useContext(UserContext);
   const { posts } = useContext(PostsContext);
   const { loading } = useContext(LoadingContext);
@@ -17,7 +17,7 @@ const MyPosts = () => {
   // conditional render of posts
   // made by logged user
   const renderUserPosts = () => {
-    const userPosts =
+    const currentUserPosts =
       posts?.length &&
       posts.filter((postItem) => postItem?.userId === user?.id);
 
@@ -25,12 +25,12 @@ const MyPosts = () => {
       return <Loader />;
     }
 
-    if (!userPosts?.length) {
+    if (!currentUserPosts?.length) {
       return <span>No posts here yet...</span>;
     }
 
-    if (userPosts) {
-      return userPosts.map((userPost) => {
+    if (currentUserPosts) {
+      return currentUserPosts.map((userPost) => {
         return (
           <article key={userPost?.id}>
             <h2>{userPost?.title}</h2>
@@ -56,7 +56,7 @@ const MyPosts = () => {
   };
 
   return (
-    <div className={styles.MyPosts}>
+    <div className={styles.UserPosts}>
       <h2>My posts</h2>
       <Button type='primary-filled'>
         <Link to='/create-post'>
@@ -69,4 +69,4 @@ const MyPosts = () => {
   );
 };
 
-export default MyPosts;
+export default UserPosts;

@@ -1,22 +1,22 @@
 import styles from './Tabs.module.css';
 import Tab from '../Tab/Tab';
-import MyProfile from '../../components/Profile/MyProfile/MyProfile';
-import MyPosts from '../../components/Profile/MyPosts/MyPosts';
-import MyAnnouncements from '../Profile/MyAnnouncements/MyAnnouncements';
+import UserProfile from '../../components/Profile/UserProfile/UserProfile';
+import UserPosts from '../../components/Profile/UserPosts/UserPosts';
+import UserAnnouncements from '../Profile/UserAnnouncements/UserAnnouncements';
 
 const Tabs = () => {
   const tabContent = [
     {
       title: 'My profile',
-      content: <MyProfile />,
+      content: <UserProfile />,
     },
     {
       title: 'My posts',
-      content: <MyPosts />,
+      content: <UserPosts />,
     },
     {
       title: 'My announcements',
-      content: <MyAnnouncements />,
+      content: <UserAnnouncements />,
     },
   ];
 

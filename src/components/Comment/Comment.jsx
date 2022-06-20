@@ -1,9 +1,9 @@
 import styles from './Comment.module.css';
+import dayjs from 'dayjs';
 import axios from 'axios';
 import { baseURL } from '../../urls';
 import { useContext, useState } from 'react';
 import PostsContext from '../../context/posts/postsContext';
-import convertDate from '../../helpers/convertDate';
 import { Link } from 'react-router-dom';
 import { Input } from '../index';
 import { Button } from '../index';
@@ -179,12 +179,14 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
               comment?.user?.id === user?.id ? '(You)' : ''
             }`}
           </Link>
-          &nbsp;at&nbsp;
-          {convertDate(new Date(comment?.createdAt))}
-          &nbsp;
-          {comment?.updatedAt
-            ? `(last update: ${convertDate(new Date(comment?.updatedAt))})`
-            : ''}
+
+          {` at ${dayjs(comment?.createdAt).format('HH:mm, DD.MM.YYYY')} ${
+            comment?.updatedAt
+              ? `(last update: ${dayjs(comment?.updatedAt).format(
+                  'HH:mm, DD.MM.YYYY'
+                )})`
+              : ''
+          }`}
         </div>
         <div>{i + 1}</div>
       </div>

@@ -2,7 +2,7 @@ import styles from './BlogPost.module.css';
 import { Link } from 'react-router-dom';
 import convertDate from '../../helpers/convertDate';
 
-export const BlogPost = ({ posts }) => (
+const BlogPost = ({ posts }) => (
   <div className={styles.BlogPost}>
     {posts?.length ? (
       posts.map((post) => {
@@ -35,3 +35,5 @@ export const BlogPost = ({ posts }) => (
     )}
   </div>
 );
+
+export default BlogPost;

@@ -4,7 +4,7 @@ import { UserProfile } from '../index';
 import { UserPosts } from '../index';
 import { UserAnnouncements } from '../index';
 
-export const Tabs = () => {
+const Tabs = () => {
   const tabContent = [
     {
       title: 'My profile',
@@ -32,3 +32,5 @@ export const Tabs = () => {
     </div>
   );
 };
+
+export default Tabs;

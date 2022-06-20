@@ -10,7 +10,7 @@ import { Comment } from '../index';
 import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';
 
-export const CommentSection = ({ comments, setComments, getComments }) => {
+const CommentSection = ({ comments, setComments, getComments }) => {
   const { user, token } = useContext(UserContext);
   const { loading } = useContext(LoadingContext);
   const { post } = useContext(PostsContext);
@@ -162,3 +162,5 @@ export const CommentSection = ({ comments, setComments, getComments }) => {
     </div>
   );
 };
+
+export default CommentSection;

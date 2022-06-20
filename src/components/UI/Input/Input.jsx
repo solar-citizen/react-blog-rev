@@ -1,7 +1,7 @@
 import styles from './Input.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
-export const Input = (props) => {
+const Input = (props) => {
   const cls = [styles.Input];
   const inputType = props.type || 'text';
   const htmlFor = `${inputType}-${uuidv4()}`;
@@ -42,3 +42,5 @@ export const Input = (props) => {
     </div>
   );
 };
+
+export default Input;

@@ -9,7 +9,7 @@ import PostsContext from '../../../context/posts/postsContext';
 import UserContext from '../../../context/user/userContext';
 import LoadingContext from '../../../context/loading/loadingContext';
 
-export const UserPosts = () => {
+const UserPosts = () => {
   const { user } = useContext(UserContext);
   const { posts } = useContext(PostsContext);
   const { loading } = useContext(LoadingContext);
@@ -68,3 +68,5 @@ export const UserPosts = () => {
     </div>
   );
 };
+
+export default UserPosts;

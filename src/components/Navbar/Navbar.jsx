@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Button } from '../index';
 import UserContext from '../../context/user/userContext';
 
-export const Navbar = () => {
+const Navbar = () => {
   const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -61,3 +61,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;

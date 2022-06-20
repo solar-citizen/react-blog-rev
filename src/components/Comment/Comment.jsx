@@ -10,7 +10,7 @@ import { Button } from '../index';
 import UserContext from '../../context/user/userContext';
 import { Avatar } from '../index';
 
-export const Comment = ({ comments, setComments, getComments, comment, i }) => {
+const Comment = ({ comments, setComments, getComments, comment, i }) => {
   const { user, token } = useContext(UserContext);
   const { post } = useContext(PostsContext);
 
@@ -196,3 +196,5 @@ export const Comment = ({ comments, setComments, getComments, comment, i }) => {
     </div>
   );
 };
+
+export default Comment;

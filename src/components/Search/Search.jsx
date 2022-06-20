@@ -4,7 +4,7 @@ import { Button } from '../index';
 import { SearchOutlined } from '@ant-design/icons';
 import PostsContext from '../../context/posts/postsContext';
 
-export const Search = () => {
+const Search = () => {
   const { getPosts, searchPosts } = useContext(PostsContext);
 
   const [value, setValue] = useState('');
@@ -46,3 +46,5 @@ export const Search = () => {
     </div>
   );
 };
+
+export default Search;

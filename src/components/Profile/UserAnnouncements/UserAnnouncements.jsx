@@ -8,7 +8,7 @@ import UserContext from '../../../context/user/userContext';
 import AnnouncementsContext from '../../../context/announcements/announcementsContext';
 import LoadingContext from '../../../context/loading/loadingContext';
 
-export const UserAnnouncements = () => {
+const UserAnnouncements = () => {
   const { user } = useContext(UserContext);
   const { announcements, addAnnouncement } = useContext(AnnouncementsContext);
   const { loading } = useContext(LoadingContext);
@@ -171,3 +171,5 @@ export const UserAnnouncements = () => {
     </div>
   );
 };
+
+export default UserAnnouncements;

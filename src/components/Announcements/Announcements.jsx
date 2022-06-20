@@ -5,7 +5,7 @@ import UserContext from '../../context/user/userContext';
 import AnnouncementsContext from '../../context/announcements/announcementsContext';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 
-export const Announcements = ({ isNotification }) => {
+const Announcements = ({ isNotification }) => {
   const { user } = useContext(UserContext);
   const { announcements } = useContext(AnnouncementsContext);
   const { width } = useWindowWidth();
@@ -48,3 +48,5 @@ export const Announcements = ({ isNotification }) => {
 
   return <div className={styles.Announcements}>{renderAnnouncements()}</div>;
 };
+
+export default Announcements;

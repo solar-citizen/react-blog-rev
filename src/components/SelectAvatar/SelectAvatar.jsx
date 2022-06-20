@@ -14,7 +14,7 @@ import { UserOutlined, EditOutlined } from '@ant-design/icons';
 import { useState, useContext } from 'react';
 import UserContext from '../../context/user/userContext';
 
-export const SelectAvatar = ({
+const SelectAvatar = ({
   imageChangeHandler,
   profileImage,
   setProfileImage,
@@ -102,3 +102,5 @@ export const SelectAvatar = ({
     </div>
   );
 };
+
+export default SelectAvatar;

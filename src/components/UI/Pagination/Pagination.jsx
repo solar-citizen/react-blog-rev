@@ -1,11 +1,6 @@
 import styles from './Pagination.module.css';
 
-export const Pagination = ({
-  postsPerPage,
-  totalPosts,
-  paginate,
-  currentPage,
-}) => {
+const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   const baseStyles = {
     color: '#5a5a5a',
   };
@@ -38,3 +33,5 @@ export const Pagination = ({
     </nav>
   );
 };
+
+export default Pagination;

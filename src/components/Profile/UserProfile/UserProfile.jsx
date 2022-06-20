@@ -8,7 +8,7 @@ import { EditOutlined } from '@ant-design/icons';
 import { Input } from '../../index';
 import is from 'is_js';
 
-export const UserProfile = () => {
+const UserProfile = () => {
   const [profileImage, setProfileImage] = useState(<Avatar />);
   // const [activeContent, setActiveContent] = useState('');
   const [profileEditVisible, setProfileEditVisible] = useState(false);
@@ -242,3 +242,5 @@ export const UserProfile = () => {
     </div>
   );
 };
+
+export default UserProfile;

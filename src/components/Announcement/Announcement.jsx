@@ -6,7 +6,7 @@ import { CloseSquareOutlined } from '@ant-design/icons';
 import UserContext from '../../context/user/userContext';
 import AnnouncementsContext from '../../context/announcements/announcementsContext';
 
-export const Announcement = ({ announcement, isNotification }) => {
+const Announcement = ({ announcement, isNotification }) => {
   const { user } = useContext(UserContext);
   const {
     deleteAnnouncement,
@@ -169,3 +169,5 @@ export const Announcement = ({ announcement, isNotification }) => {
     </div>
   );
 };
+
+export default Announcement;

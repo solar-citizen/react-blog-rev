@@ -60,6 +60,7 @@ const CreatePost = () => {
     );
 
     // may be delay should be deleted with real server
+    // or just deleted
     setTimeout(() => {
       navigate('/');
     }, 300);

@@ -45,8 +45,6 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     return isValid;
   };
 
-  // console.log(formControls);
-
   // fixation of changes of input field
   const onChangeHandler = (event, controlName) => {
     const clonedFormControls = { ...formControls };

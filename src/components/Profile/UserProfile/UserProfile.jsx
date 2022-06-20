@@ -9,16 +9,14 @@ import { Input } from '../../index';
 import is from 'is_js';
 
 const UserProfile = () => {
-  const [profileImage, setProfileImage] = useState(<Avatar />);
-  // const [activeContent, setActiveContent] = useState('');
-  const [profileEditVisible, setProfileEditVisible] = useState(false);
-
   const { user, getUser, setNewUserData } = useContext(UserContext);
-  const { id, email, firstname, lastname, age, avatar } = user;
 
+  // const [activeContent, setActiveContent] = useState('');
+  const [profileImage, setProfileImage] = useState(<Avatar />);
+  const [profileEditVisible, setProfileEditVisible] = useState(false);
   const [formControls, setFormControls] = useState({
     email: {
-      value: email,
+      value: user?.email,
       type: 'email',
       label: 'Change email',
       errorMessage: 'Enter correct email.',
@@ -30,7 +28,7 @@ const UserProfile = () => {
       },
     },
     firstname: {
-      value: firstname,
+      value: user?.firstname,
       type: 'text',
       label: 'Change first name',
       errorMessage: 'This field cannot be empty.',
@@ -41,7 +39,7 @@ const UserProfile = () => {
       },
     },
     lastname: {
-      value: lastname,
+      value: user?.lastname,
       type: 'text',
       label: 'Change last name',
       errorMessage: 'This field cannot be empty.',
@@ -52,7 +50,7 @@ const UserProfile = () => {
       },
     },
     age: {
-      value: age,
+      value: user?.age,
       type: 'number',
       label: 'Change age',
       errorMessage: 'Enter correct age.',
@@ -167,7 +165,7 @@ const UserProfile = () => {
       formControls.firstname.value,
       formControls.lastname.value,
       +formControls.age.value,
-      id
+      user?.id
     );
   };
 
@@ -207,19 +205,19 @@ const UserProfile = () => {
             imageChangeHandler={imageChangeHandler}
             profileImage={profileImage}
             setProfileImage={setProfileImage}
-            currentAvatar={avatar}
+            currentAvatar={user?.avatar}
             edit
           />
         }
         <span>
-          {firstname} {lastname}
+          {user?.firstname} {user?.lastname}
         </span>
       </div>
       <span>
-        <b>Email:</b> {email}
+        <b>Email:</b> {user?.email}
       </span>
       <span>
-        <b>Age:</b> {age}
+        <b>Age:</b> {user?.age}
       </span>
     </>
   );

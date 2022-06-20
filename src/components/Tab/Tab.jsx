@@ -22,21 +22,23 @@ const Tab = ({ children, active }) => {
     setTabsData(data);
   }, [children]);
 
+  const renderTabs = () => {
+    return tabsData.map(({ tab }, i) => (
+      <li key={i}>
+        <Button
+          active={i === activeTab ? true : false}
+          type='primary'
+          onClick={() => setActiveTab(i)}
+        >
+          {tab}
+        </Button>
+      </li>
+    ));
+  };
+
   return (
     <div className={styles.Tab}>
-      <ul>
-        {tabsData.map(({ tab }, i) => (
-          <li key={i}>
-            <Button
-              active={i === activeTab ? true : false}
-              type='primary'
-              onClick={() => setActiveTab(i)}
-            >
-              {tab}
-            </Button>
-          </li>
-        ))}
-      </ul>
+      <ul>{renderTabs()}</ul>
 
       <div className='bg-white'>{tabsData[activeTab]?.children}</div>
     </div>

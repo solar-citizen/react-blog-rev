@@ -148,7 +148,6 @@ const Announcement = ({ announcement, isNotification }) => {
   );
 
   return (
-    //                                                                 : null
     <div className={isNotification ? `${styles.Announcement} bg-white` : ''}>
       {isNotification && <CloseSquareOutlined onClick={closeHandler} />}
 

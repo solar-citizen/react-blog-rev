@@ -39,10 +39,7 @@ const SignIn = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    const isLogin = true;
-
-    auth(isLogin, formControls.email.value, formControls.password.value);
+    auth(true, formControls.email.value, formControls.password.value);
   };
 
   // validation of input field
@@ -107,7 +104,10 @@ const SignIn = () => {
 
   return (
     <div className={styles.SignIn}>
-      <Link to='/'>{<RollbackOutlined />} &nbsp;back to main</Link>
+      <Link to='/'>
+        {<RollbackOutlined />}
+        {` back to main`}
+      </Link>
       <div>
         <h2>Log In</h2>
 

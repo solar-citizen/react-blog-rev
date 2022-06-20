@@ -14,27 +14,27 @@ const Input = (props) => {
     cls.push(styles.invalid);
   }
 
+  const renderInput = () => {
+    return inputType === 'textarea' ? (
+      <textarea id={htmlFor} value={props?.value} onChange={props?.onChange} />
+    ) : (
+      <input
+        type={inputType}
+        id={htmlFor}
+        value={props?.value}
+        onChange={props?.onChange}
+        min={props?.min}
+        max={props?.max}
+        onSubmit={props?.onSubmit}
+      />
+    );
+  };
+
   return (
     <div className={cls.join(' ')}>
       <label htmlFor={htmlFor}>{props?.label}</label>
 
-      {inputType === 'textarea' ? (
-        <textarea
-          id={htmlFor}
-          value={props?.value}
-          onChange={props?.onChange}
-        />
-      ) : (
-        <input
-          type={inputType}
-          id={htmlFor}
-          value={props?.value}
-          onChange={props?.onChange}
-          min={props?.min}
-          max={props?.max}
-          onSubmit={props?.onSubmit}
-        />
-      )}
+      {renderInput()}
 
       {isInvalid(props) && (
         <span>{props?.errorMessage || 'Enter correct value.'}</span>

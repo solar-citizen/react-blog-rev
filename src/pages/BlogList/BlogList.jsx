@@ -24,9 +24,8 @@ const BlogList = () => {
   const currentPosts =
     posts?.length && posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = (e, pageNumber) => {
-    e.preventDefault();
-
+  const paginate = (event, pageNumber) => {
+    event.preventDefault();
     setCurrentPage(pageNumber);
   };
 
@@ -34,14 +33,12 @@ const BlogList = () => {
     <div className={styles.BlogList}>
       <div>
         <Search />
-        {user ? (
+        {user && (
           <Link to='/create-post'>
             <span className='text-white'>
               <PlusOutlined /> Create new post
             </span>
           </Link>
-        ) : (
-          ''
         )}
       </div>
 

@@ -214,9 +214,7 @@ const Post = () => {
         )}
 
         <div>
-          {isEditInputVisible ? (
-            ''
-          ) : (
+          {!isEditInputVisible && (
             <div>
               <div>
                 {`Created ${dayjs(post?.createdAt).format(

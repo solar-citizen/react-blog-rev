@@ -77,11 +77,8 @@ const SignUp = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    const isLogin = false;
-
     auth(
-      isLogin,
+      false,
       formControls.email.value,
       formControls.password.value,
       formControls.firstname.value,
@@ -176,7 +173,10 @@ const SignUp = () => {
 
   return (
     <div className={styles.SignUp}>
-      <Link to='/'>{<RollbackOutlined />} &nbsp;back to main</Link>
+      <Link to='/'>
+        {<RollbackOutlined />}
+        {` back to main`}
+      </Link>
       <div>
         <h2>Register a new account</h2>
 

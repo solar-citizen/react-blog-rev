@@ -5,9 +5,8 @@ import { SearchOutlined } from '@ant-design/icons';
 import PostsContext from '../../context/posts/postsContext';
 
 const Search = () => {
-  const { getPosts, searchPosts } = useContext(PostsContext);
-
   const [value, setValue] = useState('');
+  const { getPosts, searchPosts } = useContext(PostsContext);
 
   // search on enter key press
   const onSubmit = (event) => {

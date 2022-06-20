@@ -1,9 +1,9 @@
 import styles from './Post.module.css';
+import dayjs from 'dayjs';
 import axios from 'axios';
 import { baseURL } from '../../urls';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import convertDate from '../../helpers/convertDate';
 import { CommentSection } from '../../components/index';
 import { Modal } from 'antd';
 import { Input } from '../../components/index';
@@ -220,12 +220,15 @@ const Post = () => {
             ''
           ) : (
             <div>
-              <div>{`Created at ${convertDate(new Date(post?.createdAt))} by ${
-                post?.user?.firstname
-              } ${post?.user?.lastname}`}</div>
+              <div>
+                {`Created ${dayjs(post?.createdAt).format(
+                  'ddd, D MMMM YYYY [at] HH:mm'
+                )} by ${post?.user?.firstname} ${post?.user?.lastname}`}
+              </div>
+
               {post?.updatedAt && (
-                <div>{`Updated at ${convertDate(
-                  new Date(post?.updatedAt)
+                <div>{`Updated ${dayjs(post?.updatedAt).format(
+                  'ddd, D MMMM YYYY [at] HH:mm'
                 )}`}</div>
               )}
             </div>

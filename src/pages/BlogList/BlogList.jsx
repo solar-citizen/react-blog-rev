@@ -36,7 +36,7 @@ const BlogList = () => {
         <Search />
         {user ? (
           <Link to='/create-post'>
-            <span>
+            <span className='text-white'>
               <PlusOutlined /> Create new post
             </span>
           </Link>

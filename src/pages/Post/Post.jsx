@@ -204,7 +204,7 @@ const Post = () => {
 
   return (
     <>
-      <div className={styles.Post}>
+      <div className={`${styles.Post} bg-white`}>
         {isEditInputVisible ? (
           renderInputs()
         ) : (

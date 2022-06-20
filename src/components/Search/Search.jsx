@@ -40,6 +40,7 @@ const Search = () => {
         onKeyPress={onSubmit}
         onChange={(event) => setValue(event.target.value)}
       />
+
       <Button type='primary' onClick={searchHandler}>
         <SearchOutlined />
       </Button>

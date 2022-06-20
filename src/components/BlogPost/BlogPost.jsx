@@ -7,7 +7,7 @@ const BlogPost = ({ posts }) => (
     {posts?.length ? (
       posts.map((post) => {
         return (
-          <article key={post?.id}>
+          <article key={post?.id} className='bg-white'>
             <h2>{post?.title}</h2>
             <p>
               {post?.body?.length >= 250
@@ -34,7 +34,7 @@ const BlogPost = ({ posts }) => (
         );
       })
     ) : (
-      <div className={styles.message}>No posts here yet...</div>
+      <div className={`${styles.message} bg-white`}>No posts here yet...</div>
     )}
   </div>
 );

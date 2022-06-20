@@ -5,7 +5,6 @@
 .BlogPost > article {
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #fff;
   border-radius: 7px;
 }
 
@@ -15,7 +14,6 @@
 }
 
 .message {
-  background-color: #fff;
   color: rgb(221, 221, 221);
   height: 35vw;
   font-size: 3rem;

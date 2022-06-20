@@ -148,9 +148,8 @@ const Announcement = ({ announcement, isNotification }) => {
   );
 
   return (
-    // it works, but it's weird:
-    // <div className={`${isNotification && styles.Announcement}`}>
-    <div className={isNotification ? styles.Announcement : ''}>
+    //                                                                 : null
+    <div className={isNotification ? `${styles.Announcement} bg-white` : ''}>
       {isNotification && <CloseSquareOutlined onClick={closeHandler} />}
 
       <h3>{announcement?.title}</h3>

@@ -139,7 +139,7 @@ const CommentSection = ({ comments, setComments, getComments }) => {
   };
 
   return (
-    <div className={styles.CommentSection}>
+    <div className={`${styles.CommentSection} bg-white`}>
       <h2>Comments:</h2>
 
       {user ? (

@@ -65,8 +65,9 @@ const UserPosts = () => {
   return (
     <div className={styles.UserPosts}>
       <h2>My posts</h2>
+
       <Button type='primary-filled'>
-        <Link to='/create-post'>
+        <Link to='/create-post' className='text-white'>
           <PlusOutlined /> Create new post
         </Link>
       </Button>

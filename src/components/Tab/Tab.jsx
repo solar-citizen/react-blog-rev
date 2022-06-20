@@ -38,7 +38,7 @@ const Tab = ({ children, active }) => {
         ))}
       </ul>
 
-      <div>{tabsData[activeTab]?.children}</div>
+      <div className='bg-white'>{tabsData[activeTab]?.children}</div>
     </div>
   );
 };

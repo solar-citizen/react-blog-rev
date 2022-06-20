@@ -1,6 +1,6 @@
 import styles from './BlogPost.module.css';
+import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
-import convertDate from '../../helpers/convertDate';
 
 const BlogPost = ({ posts }) => (
   <div className={styles.BlogPost}>
@@ -14,16 +14,19 @@ const BlogPost = ({ posts }) => (
                 ? post?.body.substring(0, 250) + '...'
                 : post?.body}
             </p>
+
             <div>
-              {`Created at ${convertDate(new Date(post?.createdAt))} by ${
-                post?.user?.firstname
-              } ${post?.user?.lastname}
-              `}
+              {`Created ${dayjs(post?.createdAt).format(
+                'ddd, D MMMM YYYY [at] HH:mm'
+              )} by ${post?.user?.firstname} ${post?.user?.lastname}`}
             </div>
+
             {post?.updatedAt && (
-              <div>{`Updated at ${convertDate(
-                new Date(post?.updatedAt)
-              )}`}</div>
+              <div>
+                {`Updated ${dayjs(post?.updatedAt).format(
+                  'ddd, D MMMM YYYY [at] HH:mm'
+                )}`}
+              </div>
             )}
 
             <Link to={`/blog/post/${post?.id}`}>Read more</Link>

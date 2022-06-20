@@ -227,9 +227,11 @@ const Post = () => {
               </div>
 
               {post?.updatedAt && (
-                <div>{`Updated ${dayjs(post?.updatedAt).format(
-                  'ddd, D MMMM YYYY [at] HH:mm'
-                )}`}</div>
+                <div>
+                  {`Updated ${dayjs(post?.updatedAt).format(
+                    'ddd, D MMMM YYYY [at] HH:mm'
+                  )}`}
+                </div>
               )}
             </div>
           )}

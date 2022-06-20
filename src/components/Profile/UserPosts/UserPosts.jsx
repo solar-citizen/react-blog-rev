@@ -1,15 +1,15 @@
 import styles from './UserPosts.module.css';
-import { useContext } from 'react';
-import PostsContext from '../../../context/posts/postsContext';
 import convertDate from '../../../helpers/convertDate';
-import Loader from '../../UI/Loader/Loader';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../../UI/Button/Button';
+import { Loader } from '../../index';
+import { Button } from '../../index';
 import { PlusOutlined } from '@ant-design/icons';
+import PostsContext from '../../../context/posts/postsContext';
 import UserContext from '../../../context/user/userContext';
 import LoadingContext from '../../../context/loading/loadingContext';
 
-const UserPosts = () => {
+export const UserPosts = () => {
   const { user } = useContext(UserContext);
   const { posts } = useContext(PostsContext);
   const { loading } = useContext(LoadingContext);
@@ -68,5 +68,3 @@ const UserPosts = () => {
     </div>
   );
 };
-
-export default UserPosts;

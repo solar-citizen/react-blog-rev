@@ -3,14 +3,14 @@ import axios from 'axios';
 import { baseURL } from '../../urls';
 import { useContext, useState } from 'react';
 import PostsContext from '../../context/posts/postsContext';
-import Loader from '../UI/Loader/Loader';
-import Button from '../UI//Button/Button';
-import Input from '../UI/Input/Input';
-import Comment from '../Comment/Comment';
+import { Loader } from '../index';
+import { Button } from '../index';
+import { Input } from '../index';
+import { Comment } from '../index';
 import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';
 
-const CommentSection = ({ comments, setComments, getComments }) => {
+export const CommentSection = ({ comments, setComments, getComments }) => {
   const { user, token } = useContext(UserContext);
   const { loading } = useContext(LoadingContext);
   const { post } = useContext(PostsContext);
@@ -162,5 +162,3 @@ const CommentSection = ({ comments, setComments, getComments }) => {
     </div>
   );
 };
-
-export default CommentSection;

@@ -1,11 +1,11 @@
 import styles from './BlogList.module.css';
-import Search from '../../components/Search/Search';
 import { Link } from 'react-router-dom';
-import BlogPost from '../../components/BlogPost/BlogPost';
-import Loader from '../../components/UI/Loader/Loader';
+import { BlogPost } from '../../components/index';
+import { Search } from '../../components/index';
+import { Loader } from '../../components/index';
+import { Pagination } from '../../components/index';
 import PostsContext from '../../context/posts/postsContext';
 import { useContext, useState } from 'react';
-import Pagination from '../../components/UI/Pagination/Pagination';
 import { PlusOutlined } from '@ant-design/icons';
 import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';

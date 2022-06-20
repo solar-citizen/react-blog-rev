@@ -2,8 +2,8 @@ import styles from './SignIn.module.css';
 import is from 'is_js';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../../../components/UI/Button/Button';
-import Input from '../../../components/UI/Input/Input';
+import { Button } from '../../../components/index';
+import { Input } from '../../../components/index';
 import { RollbackOutlined } from '@ant-design/icons';
 import UserContext from '../../../context/user/userContext';
 

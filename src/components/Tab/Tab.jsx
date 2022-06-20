@@ -1,8 +1,8 @@
 import styles from './Tab.module.css';
 import React, { useState, useEffect } from 'react';
-import Button from '../UI/Button/Button';
+import { Button } from '../index';
 
-const Tab = ({ children, active }) => {
+export const Tab = ({ children, active }) => {
   const [activeTab, setActiveTab] = useState(active);
   const [tabsData, setTabsData] = useState([]);
 
@@ -48,5 +48,3 @@ const TabPane = ({ children }) => {
 };
 
 Tab.TabPane = TabPane;
-
-export default Tab;

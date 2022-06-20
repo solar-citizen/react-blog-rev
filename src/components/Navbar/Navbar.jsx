@@ -2,10 +2,10 @@ import styles from './Navbar.module.css';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import Button from '../UI/Button/Button';
+import { Button } from '../index';
 import UserContext from '../../context/user/userContext';
 
-const Navbar = () => {
+export const Navbar = () => {
   const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -61,5 +61,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;

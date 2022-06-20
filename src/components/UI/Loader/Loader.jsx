@@ -1,6 +1,6 @@
 import styles from './Loader.module.css';
 
-const Loader = () => (
+export const Loader = () => (
   <div className={styles.center}>
     <div className={styles.Loader}>
       <div />
@@ -18,5 +18,3 @@ const Loader = () => (
     </div>
   </div>
 );
-
-export default Loader;

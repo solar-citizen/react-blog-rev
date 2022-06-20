@@ -1,14 +1,14 @@
 import styles from './UserProfile.module.css';
 import { useContext, useState, useEffect } from 'react';
 import UserContext from '../../../context/user/userContext';
-import Avatar from '../../Avatar/Avatar';
-import SelectAvatar from '../../SelectAvatar/SelectAvatar';
-import Button from '../../UI/Button/Button';
+import { Avatar } from '../../index';
+import { SelectAvatar } from '../../index';
+import { Button } from '../../index';
 import { EditOutlined } from '@ant-design/icons';
-import Input from '../../UI/Input/Input';
+import { Input } from '../../index';
 import is from 'is_js';
 
-const UserProfile = () => {
+export const UserProfile = () => {
   const [profileImage, setProfileImage] = useState(<Avatar />);
   // const [activeContent, setActiveContent] = useState('');
   const [profileEditVisible, setProfileEditVisible] = useState(false);
@@ -242,5 +242,3 @@ const UserProfile = () => {
     </div>
   );
 };
-
-export default UserProfile;

@@ -5,12 +5,12 @@ import { useContext, useState } from 'react';
 import PostsContext from '../../context/posts/postsContext';
 import convertDate from '../../helpers/convertDate';
 import { Link } from 'react-router-dom';
-import Input from '../UI/Input/Input';
-import Button from '../UI/Button/Button';
+import { Input } from '../index';
+import { Button } from '../index';
 import UserContext from '../../context/user/userContext';
-import Avatar from '../Avatar/Avatar';
+import { Avatar } from '../index';
 
-const Comment = ({ comments, setComments, getComments, comment, i }) => {
+export const Comment = ({ comments, setComments, getComments, comment, i }) => {
   const { user, token } = useContext(UserContext);
   const { post } = useContext(PostsContext);
 
@@ -196,5 +196,3 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     </div>
   );
 };
-
-export default Comment;

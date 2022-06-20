@@ -1,6 +1,6 @@
 import styles from './Button.module.css';
 
-const Button = ({ onClick, children, type, disabled, size, active }) => {
+export const Button = ({ onClick, children, type, disabled, size, active }) => {
   const cls = [styles.Button, styles[type]];
 
   if (size === 'small') {
@@ -26,5 +26,3 @@ const Button = ({ onClick, children, type, disabled, size, active }) => {
     </button>
   );
 };
-
-export default Button;

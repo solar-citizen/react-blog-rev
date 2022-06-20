@@ -11,7 +11,7 @@ import SignIn from './pages/Auth/SignIn/SignIn';
 import SignUp from './pages/Auth/SignUp/SignUp';
 import WithNav from './hoc/Layout/WithNav';
 import WithoutNav from './hoc/Layout/WithoutNav';
-import Announcements from './components/Announcements/Announcements';
+import { Announcements } from './components/index';
 import UserContext from './context/user/userContext';
 import AnnouncementsContext from './context/announcements/announcementsContext';
 

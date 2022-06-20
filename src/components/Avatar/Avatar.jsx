@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import UserContext from '../../context/user/userContext';
 import avatarBlank from '../../assets/img/avatars/avatarBlank.png';
 
-const Avatar = ({ size, comment }) => {
+export const Avatar = ({ size, comment }) => {
   const { user } = useContext(UserContext);
 
   const userAvatar = () => {
@@ -40,5 +40,3 @@ const Avatar = ({ size, comment }) => {
 
   return <div className={styles.Avatar}>{userAvatar()}</div>;
 };
-
-export default Avatar;

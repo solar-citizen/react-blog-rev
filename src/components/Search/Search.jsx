@@ -1,10 +1,10 @@
 import styles from './Search.module.css';
 import { useState, useContext } from 'react';
-import PostsContext from '../../context/posts/postsContext';
-import Button from '../UI/Button/Button';
+import { Button } from '../index';
 import { SearchOutlined } from '@ant-design/icons';
+import PostsContext from '../../context/posts/postsContext';
 
-const Search = () => {
+export const Search = () => {
   const { getPosts, searchPosts } = useContext(PostsContext);
 
   const [value, setValue] = useState('');
@@ -46,5 +46,3 @@ const Search = () => {
     </div>
   );
 };
-
-export default Search;

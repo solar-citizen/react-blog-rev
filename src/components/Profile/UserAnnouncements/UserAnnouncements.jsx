@@ -1,14 +1,14 @@
 import styles from './UserAnnouncements.module.css';
 import { useContext, useState } from 'react';
-import Loader from '../../UI/Loader/Loader';
-import Announcement from '../../Announcement/Announcement';
-import Input from '../../UI/Input/Input';
-import Button from '../../UI/Button/Button';
+import { Loader } from '../../index';
+import { Announcement } from '../../index';
+import { Input } from '../../index';
+import { Button } from '../../index';
 import UserContext from '../../../context/user/userContext';
 import AnnouncementsContext from '../../../context/announcements/announcementsContext';
 import LoadingContext from '../../../context/loading/loadingContext';
 
-const UserAnnouncements = () => {
+export const UserAnnouncements = () => {
   const { user } = useContext(UserContext);
   const { announcements, addAnnouncement } = useContext(AnnouncementsContext);
   const { loading } = useContext(LoadingContext);
@@ -171,5 +171,3 @@ const UserAnnouncements = () => {
     </div>
   );
 };
-
-export default UserAnnouncements;

@@ -1,12 +1,12 @@
 import styles from './Announcement.module.css';
 import { useState, useContext } from 'react';
-import Button from '../UI/Button/Button';
-import Input from '../UI/Input/Input';
+import { Button } from '../index';
+import { Input } from '../index';
 import { CloseSquareOutlined } from '@ant-design/icons';
 import UserContext from '../../context/user/userContext';
 import AnnouncementsContext from '../../context/announcements/announcementsContext';
 
-const Announcement = ({ announcement, isNotification }) => {
+export const Announcement = ({ announcement, isNotification }) => {
   const { user } = useContext(UserContext);
   const {
     deleteAnnouncement,
@@ -169,5 +169,3 @@ const Announcement = ({ announcement, isNotification }) => {
     </div>
   );
 };
-
-export default Announcement;

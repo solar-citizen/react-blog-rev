@@ -1,17 +1,17 @@
 import styles from './Post.module.css';
-import { baseURL } from '../../urls';
 import axios from 'axios';
+import { baseURL } from '../../urls';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PostsContext from '../../context/posts/postsContext';
-import Loader from '../../components/UI/Loader/Loader';
 import convertDate from '../../helpers/convertDate';
+import { CommentSection } from '../../components/index';
 import { Modal } from 'antd';
-import Button from '../../components/UI/Button/Button';
+import { Input } from '../../components/index';
+import { Button } from '../../components/index';
+import { Loader } from '../../components/index';
 import { DeleteOutlined } from '@ant-design/icons';
-import CommentSection from '../../components/CommentSection/CommentSection';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import Input from '../../components/UI/Input/Input';
+import PostsContext from '../../context/posts/postsContext';
 import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';
 

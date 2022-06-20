@@ -1,5 +1,5 @@
 import styles from './Profile.module.css';
-import Tabs from '../../components/Tabs/Tabs';
+import { Tabs } from '../../components/index';
 
 const Profile = () => {
   return (

@@ -1,9 +1,9 @@
 import styles from './CreatePost.module.css';
-import Button from '../../components/UI/Button/Button';
-import Input from '../../components/UI/Input/Input';
+import { Button } from '../../components/index';
+import { Input } from '../../components/index';
 import { useState, useContext } from 'react';
-import PostsContext from '../../context/posts/postsContext';
 import { useNavigate } from 'react-router-dom';
+import PostsContext from '../../context/posts/postsContext';
 import UserContext from '../../context/user/userContext';
 
 const CreatePost = () => {

@@ -1,9 +1,9 @@
 import styles from './SignUp.module.css';
 import { useState, useContext } from 'react';
-import Button from '../../../components/UI/Button/Button';
-import Input from '../../../components/UI/Input/Input';
+import { Button } from '../../../components/index';
+import { Input } from '../../../components/index';
 import is from 'is_js';
-import SelectAvatar from '../../../components/SelectAvatar/SelectAvatar';
+import { SelectAvatar } from '../../../components/index';
 import { Link } from 'react-router-dom';
 import { RollbackOutlined } from '@ant-design/icons';
 import UserContext from '../../../context/user/userContext';

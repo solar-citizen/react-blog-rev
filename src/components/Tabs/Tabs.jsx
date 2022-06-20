@@ -1,10 +1,10 @@
 import styles from './Tabs.module.css';
-import Tab from '../Tab/Tab';
-import UserProfile from '../../components/Profile/UserProfile/UserProfile';
-import UserPosts from '../../components/Profile/UserPosts/UserPosts';
-import UserAnnouncements from '../Profile/UserAnnouncements/UserAnnouncements';
+import { Tab } from '../index';
+import { UserProfile } from '../index';
+import { UserPosts } from '../index';
+import { UserAnnouncements } from '../index';
 
-const Tabs = () => {
+export const Tabs = () => {
   const tabContent = [
     {
       title: 'My profile',
@@ -32,5 +32,3 @@ const Tabs = () => {
     </div>
   );
 };
-
-export default Tabs;

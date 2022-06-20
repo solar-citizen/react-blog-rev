@@ -1,5 +1,5 @@
 import styles from './UserPosts.module.css';
-import convertDate from '../../../helpers/convertDate';
+import dayjs from 'dayjs';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from '../../index';
@@ -34,18 +34,25 @@ const UserPosts = () => {
         return (
           <article key={userPost?.id}>
             <h2>{userPost?.title}</h2>
+
             <p>
               {userPost?.body.length >= 250
                 ? userPost?.body.substring(0, 250) + '...'
                 : userPost?.body}
             </p>
+
             <div>
-              {`Created at ${convertDate(new Date(userPost?.createdAt))}`}
+              {`Created ${dayjs(userPost?.createdAt).format(
+                'ddd, D MMMM YYYY [at] HH:mm'
+              )} by ${userPost?.user?.firstname} ${userPost?.user?.lastname}`}
             </div>
+
             {userPost?.updatedAt && (
-              <div>{`Updated at ${convertDate(
-                new Date(userPost?.updatedAt)
-              )}`}</div>
+              <div>
+                {`Updated ${dayjs(userPost?.updatedAt).format(
+                  'ddd, D MMMM YYYY [at] HH:mm'
+                )}`}
+              </div>
             )}
 
             <Link to={`/blog/post/${userPost?.id}`}>Go to</Link>

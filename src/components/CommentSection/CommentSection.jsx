@@ -1,4 +1,5 @@
 import styles from './CommentSection.module.css';
+import dayjs from 'dayjs';
 import axios from 'axios';
 import { baseURL } from '../../urls';
 import { useContext, useState } from 'react';
@@ -110,8 +111,7 @@ const CommentSection = ({ comments, setComments, getComments }) => {
 
   // send comment to db
   const writeCommentHandler = () => {
-    const timestamp = new Date();
-    addComment(formControls.body.value, timestamp, post.id, user.id);
+    addComment(formControls.body.value, dayjs(), post.id, user.id);
   };
 
   // render comments conditionally

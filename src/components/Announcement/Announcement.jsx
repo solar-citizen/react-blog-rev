@@ -1,4 +1,5 @@
 import styles from './Announcement.module.css';
+import dayjs from 'dayjs';
 import { useState, useContext } from 'react';
 import { Button } from '../index';
 import { Input } from '../index';
@@ -102,8 +103,7 @@ const Announcement = ({ announcement, isNotification }) => {
   // send edited comment to db
   const acceptEditHandler = () => {
     setIsEditInputVisible(false);
-    const timestamp = new Date();
-    editAnnouncement(formControls?.body?.value, timestamp, announcement?.id);
+    editAnnouncement(formControls?.body?.value, dayjs(), announcement?.id);
   };
 
   const cancelEditHandler = () => {

@@ -1,4 +1,5 @@
 import styles from './UserAnnouncements.module.css';
+import dayjs from 'dayjs';
 import { useContext, useState } from 'react';
 import { Loader } from '../../index';
 import { Announcement } from '../../index';
@@ -126,14 +127,11 @@ const UserAnnouncements = () => {
 
   // send created announcement to db
   const createHandler = () => {
-    const timestamp = new Date();
-
-    // title, body, userId, createdAt
     addAnnouncement(
       formControls.title.value,
       formControls.body.value,
       user.id,
-      timestamp
+      dayjs()
     );
 
     setFormControls(

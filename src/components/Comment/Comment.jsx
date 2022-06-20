@@ -123,10 +123,7 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
   // send edited comment to db
   const acceptEditHandler = () => {
     setIsEditInputVisible(false);
-
-    const timestamp = new Date();
-
-    editComment(formControls?.body?.value, timestamp, comment?.id, post?.id);
+    editComment(formControls?.body?.value, dayjs(), comment?.id, post?.id);
   };
 
   const cancelEditHandler = () => {

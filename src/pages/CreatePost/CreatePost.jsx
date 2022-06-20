@@ -1,4 +1,5 @@
 import styles from './CreatePost.module.css';
+import dayjs from 'dayjs';
 import { Button } from '../../components/index';
 import { Input } from '../../components/index';
 import { useState, useContext } from 'react';
@@ -44,13 +45,11 @@ const CreatePost = () => {
 
   // send new post to db
   const createPostHandler = () => {
-    const timestamp = new Date();
-
     createPost(
       formControls.title.value,
       formControls.body.value,
       user.id,
-      timestamp
+      dayjs()
     );
 
     // reset form controls

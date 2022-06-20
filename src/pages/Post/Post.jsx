@@ -105,12 +105,10 @@ const Post = () => {
 
   const acceptEditHandler = () => {
     setIsEditInputVisible(false);
-    const timestamp = new Date();
-
     editPost(
       formControls?.title?.value,
       formControls?.body?.value,
-      timestamp,
+      dayjs(),
       urlId
     );
   };

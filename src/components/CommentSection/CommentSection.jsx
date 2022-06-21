@@ -10,7 +10,7 @@ import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';
 import { addComment } from '../../services/comments-service';
 
-const CommentSection = ({ comments, setComments, getComments }) => {
+const CommentSection = ({ comments, setComments, onGetComments }) => {
   const { user } = useContext(UserContext);
   const { loading } = useContext(LoadingContext);
   const { post } = useContext(PostsContext);
@@ -85,12 +85,11 @@ const CommentSection = ({ comments, setComments, getComments }) => {
     });
   };
 
-  const onAddComment = (body, createdAt, postId, userId) => {
-    const response = addComment(body, createdAt, postId, userId);
-
+  const onAddComment = async (body, createdAt, postId, userId) => {
+    const response = await addComment(body, createdAt, postId, userId);
     setComments(response.data);
+    onGetComments(postId);
     setFormControls({ ...formControls }, (formControls.body.value = ''));
-    getComments(postId);
   };
 
   // send comment to db
@@ -113,7 +112,7 @@ const CommentSection = ({ comments, setComments, getComments }) => {
         <Comment
           comments={comments}
           setComments={setComments}
-          getComments={getComments}
+          onGetComments={onGetComments}
           comment={comment}
           key={comment.id}
           i={i}

@@ -9,7 +9,7 @@ import UserContext from '../../context/user/userContext';
 import { Avatar } from '../index';
 import { deleteComment, editComment } from '../../services/comments-service';
 
-const Comment = ({ comments, setComments, getComments, comment, i }) => {
+const Comment = ({ comments, setComments, onGetComments, comment, i }) => {
   const { user } = useContext(UserContext);
   const { post } = useContext(PostsContext);
 
@@ -84,10 +84,10 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     });
   };
 
-  const onEditComment = (body, updatedAt, commentId, postId) => {
-    const response = editComment(body, updatedAt, commentId);
+  const onEditComment = async (body, updatedAt, commentId, postId) => {
+    const response = await editComment(body, updatedAt, commentId);
     setComments(response.data);
-    getComments(postId);
+    onGetComments(postId);
   };
 
   const editCommentHandler = () => {

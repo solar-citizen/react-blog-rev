@@ -19,8 +19,8 @@ export const addComment = async (body, createdAt, postId, userId) => {
   }).catch((error) => console.error(error));
 };
 
-export const deleteComment = (commentId) => {
-  axios({
+export const deleteComment = async (commentId) => {
+  return await axios({
     url: `${baseURL}/comments/${commentId}`,
     method: 'delete',
     headers: {
@@ -37,6 +37,16 @@ export const editComment = async (body, updatedAt, commentId) => {
       body,
       updatedAt,
     },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).catch((error) => console.error(error));
+};
+
+export const getComments = async (postId) => {
+  return await axios({
+    method: 'get',
+    url: `${baseURL}/comments?_expand=user&postId=${postId}&_sort=createdAt&_order=asc`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

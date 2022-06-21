@@ -1,7 +1,5 @@
 import styles from './Post.module.css';
 import dayjs from 'dayjs';
-import axios from 'axios';
-import { baseURL } from '../../urls';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CommentSection } from '../../components/index';
@@ -14,9 +12,10 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import PostsContext from '../../context/posts/postsContext';
 import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';
+import { getComments } from '../../services/comments-service';
 
 const Post = () => {
-  const { user, token } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { post, getPost, posts, setPosts, deletePost, editPost } =
     useContext(PostsContext);
   const { loading } = useContext(LoadingContext);
@@ -55,22 +54,12 @@ const Post = () => {
 
   useEffect(() => {
     getPost(urlId, user);
-    getComments(urlId);
-
+    onGetComments(urlId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getComments = async (postId) => {
-    // setLoading();
-
-    const response = await axios({
-      method: 'get',
-      url: `${baseURL}/comments?_expand=user&postId=${postId}&_sort=createdAt&_order=asc`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).catch((error) => console.error(error));
-
+  const onGetComments = async (postId) => {
+    const response = await getComments(postId);
     setComments(response.data);
   };
 
@@ -112,8 +101,6 @@ const Post = () => {
       urlId
     );
   };
-
-  // console.log(posts);
 
   const cancelEditHandler = () => {
     setIsEditInputVisible(false);
@@ -245,7 +232,7 @@ const Post = () => {
         <CommentSection
           comments={comments}
           setComments={setComments}
-          getComments={getComments}
+          onGetComments={onGetComments}
         />
       )}
     </>

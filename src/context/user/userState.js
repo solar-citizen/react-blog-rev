@@ -1,7 +1,5 @@
-import axios from 'axios';
-import { baseURL, loginURL, registerURL } from '../../urls';
-import { useReducer } from 'react';
 import UserContext from './userContext';
+import { useReducer } from 'react';
 import { userReducer } from './userReducer';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +11,12 @@ import {
   GET_USER,
   SET_NEW_USER_DATA,
 } from '../actionTypes';
+import {
+  onAuth,
+  onGetUser,
+  onSetNewAvatar,
+  onSetNewUserData,
+} from '../../services/user-service';
 
 export const UserState = ({ children }) => {
   const initialState = {
@@ -34,22 +38,16 @@ export const UserState = ({ children }) => {
     age,
     avatar
   ) => {
-    let authData = { email, password };
-    let url = registerURL;
-
-    if (isLogin) {
-      url = loginURL;
-    } else {
-      authData = { email, password, firstname, lastname, age, avatar };
-    }
-
-    const response = await axios.post(url, authData).catch((error) => {
-      console.error(error);
-    });
-
+    const response = await onAuth(
+      isLogin,
+      email,
+      password,
+      firstname,
+      lastname,
+      age,
+      avatar
+    );
     const data = response.data;
-
-    // make for 400 (bad request (wrong user data for login)) ???
 
     // success: register 201; login 200
     if (response.status === 200 || response.status === 201) {
@@ -143,62 +141,27 @@ export const UserState = ({ children }) => {
   // get user
   // temporary solution?
   const getUser = async (userId) => {
-    const response = await axios({
-      url: `${baseURL}/users/${userId}`,
-      method: 'get',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).catch((error) => console.error(error));
-
-    dispatch({
-      type: GET_USER,
-      payload: response.data,
-    });
+    const response = await onGetUser(userId, token);
+    dispatch({ type: GET_USER, payload: response.data });
   };
 
   const setNewUserData = async (email, firstname, lastname, age, userId) => {
-    const response = await axios({
-      url: `${baseURL}/users/${userId}`,
-      method: 'patch',
-      data: {
-        email,
-        firstname,
-        lastname,
-        age,
-      },
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).catch((error) => console.error(error));
-
-    dispatch({
-      type: SET_NEW_USER_DATA,
-      payload: response.data,
-    });
+    const response = await onSetNewUserData(
+      email,
+      firstname,
+      lastname,
+      age,
+      userId,
+      token
+    );
+    dispatch({ type: SET_NEW_USER_DATA, payload: response.data });
   };
 
-  // change avatar
   const setNewAvatar = async (avatar, userId) => {
-    const response = await axios({
-      url: `${baseURL}/users/${userId}`,
-      method: 'patch',
-      data: {
-        avatar,
-      },
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).catch((error) => console.error(error));
-
-    dispatch({
-      type: CHANGE_AVATAR,
-      payload: response.data,
-    });
-
-    localStorage.setItem('user', JSON.stringify(user));
-
+    const response = await onSetNewAvatar(avatar, userId, token);
+    dispatch({ type: CHANGE_AVATAR, payload: response.data });
     getUser(userId);
+    localStorage.setItem('user', JSON.stringify(user));
   };
 
   const { user, token } = state;

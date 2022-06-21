@@ -12,7 +12,7 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import PostsContext from '../../context/posts/postsContext';
 import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';
-import { getComments } from '../../services/comments-service';
+import { onGetComments } from '../../services/comments-service';
 
 const Post = () => {
   const { user } = useContext(UserContext);
@@ -54,12 +54,12 @@ const Post = () => {
 
   useEffect(() => {
     getPost(urlId, user);
-    onGetComments(urlId);
+    getComments(urlId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onGetComments = async (postId) => {
-    const response = await getComments(postId);
+  const getComments = async (postId) => {
+    const response = await onGetComments(postId);
     setComments(response.data);
   };
 
@@ -232,7 +232,7 @@ const Post = () => {
         <CommentSection
           comments={comments}
           setComments={setComments}
-          onGetComments={onGetComments}
+          getComments={getComments}
         />
       )}
     </>

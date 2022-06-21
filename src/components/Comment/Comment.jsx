@@ -7,9 +7,12 @@ import { Input } from '../index';
 import { Button } from '../index';
 import UserContext from '../../context/user/userContext';
 import { Avatar } from '../index';
-import { deleteComment, editComment } from '../../services/comments-service';
+import {
+  onDeleteComment,
+  onEditComment,
+} from '../../services/comments-service';
 
-const Comment = ({ comments, setComments, onGetComments, comment, i }) => {
+const Comment = ({ comments, setComments, getComments, comment, i }) => {
   const { user } = useContext(UserContext);
   const { post } = useContext(PostsContext);
 
@@ -84,10 +87,10 @@ const Comment = ({ comments, setComments, onGetComments, comment, i }) => {
     });
   };
 
-  const onEditComment = async (body, updatedAt, commentId, postId) => {
-    const response = await editComment(body, updatedAt, commentId);
+  const editComment = async (body, updatedAt, commentId, postId) => {
+    const response = await onEditComment(body, updatedAt, commentId);
     setComments(response.data);
-    onGetComments(postId);
+    getComments(postId);
   };
 
   const editCommentHandler = () => {
@@ -97,7 +100,7 @@ const Comment = ({ comments, setComments, onGetComments, comment, i }) => {
   // send edited comment to db
   const acceptEditHandler = () => {
     setIsEditInputVisible(false);
-    onEditComment(formControls?.body?.value, dayjs(), comment?.id, post?.id);
+    editComment(formControls?.body?.value, dayjs(), comment?.id, post?.id);
   };
 
   const cancelEditHandler = () => {
@@ -108,7 +111,7 @@ const Comment = ({ comments, setComments, onGetComments, comment, i }) => {
     setComments(
       comments.filter((commentItem) => commentItem?.id !== comment?.id)
     );
-    deleteComment(comment?.id);
+    onDeleteComment(comment?.id);
   };
 
   // buttons

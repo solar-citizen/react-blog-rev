@@ -3,7 +3,7 @@ import { baseURL } from '../urls';
 
 const token = JSON.parse(localStorage.getItem('token'));
 
-export const addComment = async (body, createdAt, postId, userId) => {
+export const onAddComment = async (body, createdAt, postId, userId) => {
   return await axios({
     url: `${baseURL}/comments`,
     method: 'post',
@@ -19,7 +19,7 @@ export const addComment = async (body, createdAt, postId, userId) => {
   }).catch((error) => console.error(error));
 };
 
-export const deleteComment = async (commentId) => {
+export const onDeleteComment = async (commentId) => {
   return await axios({
     url: `${baseURL}/comments/${commentId}`,
     method: 'delete',
@@ -29,7 +29,7 @@ export const deleteComment = async (commentId) => {
   });
 };
 
-export const editComment = async (body, updatedAt, commentId) => {
+export const onEditComment = async (body, updatedAt, commentId) => {
   return await axios({
     url: `${baseURL}/comments/${commentId}`,
     method: 'patch',
@@ -43,7 +43,7 @@ export const editComment = async (body, updatedAt, commentId) => {
   }).catch((error) => console.error(error));
 };
 
-export const getComments = async (postId) => {
+export const onGetComments = async (postId) => {
   return await axios({
     method: 'get',
     url: `${baseURL}/comments?_expand=user&postId=${postId}&_sort=createdAt&_order=asc`,

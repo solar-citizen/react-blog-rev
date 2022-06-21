@@ -7,3 +7,7 @@
 .CommentSection textarea {
   resize: none;
 }
+
+.message {
+  margin-top: 1rem;
+}

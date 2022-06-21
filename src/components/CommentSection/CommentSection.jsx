@@ -8,9 +8,9 @@ import { Input } from '../index';
 import { Comment } from '../index';
 import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';
-import { addComment } from '../../services/comments-service';
+import { onAddComment } from '../../services/comments-service';
 
-const CommentSection = ({ comments, setComments, onGetComments }) => {
+const CommentSection = ({ comments, setComments, getComments }) => {
   const { user } = useContext(UserContext);
   const { loading } = useContext(LoadingContext);
   const { post } = useContext(PostsContext);
@@ -85,16 +85,16 @@ const CommentSection = ({ comments, setComments, onGetComments }) => {
     });
   };
 
-  const onAddComment = async (body, createdAt, postId, userId) => {
-    const response = await addComment(body, createdAt, postId, userId);
+  const addComment = async (body, createdAt, postId, userId) => {
+    const response = await onAddComment(body, createdAt, postId, userId);
     setComments(response.data);
-    onGetComments(postId);
+    getComments(postId);
     setFormControls({ ...formControls }, (formControls.body.value = ''));
   };
 
   // send comment to db
   const writeCommentHandler = () => {
-    onAddComment(formControls.body.value, dayjs(), post.id, user.id);
+    addComment(formControls.body.value, dayjs(), post.id, user.id);
   };
 
   // render comments conditionally
@@ -104,7 +104,7 @@ const CommentSection = ({ comments, setComments, onGetComments }) => {
     }
 
     if (!comments?.length) {
-      return <div>No comments here yet...</div>;
+      return <div className={styles.message}>No comments here yet...</div>;
     }
 
     if (comments?.length) {
@@ -112,7 +112,7 @@ const CommentSection = ({ comments, setComments, onGetComments }) => {
         <Comment
           comments={comments}
           setComments={setComments}
-          onGetComments={onGetComments}
+          getComments={getComments}
           comment={comment}
           key={comment.id}
           i={i}

@@ -1,7 +1,5 @@
 import styles from './CommentSection.module.css';
 import dayjs from 'dayjs';
-import axios from 'axios';
-import { baseURL } from '../../urls';
 import { useContext, useState } from 'react';
 import PostsContext from '../../context/posts/postsContext';
 import { Loader } from '../index';
@@ -10,9 +8,10 @@ import { Input } from '../index';
 import { Comment } from '../index';
 import UserContext from '../../context/user/userContext';
 import LoadingContext from '../../context/loading/loadingContext';
+import { addComment } from '../../services/comments-service';
 
 const CommentSection = ({ comments, setComments, getComments }) => {
-  const { user, token } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { loading } = useContext(LoadingContext);
   const { post } = useContext(PostsContext);
 
@@ -86,32 +85,17 @@ const CommentSection = ({ comments, setComments, getComments }) => {
     });
   };
 
-  const addComment = async (body, createdAt, postId, userId) => {
-    const response = await axios({
-      url: `${baseURL}/comments`,
-      method: 'post',
-      data: {
-        body,
-        createdAt,
-        postId,
-        userId,
-      },
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).catch((error) => console.error(error));
+  const onAddComment = (body, createdAt, postId, userId) => {
+    const response = addComment(body, createdAt, postId, userId);
 
     setComments(response.data);
-
     setFormControls({ ...formControls }, (formControls.body.value = ''));
-
-    // ...
     getComments(postId);
   };
 
   // send comment to db
   const writeCommentHandler = () => {
-    addComment(formControls.body.value, dayjs(), post.id, user.id);
+    onAddComment(formControls.body.value, dayjs(), post.id, user.id);
   };
 
   // render comments conditionally

@@ -1,7 +1,5 @@
 import styles from './Comment.module.css';
 import dayjs from 'dayjs';
-import axios from 'axios';
-import { baseURL } from '../../urls';
 import { useContext, useState } from 'react';
 import PostsContext from '../../context/posts/postsContext';
 import { Link } from 'react-router-dom';
@@ -9,9 +7,10 @@ import { Input } from '../index';
 import { Button } from '../index';
 import UserContext from '../../context/user/userContext';
 import { Avatar } from '../index';
+import { deleteComment, editComment } from '../../services/comments-service';
 
 const Comment = ({ comments, setComments, getComments, comment, i }) => {
-  const { user, token } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { post } = useContext(PostsContext);
 
   const [isEditInputVisible, setIsEditInputVisible] = useState(false);
@@ -85,32 +84,9 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     });
   };
 
-  const deleteComment = (commentID) => {
-    axios({
-      url: `${baseURL}/comments/${commentID}`,
-      method: 'delete',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  };
-
-  const editComment = async (body, updatedAt, commentId, postId) => {
-    const response = await axios({
-      url: `${baseURL}/comments/${commentId}`,
-      method: 'patch',
-      data: {
-        body,
-        updatedAt,
-      },
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).catch((error) => console.error(error));
-
+  const onEditComment = (body, updatedAt, commentId, postId) => {
+    const response = editComment(body, updatedAt, commentId);
     setComments(response.data);
-
-    // ...
     getComments(postId);
   };
 
@@ -121,7 +97,7 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
   // send edited comment to db
   const acceptEditHandler = () => {
     setIsEditInputVisible(false);
-    editComment(formControls?.body?.value, dayjs(), comment?.id, post?.id);
+    onEditComment(formControls?.body?.value, dayjs(), comment?.id, post?.id);
   };
 
   const cancelEditHandler = () => {
@@ -132,7 +108,6 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     setComments(
       comments.filter((commentItem) => commentItem?.id !== comment?.id)
     );
-
     deleteComment(comment?.id);
   };
 

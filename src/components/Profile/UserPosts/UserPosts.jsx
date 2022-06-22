@@ -42,14 +42,14 @@ const UserPosts = () => {
             </p>
 
             <div>
-              {`Created ${dayjs(userPost?.createdAt).format(
+              {`Created: ${dayjs(userPost?.createdAt).format(
                 'ddd, D MMMM YYYY [at] HH:mm'
               )} by ${userPost?.user?.firstname} ${userPost?.user?.lastname}`}
             </div>
 
             {userPost?.updatedAt && (
               <div>
-                {`Updated ${dayjs(userPost?.updatedAt).format(
+                {`Updated: ${dayjs(userPost?.updatedAt).format(
                   'ddd, D MMMM YYYY [at] HH:mm'
                 )}`}
               </div>

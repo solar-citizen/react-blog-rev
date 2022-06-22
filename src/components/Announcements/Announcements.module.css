@@ -1,18 +1,6 @@
 .Announcements {
   position: absolute;
-  top: 100px;
+  top: 165px;
   right: 10px;
   z-index: 1;
-}
-
-@media screen and (max-width: 1024px) {
-  .Announcements {
-    top: 160px;
-  }
-}
-
-@media screen and (max-width: 1330px) {
-  .Announcements {
-    right: 16px;
-  }
 }

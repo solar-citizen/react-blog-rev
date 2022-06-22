@@ -13,7 +13,7 @@ export const onGetPosts = async (token) => {
 
 export const onSearchPosts = async (value, token) => {
   return await axios({
-    url: `${baseURL}/posts?_expand=user&q=${value}`,
+    url: `${baseURL}/posts?_expand=user&_sort=createdAt&_order=desc&_limit=50&q=${value}`,
     method: 'get',
     headers: {
       Authorization: `Bearer ${token}`,

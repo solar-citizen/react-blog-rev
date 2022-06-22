@@ -39,6 +39,7 @@ export const onSetNewUserData = async (
   firstname,
   lastname,
   age,
+  password,
   userId,
   token
 ) => {
@@ -50,6 +51,7 @@ export const onSetNewUserData = async (
       firstname,
       lastname,
       age,
+      password,
     },
     headers: {
       Authorization: `Bearer ${token}`,

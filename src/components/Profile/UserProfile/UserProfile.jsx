@@ -12,6 +12,7 @@ const UserProfile = () => {
   const { user, getUser, setNewUserData } = useContext(UserContext);
 
   // const [activeContent, setActiveContent] = useState('');
+  const [isFormValid, setIsFormValid] = useState(false);
   const [profileImage, setProfileImage] = useState(<Avatar />);
   const [profileEditVisible, setProfileEditVisible] = useState(false);
   const [formControls, setFormControls] = useState({
@@ -61,6 +62,18 @@ const UserProfile = () => {
       },
       min: 1,
       max: 150,
+    },
+    password: {
+      value: '',
+      type: 'password',
+      label: 'Change password',
+      errorMessage: 'Enter correct password.',
+      valid: false,
+      touched: false,
+      validation: {
+        required: true,
+        minLength: 8,
+      },
     },
   });
 
@@ -122,7 +135,14 @@ const UserProfile = () => {
 
     clonedFormControls[controlName] = control;
 
+    let isFormValid = true;
+
+    Object.keys(clonedFormControls).forEach((nameOfControl) => {
+      isFormValid = formControls[nameOfControl].valid && isFormValid;
+    });
+
     setFormControls(clonedFormControls);
+    setIsFormValid(isFormValid);
   };
 
   const renderInputs = () => {
@@ -165,6 +185,7 @@ const UserProfile = () => {
       formControls.firstname.value,
       formControls.lastname.value,
       +formControls.age.value,
+      formControls.password.value,
       user?.id
     );
   };
@@ -183,7 +204,11 @@ const UserProfile = () => {
   );
 
   const acceptProfileEditButton = (
-    <Button type='primary-filled' onClick={acceptEditHandler}>
+    <Button
+      type='primary-filled'
+      onClick={acceptEditHandler}
+      disabled={!isFormValid}
+    >
       Accept Changes
     </Button>
   );

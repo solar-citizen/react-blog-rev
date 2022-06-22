@@ -145,12 +145,20 @@ export const UserState = ({ children }) => {
     dispatch({ type: GET_USER, payload: response.data });
   };
 
-  const setNewUserData = async (email, firstname, lastname, age, userId) => {
+  const setNewUserData = async (
+    email,
+    firstname,
+    lastname,
+    age,
+    password,
+    userId
+  ) => {
     const response = await onSetNewUserData(
       email,
       firstname,
       lastname,
       age,
+      password,
       userId,
       token
     );

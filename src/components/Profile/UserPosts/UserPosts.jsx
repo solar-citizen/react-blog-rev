@@ -1,13 +1,11 @@
 import styles from './UserPosts.module.css';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Loader } from '../../index';
-import { Button } from '../../index';
+import { Loader, Button, BlogPost } from '../../index';
 import { PlusOutlined } from '@ant-design/icons';
 import PostsContext from '../../../context/posts/postsContext';
 import UserContext from '../../../context/user/userContext';
 import LoadingContext from '../../../context/loading/loadingContext';
-import { BlogPost } from '../../index';
 
 const UserPosts = () => {
   const { user } = useContext(UserContext);

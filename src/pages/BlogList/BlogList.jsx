@@ -1,13 +1,10 @@
 import styles from './BlogList.module.css';
-import { Link } from 'react-router-dom';
-import { BlogPost } from '../../components/index';
-import { Search } from '../../components/index';
-import { Loader } from '../../components/index';
-import { Pagination } from '../../components/index';
-import PostsContext from '../../context/posts/postsContext';
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Loader, Pagination, Search, BlogPost } from '../../components/index';
 import { PlusOutlined } from '@ant-design/icons';
 import UserContext from '../../context/user/userContext';
+import PostsContext from '../../context/posts/postsContext';
 import LoadingContext from '../../context/loading/loadingContext';
 
 const BlogList = () => {

@@ -1,8 +1,5 @@
 import styles from './Tabs.module.css';
-import { Tab } from '../index';
-import { UserProfile } from '../index';
-import { UserPosts } from '../index';
-import { UserAnnouncements } from '../index';
+import { Tab, UserProfile, UserPosts, UserAnnouncements } from '../index';
 
 const Tabs = () => {
   const tabContent = [

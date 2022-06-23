@@ -2,17 +2,13 @@ import styles from './Post.module.css';
 import dayjs from 'dayjs';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { CommentSection } from '../../components/index';
-import { Modal } from 'antd';
-import { Input } from '../../components/index';
-import { Button } from '../../components/index';
-import { Loader } from '../../components/index';
-import { DeleteOutlined } from '@ant-design/icons';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
-import PostsContext from '../../context/posts/postsContext';
-import UserContext from '../../context/user/userContext';
-import LoadingContext from '../../context/loading/loadingContext';
 import { onGetComments } from '../../services/comments-service';
+import { Input, Button, Loader, CommentSection } from '../../components/index';
+import { Modal } from 'antd';
+import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import UserContext from '../../context/user/userContext';
+import PostsContext from '../../context/posts/postsContext';
+import LoadingContext from '../../context/loading/loadingContext';
 
 const Post = () => {
   const { user } = useContext(UserContext);

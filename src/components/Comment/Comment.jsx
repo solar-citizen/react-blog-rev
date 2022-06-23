@@ -1,12 +1,10 @@
 import styles from './Comment.module.css';
 import dayjs from 'dayjs';
 import { useContext, useState } from 'react';
-import PostsContext from '../../context/posts/postsContext';
 import { Link } from 'react-router-dom';
-import { Input } from '../index';
-import { Button } from '../index';
+import { Button, Input, Avatar } from '../index';
+import PostsContext from '../../context/posts/postsContext';
 import UserContext from '../../context/user/userContext';
-import { Avatar } from '../index';
 import {
   onDeleteComment,
   onEditComment,

@@ -2,7 +2,6 @@ import UserContext from './userContext';
 import { useReducer } from 'react';
 import { userReducer } from './userReducer';
 import { useNavigate } from 'react-router-dom';
-
 import {
   AUTH_LOGIN,
   AUTH_LOGOUT,

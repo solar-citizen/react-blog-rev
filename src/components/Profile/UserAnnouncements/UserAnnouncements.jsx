@@ -1,10 +1,7 @@
 import styles from './UserAnnouncements.module.css';
 import dayjs from 'dayjs';
 import { useContext, useState } from 'react';
-import { Loader } from '../../index';
-import { Announcement } from '../../index';
-import { Input } from '../../index';
-import { Button } from '../../index';
+import { Loader, Input, Button, Announcement } from '../../index';
 import UserContext from '../../../context/user/userContext';
 import AnnouncementsContext from '../../../context/announcements/announcementsContext';
 import LoadingContext from '../../../context/loading/loadingContext';

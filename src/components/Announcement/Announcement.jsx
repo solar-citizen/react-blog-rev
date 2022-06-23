@@ -1,8 +1,7 @@
 import styles from './Announcement.module.css';
 import dayjs from 'dayjs';
 import { useState, useContext } from 'react';
-import { Button } from '../index';
-import { Input } from '../index';
+import { Button, Input } from '../index';
 import { CloseSquareOutlined } from '@ant-design/icons';
 import UserContext from '../../context/user/userContext';
 import AnnouncementsContext from '../../context/announcements/announcementsContext';

@@ -1,12 +1,9 @@
 import styles from './CommentSection.module.css';
 import dayjs from 'dayjs';
 import { useContext, useState } from 'react';
-import PostsContext from '../../context/posts/postsContext';
-import { Loader } from '../index';
-import { Button } from '../index';
-import { Input } from '../index';
-import { Comment } from '../index';
+import { Loader, Comment, Button, Input } from '../index';
 import UserContext from '../../context/user/userContext';
+import PostsContext from '../../context/posts/postsContext';
 import LoadingContext from '../../context/loading/loadingContext';
 import { onAddComment } from '../../services/comments-service';
 

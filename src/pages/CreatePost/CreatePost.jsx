@@ -1,11 +1,10 @@
 import styles from './CreatePost.module.css';
 import dayjs from 'dayjs';
-import { Button } from '../../components/index';
-import { Input } from '../../components/index';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PostsContext from '../../context/posts/postsContext';
+import { Button, Input } from '../../components/index';
 import UserContext from '../../context/user/userContext';
+import PostsContext from '../../context/posts/postsContext';
 
 const CreatePost = () => {
   const { user } = useContext(UserContext);

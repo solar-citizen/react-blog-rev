@@ -2,7 +2,7 @@ import styles from './BlogPost.module.css';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 
-const BlogPost = ({ posts }) => (
+const BlogPost = ({ posts, current }) => (
   <div className={styles.BlogPost}>
     {posts?.length ? (
       posts.map((post) => {
@@ -29,7 +29,9 @@ const BlogPost = ({ posts }) => (
               </div>
             )}
 
-            <Link to={`/blog/post/${post?.id}`}>Read more</Link>
+            <Link to={`/blog/post/${post?.id}`}>
+              {current ? 'Go to' : 'Read more'}
+            </Link>
           </article>
         );
       })

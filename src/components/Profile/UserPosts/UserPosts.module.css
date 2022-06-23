@@ -2,14 +2,14 @@
   width: 100%;
 }
 
-.UserPosts > article {
+.UserPosts > div > article {
   padding: 1rem;
   margin: 1rem 0;
   border: 1px solid #e6e6e6;
   border-radius: 5px;
 }
 
-.UserPosts > article p {
+.UserPosts > div > article p {
   word-break: break-word;
   margin: 1rem 0;
 }

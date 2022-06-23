@@ -1,5 +1,4 @@
 import styles from './UserPosts.module.css';
-import dayjs from 'dayjs';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from '../../index';
@@ -8,6 +7,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import PostsContext from '../../../context/posts/postsContext';
 import UserContext from '../../../context/user/userContext';
 import LoadingContext from '../../../context/loading/loadingContext';
+import { BlogPost } from '../../index';
 
 const UserPosts = () => {
   const { user } = useContext(UserContext);
@@ -30,35 +30,7 @@ const UserPosts = () => {
     }
 
     if (currentUserPosts) {
-      return currentUserPosts.map((userPost) => {
-        return (
-          <article key={userPost?.id}>
-            <h2>{userPost?.title}</h2>
-
-            <p>
-              {userPost?.body.length >= 250
-                ? userPost?.body.substring(0, 250) + '...'
-                : userPost?.body}
-            </p>
-
-            <div>
-              {`Created: ${dayjs(userPost?.createdAt).format(
-                'ddd, D MMMM YYYY [at] HH:mm'
-              )} by ${userPost?.user?.firstname} ${userPost?.user?.lastname}`}
-            </div>
-
-            {userPost?.updatedAt && (
-              <div>
-                {`Updated: ${dayjs(userPost?.updatedAt).format(
-                  'ddd, D MMMM YYYY [at] HH:mm'
-                )}`}
-              </div>
-            )}
-
-            <Link to={`/blog/post/${userPost?.id}`}>Go to</Link>
-          </article>
-        );
-      });
+      return <BlogPost posts={currentUserPosts} current />;
     }
   };
 

@@ -1,7 +1,6 @@
-import UserContext from './userContext';
 import { useReducer } from 'react';
-import { userReducer } from './userReducer';
 import { useNavigate } from 'react-router-dom';
+import { userReducer } from './userReducer';
 import {
   AUTH_LOGIN,
   AUTH_LOGOUT,
@@ -16,6 +15,7 @@ import {
   onSetNewAvatar,
   onSetNewUserData,
 } from '../../services/user-service';
+import UserContext from './userContext';
 
 export const UserState = ({ children }) => {
   const initialState = {

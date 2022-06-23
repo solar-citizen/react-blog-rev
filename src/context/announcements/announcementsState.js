@@ -1,6 +1,6 @@
 import { useReducer, useContext } from 'react';
-import AnnouncementsContext from './announcementsContext';
 import { announcementsReducer } from './announcementsReducer';
+import AnnouncementsContext from './announcementsContext';
 import UserContext from '../user/userContext';
 
 import {

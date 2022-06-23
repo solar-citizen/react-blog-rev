@@ -1,7 +1,5 @@
 import { useReducer, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PostsContext from './postsContext';
-import UserContext from '../user/userContext';
 import { postsReducer } from './postsReducer';
 import {
   GET_POSTS,
@@ -20,6 +18,8 @@ import {
   onGetPosts,
   onSearchPosts,
 } from '../../services/posts-service';
+import UserContext from '../user/userContext';
+import PostsContext from './postsContext';
 
 export const PostsState = ({ children }) => {
   const initialState = {

@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
-import LoadingContext from './loadingContext';
 import { loadingReducer } from './loadingReducer';
 import { SET_LOADING } from '../actionTypes';
+import LoadingContext from './loadingContext';
 
 export const LoadingState = ({ children }) => {
   const initialState = {

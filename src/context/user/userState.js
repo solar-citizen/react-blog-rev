@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userReducer } from './userReducer';
@@ -51,8 +52,8 @@ export const UserState = ({ children }) => {
     // success: register 201; login 200
     if (response.status === 200 || response.status === 201) {
       const tokenExpiresIn = 3600;
-      const tokenExpirationDate = new Date(
-        new Date().getTime() + tokenExpiresIn * 1000
+      const tokenExpirationDate = dayjs(
+        dayjs().valueOf() + tokenExpiresIn * 1000
       );
 
       const user = {
@@ -119,17 +120,15 @@ export const UserState = ({ children }) => {
     if (!storedToken) {
       logout();
     } else {
-      const tokenExpirationDate = new Date(
+      const tokenExpirationDate = dayjs(
         JSON.parse(localStorage.getItem('tokenExpirationDate'))
       );
 
-      if (tokenExpirationDate <= new Date()) {
+      if (tokenExpirationDate <= dayjs()) {
         logout();
       } else {
         authSuccess(storedToken);
-        autoLogout(
-          (tokenExpirationDate.getTime() - new Date().getTime()) / 1000
-        );
+        autoLogout((tokenExpirationDate.getTime() - dayjs().valueOf()) / 1000);
         login(storedUser);
       }
     }

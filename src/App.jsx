@@ -1,18 +1,20 @@
 import './App.css';
 import 'antd/dist/antd.css';
 import { useContext, useEffect } from 'react';
-import PostsContext from './context/posts/postsContext';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { BlogList } from './pages/index';
-import { Post } from './pages/index';
-import { Profile } from './pages/index';
-import { CreatePost } from './pages/index';
-import { SignIn } from './pages/index';
-import { SignUp } from './pages/index';
-import WithNav from './hoc/Layout/WithNav';
-import WithoutNav from './hoc/Layout/WithoutNav';
 import { Announcements } from './components/index';
+import {
+  BlogList,
+  Post,
+  Profile,
+  CreatePost,
+  SignIn,
+  SignUp,
+} from './pages/index';
+import { WithNav } from './hoc/Layout/WithNav';
+import { WithoutNav } from './hoc/Layout/WithoutNav';
 import UserContext from './context/user/userContext';
+import PostsContext from './context/posts/postsContext';
 import AnnouncementsContext from './context/announcements/announcementsContext';
 
 const App = () => {

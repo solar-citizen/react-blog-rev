@@ -1,5 +1,3 @@
 import { Outlet } from 'react-router-dom';
 
-const WithoutNav = () => <Outlet />;
-
-export default WithoutNav;
+export const WithoutNav = () => <Outlet />;

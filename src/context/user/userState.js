@@ -128,7 +128,9 @@ export const UserState = ({ children }) => {
         logout();
       } else {
         authSuccess(storedToken);
-        autoLogout((tokenExpirationDate.getTime() - dayjs().valueOf()) / 1000);
+        autoLogout(
+          (dayjs(tokenExpirationDate).get('ms') - dayjs().valueOf()) / 1000
+        );
         login(storedUser);
       }
     }

@@ -17,7 +17,7 @@ import {
   onGetPost,
   onGetPosts,
   onSearchPosts,
-} from '../../services/posts-service';
+} from '../../requests/postsRequests';
 import UserContext from '../user/userContext';
 import PostsContext from './postsContext';
 

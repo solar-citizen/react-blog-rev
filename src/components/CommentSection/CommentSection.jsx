@@ -5,7 +5,7 @@ import { Loader, Comment, Button, Input } from '../index';
 import UserContext from '../../context/user/userContext';
 import PostsContext from '../../context/posts/postsContext';
 import LoadingContext from '../../context/loading/loadingContext';
-import { onAddComment } from '../../services/comments-service';
+import { onAddComment } from '../../requests/commentsRequests';
 
 const CommentSection = ({ comments, setComments, getComments }) => {
   const { user } = useContext(UserContext);

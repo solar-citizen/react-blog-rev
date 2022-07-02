@@ -15,7 +15,7 @@ import {
   onGetUser,
   onSetNewAvatar,
   onSetNewUserData,
-} from '../../services/user-service';
+} from '../../requests/userRequests';
 import UserContext from './userContext';
 
 export const UserState = ({ children }) => {

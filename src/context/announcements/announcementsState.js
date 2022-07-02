@@ -15,7 +15,7 @@ import {
   onDeleteAnnouncement,
   onEditAnnouncement,
   onGetAnnouncements,
-} from '../../services/announcements-service';
+} from '../../requests/announcementsRequests';
 
 export const AnnouncementsState = ({ children }) => {
   const initialState = {

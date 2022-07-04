@@ -11,7 +11,7 @@ import {
   SignIn,
   SignUp,
 } from './pages/index';
-import { WithoutNav, WithNav } from './hoc/Layout';
+import { WithoutNav, WithNav } from './components/Layout/Layout';
 import UserContext from './context/user/userContext';
 import PostsContext from './context/posts/postsContext';
 import AnnouncementsContext from './context/announcements/announcementsContext';

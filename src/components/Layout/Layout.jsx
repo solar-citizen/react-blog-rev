@@ -1,4 +1,4 @@
-import { Navbar } from '../components/index';
+import { Navbar } from '../index';
 import { Outlet } from 'react-router-dom';
 
 export const WithoutNav = () => <Outlet />;

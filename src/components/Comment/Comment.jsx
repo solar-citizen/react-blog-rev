@@ -136,33 +136,41 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     </Button>
   );
 
+  const displayedUserName = `${comment?.user?.firstname} ${
+    comment?.user?.lastname
+  } ${comment?.user?.id === user?.id ? '(You)' : ''}`;
+
+  const commentCreationDate = `${dayjs(comment?.createdAt).format(
+    'HH:mm, DD.MM.YYYY'
+  )}`;
+
+  const commentUpdateDate = `${
+    comment?.updatedAt
+      ? `(last update: ${dayjs(comment?.updatedAt).format(
+          'HH:mm, DD.MM.YYYY'
+        )})`
+      : ''
+  }`;
+
+  const isEdit = user?.id === comment?.userId && !isEditInputVisible;
+  const isDelete = user?.id === comment?.userId && !isEditInputVisible;
+
   return (
     <div className={styles.Comment}>
       <div>
         <div>
           <Link to=''>
             <Avatar size='small' comment={comment} />
-            {`${comment?.user?.firstname}
-            ${comment?.user?.lastname} ${
-              comment?.user?.id === user?.id ? '(You)' : ''
-            }`}
+            {displayedUserName}
           </Link>
 
-          {` at ${dayjs(comment?.createdAt).format('HH:mm, DD.MM.YYYY')} ${
-            comment?.updatedAt
-              ? `(last update: ${dayjs(comment?.updatedAt).format(
-                  'HH:mm, DD.MM.YYYY'
-                )})`
-              : ''
-          }`}
+          {` at ${commentCreationDate} ${commentUpdateDate}`}
         </div>
         <div>{i + 1}</div>
       </div>
       <div>{!isEditInputVisible ? comment?.body : renderInputs()}</div>
-      {user?.id === comment?.userId &&
-        (isEditInputVisible ? acceptButton : editButton)}
-      {user?.id === comment?.userId &&
-        (isEditInputVisible ? cancelButton : deleteCommentButton)}
+      {isEdit ? editButton : acceptButton}
+      {isDelete ? deleteCommentButton : cancelButton}
     </div>
   );
 };

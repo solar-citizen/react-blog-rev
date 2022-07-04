@@ -6,28 +6,27 @@ const BlogPost = ({ posts, current }) => (
   <div className={styles.BlogPost}>
     {posts?.length ? (
       posts.map((post) => {
+        const postCreationDate = `Created: ${dayjs(post?.createdAt).format(
+          'ddd, D MMMM YYYY [at] HH:mm'
+        )} by ${post?.user?.firstname} ${post?.user?.lastname}`;
+
+        const postUpdatedDate = `Updated: ${dayjs(post?.updatedAt).format(
+          'ddd, D MMMM YYYY [at] HH:mm'
+        )}`;
+
         return (
           <article key={post?.id} className='bg-white'>
             <h2>{post?.title}</h2>
+
             <p>
               {post?.body?.length >= 250
                 ? post?.body.substring(0, 250) + '...'
                 : post?.body}
             </p>
 
-            <div>
-              {`Created: ${dayjs(post?.createdAt).format(
-                'ddd, D MMMM YYYY [at] HH:mm'
-              )} by ${post?.user?.firstname} ${post?.user?.lastname}`}
-            </div>
+            <div>{postCreationDate}</div>
 
-            {post?.updatedAt && (
-              <div>
-                {`Updated: ${dayjs(post?.updatedAt).format(
-                  'ddd, D MMMM YYYY [at] HH:mm'
-                )}`}
-              </div>
-            )}
+            {post?.updatedAt && <div>{postUpdatedDate}</div>}
 
             <Link to={`/blog/post/${post?.id}`}>
               {current ? 'Go to' : 'Read more'}

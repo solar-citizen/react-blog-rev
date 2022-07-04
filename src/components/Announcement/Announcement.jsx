@@ -146,6 +146,9 @@ const Announcement = ({ announcement, isNotification }) => {
     </Button>
   );
 
+  const isEdit = user?.id === announcement?.userId && !isEditInputVisible;
+  const isDelete = user?.id === announcement?.userId && !isEditInputVisible;
+
   return (
     <div className={isNotification ? `${styles.Announcement} bg-white` : ''}>
       {isNotification && <CloseSquareOutlined onClick={closeHandler} />}
@@ -155,12 +158,8 @@ const Announcement = ({ announcement, isNotification }) => {
 
       {!isNotification && (
         <div>
-          {user?.id === announcement?.userId && isEditInputVisible
-            ? acceptButton
-            : editButton}
-          {user?.id === announcement?.userId && isEditInputVisible
-            ? cancelButton
-            : deleteCommentButton}
+          {isEdit ? editButton : acceptButton}
+          {isDelete ? deleteCommentButton : cancelButton}
         </div>
       )}
     </div>

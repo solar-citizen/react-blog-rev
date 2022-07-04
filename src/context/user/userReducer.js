@@ -1,7 +1,7 @@
 import {
   AUTH_LOGIN,
   AUTH_LOGOUT,
-  AUTH_SUCCESS,
+  UPDATE_ACCESSTOKEN,
   CHANGE_AVATAR,
   GET_USER,
   SET_NEW_USER_DATA,
@@ -22,7 +22,7 @@ const handlers = {
   }),
 
   // success
-  [AUTH_SUCCESS]: (state, { payload }) => ({
+  [UPDATE_ACCESSTOKEN]: (state, { payload }) => ({
     ...state,
     token: payload,
   }),

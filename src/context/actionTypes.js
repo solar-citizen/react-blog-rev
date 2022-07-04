@@ -17,7 +17,7 @@ export const ADD_ANNOUNCEMENT = 'ADD_ANNOUNCEMENT';
 // userContext
 export const AUTH_LOGIN = 'AUTH_LOGIN';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const UPDATE_ACCESSTOKEN = 'AUTH_SUCCESS';
 // // Profile edit
 export const GET_USER = 'GET_USER';
 export const SET_NEW_USER_DATA = 'SET_NEW_USER_DATA';

@@ -5,7 +5,7 @@ import { userReducer } from './userReducer';
 import {
   AUTH_LOGIN,
   AUTH_LOGOUT,
-  AUTH_SUCCESS,
+  UPDATE_ACCESSTOKEN,
   CHANGE_AVATAR,
   GET_USER,
   SET_NEW_USER_DATA,
@@ -28,7 +28,7 @@ export const UserState = ({ children }) => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const storedToken = JSON.parse(localStorage.getItem('token'));
 
-  // -- AUTH
+  // - AUTHENTICATION
   const auth = async (
     isLogin,
     email,
@@ -75,7 +75,7 @@ export const UserState = ({ children }) => {
       );
 
       navigate('/', { replace: true });
-      authSuccess(data.accessToken);
+      updateAccessToken(data.accessToken);
       autoLogout(tokenExpiresIn);
 
       return true;
@@ -101,9 +101,9 @@ export const UserState = ({ children }) => {
   };
 
   // -- SUCCES
-  const authSuccess = (token) => {
+  const updateAccessToken = (token) => {
     dispatch({
-      type: AUTH_SUCCESS,
+      type: UPDATE_ACCESSTOKEN,
       payload: token,
     });
   };
@@ -127,7 +127,7 @@ export const UserState = ({ children }) => {
       if (tokenExpirationDate <= dayjs()) {
         logout();
       } else {
-        authSuccess(storedToken);
+        updateAccessToken(storedToken);
         autoLogout(
           (dayjs(tokenExpirationDate).get('ms') - dayjs().valueOf()) / 1000
         );
@@ -138,7 +138,6 @@ export const UserState = ({ children }) => {
 
   // --- Profile edit
 
-  // get user
   // temporary solution?
   const getUser = async (userId) => {
     const response = await onGetUser(userId, token);
@@ -182,7 +181,6 @@ export const UserState = ({ children }) => {
         logout,
         autoLogin,
         auth,
-        authSuccess,
         setNewAvatar,
         getUser,
         setNewUserData,

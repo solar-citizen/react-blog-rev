@@ -3,12 +3,12 @@ import { useContext } from 'react';
 import { Announcement } from '../index';
 import UserContext from '../../context/user/userContext';
 import AnnouncementsContext from '../../context/announcements/announcementsContext';
-import { useWindowWidth } from '../../hooks/useWindowWidth';
+import { useWatchWindowWidth } from '../../hooks/useWatchWindowWidth';
 
 const Announcements = ({ isNotification }) => {
   const { user } = useContext(UserContext);
   const { announcements } = useContext(AnnouncementsContext);
-  const { width } = useWindowWidth();
+  const { width } = useWatchWindowWidth();
 
   const renderAnnouncements = () => {
     if (width <= 850) {

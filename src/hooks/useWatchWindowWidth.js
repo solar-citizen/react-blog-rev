@@ -7,13 +7,13 @@ const getWindowWidth = () => {
   };
 };
 
-export const useWindowWidth = () => {
+export const useWatchWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState(getWindowWidth());
 
   useEffect(() => {
-    function handleResize() {
+    const handleResize = () => {
       setWindowWidth(getWindowWidth());
-    }
+    };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);

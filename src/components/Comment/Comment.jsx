@@ -5,10 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button, Input, Avatar } from '../index';
 import PostsContext from '../../context/posts/postsContext';
 import UserContext from '../../context/user/userContext';
-import {
-  onDeleteComment,
-  onEditComment,
-} from '../../requests/commentsRequests';
+import { onDeleteComment, onEditComment } from '../../services/commentsService';
 
 const Comment = ({ comments, setComments, getComments, comment, i }) => {
   const { user } = useContext(UserContext);

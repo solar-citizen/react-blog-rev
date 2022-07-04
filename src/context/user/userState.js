@@ -9,7 +9,7 @@ import {
   CHANGE_AVATAR,
   GET_USER,
   SET_NEW_USER_DATA,
-} from '../actionTypes';
+} from './userActionTypes';
 import {
   onAuth,
   onGetUser,

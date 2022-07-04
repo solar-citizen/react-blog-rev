@@ -9,7 +9,7 @@ import {
   CREATE_POST,
   DELETE_POST,
   EDIT_POST,
-} from '../actionTypes';
+} from './postsActionTypes';
 import {
   onCreatePost,
   onDeletePost,

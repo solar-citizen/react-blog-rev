@@ -9,7 +9,7 @@ import {
   DELETE_ANNOUNCEMENT,
   EDIT_ANNOUNCEMENT,
   ADD_ANNOUNCEMENT,
-} from '../actionTypes';
+} from './announcementsActionTypes';
 import {
   onAddAnnouncement,
   onDeleteAnnouncement,

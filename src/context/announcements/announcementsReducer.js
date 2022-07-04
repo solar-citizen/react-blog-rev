@@ -5,7 +5,7 @@ import {
   EDIT_ANNOUNCEMENT,
   ADD_ANNOUNCEMENT,
   // GET_USER_ANNOUNCEMENTS,
-} from '../actionTypes';
+} from './announcementsActionTypes';
 
 const handlers = {
   // GET_ANNOUNCEMENTS

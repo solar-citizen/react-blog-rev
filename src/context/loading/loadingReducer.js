@@ -1,4 +1,4 @@
-import { SET_LOADING } from '../actionTypes';
+import { SET_LOADING } from './loadingActionTypes';
 
 const handlers = {
   // set loading

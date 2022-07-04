@@ -7,7 +7,7 @@ import {
   SET_POSTS,
   EDIT_POST,
   CREATE_POST,
-} from '../actionTypes';
+} from './postsActionTypes';
 
 const handlers = {
   // get posts

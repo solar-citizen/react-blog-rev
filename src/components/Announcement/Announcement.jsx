@@ -146,8 +146,13 @@ const Announcement = ({ announcement, isNotification }) => {
     </Button>
   );
 
-  const isEdit = user?.id === announcement?.userId && !isEditInputVisible;
-  const isDelete = user?.id === announcement?.userId && !isEditInputVisible;
+  const acceptOrEditButton =
+    user?.id === announcement?.userId &&
+    (isEditInputVisible ? acceptButton : editButton);
+
+  const cancelOrDeleteButton =
+    user?.id === announcement?.userId &&
+    (isEditInputVisible ? cancelButton : deleteCommentButton);
 
   return (
     <div className={isNotification ? `${styles.Announcement} bg-white` : ''}>
@@ -158,8 +163,8 @@ const Announcement = ({ announcement, isNotification }) => {
 
       {!isNotification && (
         <div>
-          {isEdit ? editButton : acceptButton}
-          {isDelete ? deleteCommentButton : cancelButton}
+          {acceptOrEditButton}
+          {cancelOrDeleteButton}
         </div>
       )}
     </div>

@@ -152,8 +152,12 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
       : ''
   }`;
 
-  const isEdit = user?.id === comment?.userId && !isEditInputVisible;
-  const isDelete = user?.id === comment?.userId && !isEditInputVisible;
+  const acceptOrEditButton =
+    user?.id === comment?.userId &&
+    (isEditInputVisible ? acceptButton : editButton);
+  const cancelOrDeleteButton =
+    user?.id === comment?.userId &&
+    (isEditInputVisible ? cancelButton : deleteCommentButton);
 
   return (
     <div className={styles.Comment}>
@@ -169,8 +173,8 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
         <div>{i + 1}</div>
       </div>
       <div>{!isEditInputVisible ? comment?.body : renderInputs()}</div>
-      {isEdit ? editButton : acceptButton}
-      {isDelete ? deleteCommentButton : cancelButton}
+      {acceptOrEditButton}
+      {cancelOrDeleteButton}
     </div>
   );
 };

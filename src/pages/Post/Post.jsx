@@ -183,6 +183,14 @@ const Post = () => {
     </Button>
   );
 
+  const postCreationDate = dayjs(post?.createdAt).format(
+    'ddd, D MMMM YYYY [at] HH:mm'
+  );
+
+  const postUpdateDate = dayjs(post?.updatedAt).format(
+    'ddd, D MMMM YYYY [at] HH:mm'
+  );
+
   return (
     <>
       <div className={`${styles.Post} bg-white`}>
@@ -200,18 +208,10 @@ const Post = () => {
           {!isEditInputVisible && (
             <div>
               <div>
-                {`Created: ${dayjs(post?.createdAt).format(
-                  'ddd, D MMMM YYYY [at] HH:mm'
-                )} by ${post?.user?.firstname} ${post?.user?.lastname}`}
+                {`Created: ${postCreationDate} by ${post?.user?.firstname} ${post?.user?.lastname}`}
               </div>
 
-              {post?.updatedAt && (
-                <div>
-                  {`Updated: ${dayjs(post?.updatedAt).format(
-                    'ddd, D MMMM YYYY [at] HH:mm'
-                  )}`}
-                </div>
-              )}
+              {post?.updatedAt && <div>{`Updated: ${postUpdateDate}`}</div>}
             </div>
           )}
 

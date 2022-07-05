@@ -136,21 +136,17 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     </Button>
   );
 
-  const displayedUserName = `${comment?.user?.firstname} ${
-    comment?.user?.lastname
-  } ${comment?.user?.id === user?.id ? '(You)' : ''}`;
+  const userName = `${comment?.user?.firstname} ${comment?.user?.lastname} ${
+    comment?.user?.id === user?.id ? '(You)' : ''
+  }`;
 
   const commentCreationDate = `${dayjs(comment?.createdAt).format(
     'HH:mm, DD.MM.YYYY'
   )}`;
 
-  const commentUpdateDate = `${
-    comment?.updatedAt
-      ? `(last update: ${dayjs(comment?.updatedAt).format(
-          'HH:mm, DD.MM.YYYY'
-        )})`
-      : ''
-  }`;
+  const commentUpdateDate = dayjs(comment?.updatedAt).format(
+    'HH:mm, DD.MM.YYYY'
+  );
 
   const acceptOrEditButton =
     user?.id === comment?.userId &&
@@ -165,10 +161,11 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
         <div>
           <Link to=''>
             <Avatar size='small' comment={comment} />
-            {displayedUserName}
+            {userName}
           </Link>
 
-          {` at ${commentCreationDate} ${commentUpdateDate}`}
+          {` at ${commentCreationDate}`}
+          {comment?.updatedAt ? ` (last update: ${commentUpdateDate})` : ''}
         </div>
         <div>{i + 1}</div>
       </div>

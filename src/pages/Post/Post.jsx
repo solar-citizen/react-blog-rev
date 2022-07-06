@@ -12,8 +12,7 @@ import LoadingContext from '../../context/loading/loadingContext';
 
 const Post = () => {
   const { user } = useContext(UserContext);
-  const { post, getPost, posts, setPosts, deletePost, editPost } =
-    useContext(PostsContext);
+  const { post, getPost, deletePost, editPost } = useContext(PostsContext);
   const { loading } = useContext(LoadingContext);
   const { confirm } = Modal;
 
@@ -64,8 +63,6 @@ const Post = () => {
   }
 
   const deletePostHandler = () => {
-    setPosts(posts.filter((postsItem) => postsItem.id !== post.id));
-
     deletePost(urlId);
   };
 

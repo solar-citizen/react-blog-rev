@@ -3,20 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { postsReducer } from './postsReducer';
 import {
   GET_POSTS,
-  SET_POSTS,
   SEARCH_POSTS,
   GET_POST,
-  CREATE_POST,
-  DELETE_POST,
   EDIT_POST,
 } from './postsActionTypes';
 import {
-  onCreatePost,
-  onDeletePost,
-  onEditPost,
-  onGetPost,
-  onGetPosts,
-  onSearchPosts,
+  requestCreatePost,
+  requestDeletePost,
+  requestEditPost,
+  requestPost,
+  requestPosts,
+  requestSearchPosts,
 } from '../../services/postsService';
 import UserContext from '../user/userContext';
 import PostsContext from './postsContext';
@@ -24,50 +21,54 @@ import PostsContext from './postsContext';
 export const PostsState = ({ children }) => {
   const initialState = {
     posts: [],
-    // post: {},
   };
-  const { token } = useContext(UserContext);
   const [state, dispatch] = useReducer(postsReducer, initialState);
   const navigate = useNavigate();
 
+  const { token } = useContext(UserContext);
+
   const getPosts = async () => {
-    const response = await onGetPosts(token);
-    dispatch({ type: GET_POSTS, payload: response.data });
+    const posts = await requestPosts(token);
+    dispatch({
+      type: GET_POSTS,
+      posts,
+    });
   };
 
   // full text search
   const searchPosts = async (value) => {
-    const response = await onSearchPosts(value, token);
-    dispatch({ type: SEARCH_POSTS, payload: response.data });
+    const posts = await requestSearchPosts(value, token);
+    dispatch({
+      type: SEARCH_POSTS,
+      posts,
+    });
   };
 
-  const setPosts = (payload) => dispatch({ type: SET_POSTS, payload });
-
   const getPost = async (postId) => {
-    const response = await onGetPost(postId, token);
-    dispatch({ type: GET_POST, payload: response.data });
+    const post = await requestPost(postId, token);
+    dispatch({
+      type: GET_POST,
+      post,
+    });
   };
 
   const editPost = async (title, body, updatedAt, postId) => {
-    const response = await onEditPost(title, body, updatedAt, postId, token);
-    dispatch({ type: EDIT_POST, payload: response.data });
-    setPosts(response.data);
+    const post = await requestEditPost(title, body, updatedAt, postId, token);
+    dispatch({
+      type: EDIT_POST,
+      post,
+    });
     getPosts();
   };
 
-  const deletePost = (postId) => {
-    onDeletePost(postId, token);
-    dispatch({ type: DELETE_POST });
+  const deletePost = async (postId) => {
+    await requestDeletePost(postId, token);
     navigate('/', { replace: true });
-    // setPosts(getPosts());
+    getPosts();
   };
 
   const createPost = async (title, body, userId, createdAt) => {
-    const response = await onCreatePost(title, body, userId, createdAt, token);
-    const newPosts = [...posts];
-    newPosts.push(response.data);
-    console.log(response.data);
-    dispatch({ type: CREATE_POST, payload: newPosts });
+    await requestCreatePost(title, body, userId, createdAt, token);
     getPosts();
   };
 
@@ -77,7 +78,6 @@ export const PostsState = ({ children }) => {
     <PostsContext.Provider
       value={{
         getPosts,
-        setPosts,
         searchPosts,
         getPost,
         editPost,

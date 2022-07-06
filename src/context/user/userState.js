@@ -3,18 +3,18 @@ import { useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userReducer } from './userReducer';
 import {
-  AUTH_LOGIN,
-  AUTH_LOGOUT,
+  LOGIN,
+  LOGOUT,
   UPDATE_ACCESSTOKEN,
   CHANGE_AVATAR,
   GET_USER,
-  SET_NEW_USER_DATA,
+  EDIT_USER,
 } from './userActionTypes';
 import {
-  onAuth,
-  onGetUser,
-  onSetNewAvatar,
-  onSetNewUserData,
+  requestAuth,
+  requestGetUser,
+  requestChangeAvatar,
+  requestEditUser,
 } from '../../services/userService';
 import UserContext from './userContext';
 
@@ -28,7 +28,7 @@ export const UserState = ({ children }) => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const storedToken = JSON.parse(localStorage.getItem('token'));
 
-  // - AUTHENTICATION
+  // AUTHENTICATION
   const auth = async (
     isLogin,
     email,
@@ -38,7 +38,7 @@ export const UserState = ({ children }) => {
     age,
     avatar
   ) => {
-    const response = await onAuth(
+    const response = await requestAuth(
       isLogin,
       email,
       password,
@@ -47,10 +47,10 @@ export const UserState = ({ children }) => {
       age,
       avatar
     );
-    const data = response.data;
+    const data = response?.data;
 
     // success: register 201; login 200
-    if (response.status === 200 || response.status === 201) {
+    if (response?.status === 200 || response?.status === 201) {
       const tokenExpiresIn = 3600;
       const tokenExpirationDate = dayjs(
         dayjs().valueOf() + tokenExpiresIn * 1000
@@ -65,8 +65,6 @@ export const UserState = ({ children }) => {
         avatar: data.user.avatar,
       };
 
-      login(user);
-
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('token', JSON.stringify(data.accessToken));
       localStorage.setItem(
@@ -74,48 +72,46 @@ export const UserState = ({ children }) => {
         JSON.stringify(tokenExpirationDate)
       );
 
-      navigate('/', { replace: true });
+      login(user);
       updateAccessToken(data.accessToken);
       autoLogout(tokenExpiresIn);
-
-      return true;
-    } else {
-      return false;
+      navigate('/', { replace: true });
     }
   };
 
-  // -- LOGIN
-  const login = (payload) => dispatch({ type: AUTH_LOGIN, payload });
+  const login = (user) =>
+    dispatch({
+      type: LOGIN,
+      user,
+    });
 
-  // -- LOGOUT
-  const logout = (withNavigate) => {
-    dispatch({ type: AUTH_LOGOUT });
-
+  const logout = (withRedirrect) => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     localStorage.removeItem('tokenExpirationDate');
 
-    if (withNavigate) {
+    dispatch({
+      type: LOGOUT,
+    });
+
+    if (withRedirrect) {
       navigate('/', { replace: true });
     }
   };
 
-  // -- SUCCES
   const updateAccessToken = (token) => {
     dispatch({
       type: UPDATE_ACCESSTOKEN,
-      payload: token,
+      token,
     });
   };
 
-  // -- AUTO LOGOUT
   const autoLogout = (time) => {
     setTimeout(() => {
       logout();
     }, time * 1000);
   };
 
-  // -- AUTO_LOGIN
   const autoLogin = () => {
     if (!storedToken) {
       logout();
@@ -136,15 +132,16 @@ export const UserState = ({ children }) => {
     }
   };
 
-  // --- Profile edit
-
-  // temporary solution?
+  // PROFILE EDIT
   const getUser = async (userId) => {
-    const response = await onGetUser(userId, token);
-    dispatch({ type: GET_USER, payload: response.data });
+    const user = await requestGetUser(userId, token);
+    dispatch({
+      type: GET_USER,
+      user,
+    });
   };
 
-  const setNewUserData = async (
+  const editUser = async (
     email,
     firstname,
     lastname,
@@ -152,7 +149,7 @@ export const UserState = ({ children }) => {
     password,
     userId
   ) => {
-    const response = await onSetNewUserData(
+    const user = await requestEditUser(
       email,
       firstname,
       lastname,
@@ -161,14 +158,20 @@ export const UserState = ({ children }) => {
       userId,
       token
     );
-    dispatch({ type: SET_NEW_USER_DATA, payload: response.data });
+
+    dispatch({
+      type: EDIT_USER,
+      user,
+    });
   };
 
-  const setNewAvatar = async (avatar, userId) => {
-    const response = await onSetNewAvatar(avatar, userId, token);
-    dispatch({ type: CHANGE_AVATAR, payload: response.data });
+  const changeAvatar = async (avatar, userId) => {
+    const user = await requestChangeAvatar(avatar, userId, token);
+    dispatch({
+      type: CHANGE_AVATAR,
+      user,
+    });
     getUser(userId);
-    localStorage.setItem('user', JSON.stringify(user));
   };
 
   const { user, token } = state;
@@ -181,9 +184,9 @@ export const UserState = ({ children }) => {
         logout,
         autoLogin,
         auth,
-        setNewAvatar,
+        changeAvatar,
         getUser,
-        setNewUserData,
+        editUser,
       }}
     >
       {children}

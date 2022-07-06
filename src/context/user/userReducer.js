@@ -1,51 +1,46 @@
 import {
-  AUTH_LOGIN,
-  AUTH_LOGOUT,
+  LOGIN,
+  LOGOUT,
   UPDATE_ACCESSTOKEN,
   CHANGE_AVATAR,
   GET_USER,
-  SET_NEW_USER_DATA,
+  EDIT_USER,
 } from './userActionTypes';
 
 const handlers = {
-  // login
-  [AUTH_LOGIN]: (state, { payload }) => ({
+  // AUTHENTICATION
+  [LOGIN]: (state, { user }) => ({
     ...state,
-    user: payload,
+    user,
   }),
 
-  // logout
-  [AUTH_LOGOUT]: (state) => ({
+  [LOGOUT]: (state) => ({
     ...state,
     user: null,
     token: '',
   }),
 
-  // success
-  [UPDATE_ACCESSTOKEN]: (state, { payload }) => ({
+  [UPDATE_ACCESSTOKEN]: (state, { token }) => ({
     ...state,
-    token: payload,
+    token,
   }),
 
-  // get user
-  // // temporary solution?
-  [GET_USER]: (state, { payload }) => ({
+  // PROFILE EDIT
+  [GET_USER]: (state, { user }) => ({
     ...state,
-    user: payload,
+    user,
   }),
 
-  // set new user data
-  [SET_NEW_USER_DATA]: (state, { payload }) => ({
+  [EDIT_USER]: (state, { user }) => ({
     ...state,
-    user: payload,
+    user,
   }),
 
-  // change avatar
-  [CHANGE_AVATAR]: (state, { payload }) => ({
+  [CHANGE_AVATAR]: (state, { user }) => ({
     ...state,
-    user: payload,
+    user,
   }),
-  // default
+
   DEFAULT: (state) => state,
 };
 

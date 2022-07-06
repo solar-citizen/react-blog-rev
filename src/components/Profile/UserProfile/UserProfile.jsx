@@ -6,7 +6,7 @@ import { EditOutlined } from '@ant-design/icons';
 import is from 'is_js';
 
 const UserProfile = () => {
-  const { user, getUser, setNewUserData } = useContext(UserContext);
+  const { user, getUser, editUser } = useContext(UserContext);
 
   // const [activeContent, setActiveContent] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
@@ -177,7 +177,7 @@ const UserProfile = () => {
     setProfileEditVisible(false);
     // setActiveContent(profileContent);
 
-    setNewUserData(
+    editUser(
       formControls.email.value,
       formControls.firstname.value,
       formControls.lastname.value,

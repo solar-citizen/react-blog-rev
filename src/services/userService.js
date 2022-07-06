@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { baseURL, loginURL, registerURL } from '../urls';
 
-export const onAuth = async (
+export const requestAuth = async (
   isLogin,
   email,
   password,
@@ -10,31 +10,34 @@ export const onAuth = async (
   age,
   avatar
 ) => {
-  let authData = { email, password };
+  let data = { email, password };
   let url = registerURL;
 
   if (isLogin) {
     url = loginURL;
   } else {
-    authData = { email, password, firstname, lastname, age, avatar };
+    data = { email, password, firstname, lastname, age, avatar };
   }
 
-  return await axios.post(url, authData).catch((error) => {
-    console.error(error);
-  });
+  return axios({
+    url,
+    method: 'post',
+    data,
+  }).catch((error) => console.error(error));
 };
 
-export const onGetUser = async (userId, token) => {
-  return await axios({
+export const requestGetUser = async (userId, token) =>
+  axios({
     url: `${baseURL}/users/${userId}`,
     method: 'get',
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error) => console.error(error));
-};
+  })
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
 
-export const onSetNewUserData = async (
+export const requestEditUser = async (
   email,
   firstname,
   lastname,
@@ -42,8 +45,8 @@ export const onSetNewUserData = async (
   password,
   userId,
   token
-) => {
-  return await axios({
+) =>
+  axios({
     url: `${baseURL}/users/${userId}`,
     method: 'patch',
     data: {
@@ -56,11 +59,12 @@ export const onSetNewUserData = async (
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error) => console.error(error));
-};
+  })
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
 
-export const onSetNewAvatar = async (avatar, userId, token) => {
-  return await axios({
+export const requestChangeAvatar = async (avatar, userId, token) =>
+  axios({
     url: `${baseURL}/users/${userId}`,
     method: 'patch',
     data: {
@@ -69,5 +73,6 @@ export const onSetNewAvatar = async (avatar, userId, token) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error) => console.error(error));
-};
+  })
+    .then((response) => response.data)
+    .catch((error) => console.error(error));

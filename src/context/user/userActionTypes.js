@@ -1,7 +1,8 @@
-export const AUTH_LOGIN = 'AUTH_LOGIN';
-export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+// AUTHENTICATION
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 export const UPDATE_ACCESSTOKEN = 'AUTH_SUCCESS';
-// -- profile edit
+// PROFILE EDIT
 export const GET_USER = 'GET_USER';
-export const SET_NEW_USER_DATA = 'SET_NEW_USER_DATA';
+export const EDIT_USER = 'EDIT_USER';
 export const CHANGE_AVATAR = 'CHANGE_AVATAR';

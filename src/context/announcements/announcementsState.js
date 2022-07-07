@@ -6,15 +6,12 @@ import UserContext from '../user/userContext';
 import {
   GET_ANNOUNCEMENTS,
   SET_ANNOUNCEMENTS,
-  DELETE_ANNOUNCEMENT,
-  EDIT_ANNOUNCEMENT,
-  ADD_ANNOUNCEMENT,
 } from './announcementsActionTypes';
 import {
-  onAddAnnouncement,
-  onDeleteAnnouncement,
-  onEditAnnouncement,
-  onGetAnnouncements,
+  requestAddAnnouncement,
+  requestDeleteAnnouncement,
+  requestEditAnnouncement,
+  requestGetAnnouncements,
 } from '../../services/announcementsService';
 
 export const AnnouncementsState = ({ children }) => {
@@ -25,38 +22,31 @@ export const AnnouncementsState = ({ children }) => {
   const { token } = useContext(UserContext);
 
   const getAnnouncements = async () => {
-    const response = await onGetAnnouncements(token);
-    dispatch({ type: GET_ANNOUNCEMENTS, payload: response.data });
+    const announcements = await requestGetAnnouncements(token);
+    dispatch({
+      type: GET_ANNOUNCEMENTS,
+      announcements,
+    });
   };
 
-  const setAnnouncements = (payload) =>
-    dispatch({ type: SET_ANNOUNCEMENTS, payload });
+  const setAnnouncements = (announcements) =>
+    dispatch({
+      type: SET_ANNOUNCEMENTS,
+      announcements,
+    });
 
   const deleteAnnouncement = async (announcementId) => {
-    await onDeleteAnnouncement(announcementId, token);
-    dispatch({ type: DELETE_ANNOUNCEMENT });
+    await requestDeleteAnnouncement(announcementId, token);
+    getAnnouncements();
   };
 
   const addAnnouncement = async (title, body, userId, createdAt) => {
-    const response = await onAddAnnouncement(
-      title,
-      body,
-      userId,
-      createdAt,
-      token
-    );
-    dispatch({ type: ADD_ANNOUNCEMENT, payload: response.data });
+    await requestAddAnnouncement(title, body, userId, createdAt, token);
     getAnnouncements();
   };
 
   const editAnnouncement = async (body, updatedAt, announcementId) => {
-    const response = await onEditAnnouncement(
-      body,
-      updatedAt,
-      announcementId,
-      token
-    );
-    dispatch({ type: EDIT_ANNOUNCEMENT, payload: response.data });
+    await requestEditAnnouncement(body, updatedAt, announcementId, token);
     getAnnouncements();
   };
 

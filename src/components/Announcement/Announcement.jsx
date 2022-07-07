@@ -111,12 +111,6 @@ const Announcement = ({ announcement, isNotification }) => {
 
   const deleteHandler = () => {
     deleteAnnouncement(announcement?.id);
-
-    setAnnouncements(
-      announcements.filter(
-        (announcementItem) => announcementItem?.id !== announcement?.id
-      )
-    );
   };
 
   // buttons

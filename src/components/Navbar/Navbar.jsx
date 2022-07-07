@@ -8,7 +8,7 @@ const Navbar = () => {
   const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const loginHandler = (event) => {
+  const loginRedirrectHandler = (event) => {
     event.preventDefault();
     navigate('/sign-in');
   };
@@ -20,7 +20,7 @@ const Navbar = () => {
 
   // buttons
   const loginBtn = (
-    <Button type='login' onClick={loginHandler}>
+    <Button type='login' onClick={loginRedirrectHandler}>
       Login
     </Button>
   );

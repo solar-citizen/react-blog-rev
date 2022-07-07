@@ -1,48 +1,21 @@
 import {
   GET_ANNOUNCEMENTS,
   SET_ANNOUNCEMENTS,
-  DELETE_ANNOUNCEMENT,
-  EDIT_ANNOUNCEMENT,
-  ADD_ANNOUNCEMENT,
-  // GET_USER_ANNOUNCEMENTS,
 } from './announcementsActionTypes';
 
 const handlers = {
-  // GET_ANNOUNCEMENTS
-  [GET_ANNOUNCEMENTS]: (state, { payload }) => ({
+  [GET_ANNOUNCEMENTS]: (state, { announcements }) => ({
     ...state,
-    announcements: payload,
+    announcements,
     // loading: false,
   }),
 
-  // SET_ANNOUNCEMENTS
-  [SET_ANNOUNCEMENTS]: (state, { payload }) => ({
+  [SET_ANNOUNCEMENTS]: (state, { announcements }) => ({
     ...state,
-    announcements: payload,
+    announcements,
     // loading: false,
   }),
 
-  // ADD_ANNOUNCEMENT
-  [ADD_ANNOUNCEMENT]: (state, { payload }) => ({
-    ...state,
-    announcements: payload,
-    // loading: false,
-  }),
-
-  // DELETE_ANNOUNCEMENT
-  [DELETE_ANNOUNCEMENT]: (state) => ({
-    ...state,
-    // announcements: payload,
-    // loading: false,
-  }),
-
-  // EDIT_ANNOUNCEMENT
-  [EDIT_ANNOUNCEMENT]: (state, { payload }) => ({
-    ...state,
-    announcements: payload,
-    // loading: false,
-  }),
-  // default
   DEFAULT: (state) => state,
 };
 

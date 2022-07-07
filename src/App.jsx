@@ -2,7 +2,6 @@ import './App.css';
 import 'antd/dist/antd.css';
 import { useContext, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Announcements } from './components/index';
 import {
   BlogList,
   Post,
@@ -60,7 +59,6 @@ const App = () => {
 
   return (
     <div className='App'>
-      <Announcements isNotification={true} />
       <div className='container'>{routes}</div>
     </div>
   );

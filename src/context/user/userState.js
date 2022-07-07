@@ -7,15 +7,15 @@ import {
   LOGOUT,
   UPDATE_ACCESSTOKEN,
   CHANGE_AVATAR,
-  GET_USER,
+  // GET_USER,
   EDIT_USER,
 } from './userActionTypes';
 import {
   requestAuth,
-  requestGetUser,
+  // requestGetUser,
   requestChangeAvatar,
   requestEditUser,
-} from '../../services/userService';
+} from '../../requests/userRequests';
 import UserContext from './userContext';
 
 export const UserState = ({ children }) => {
@@ -133,14 +133,6 @@ export const UserState = ({ children }) => {
   };
 
   // PROFILE EDIT
-  const getUser = async (userId) => {
-    const user = await requestGetUser(userId, token);
-    dispatch({
-      type: GET_USER,
-      user,
-    });
-  };
-
   const editUser = async (
     email,
     firstname,
@@ -171,8 +163,16 @@ export const UserState = ({ children }) => {
       type: CHANGE_AVATAR,
       user,
     });
-    getUser(userId);
   };
+
+  // // TO BE USED (?)
+  //  const getUser = async (userId) => {
+  //    const user = await requestGetUser(userId);
+  //    dispatch({
+  //      type: GET_USER,
+  //      user,
+  //    });
+  //  };
 
   const { user, token } = state;
 
@@ -185,7 +185,7 @@ export const UserState = ({ children }) => {
         autoLogin,
         auth,
         changeAvatar,
-        getUser,
+        // getUser,
         editUser,
       }}
     >

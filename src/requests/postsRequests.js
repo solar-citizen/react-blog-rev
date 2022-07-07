@@ -1,35 +1,26 @@
 import axios from 'axios';
 import { baseURL } from '../urls';
 
-export const requestPosts = async (token) =>
+export const requestGetPosts = async () =>
   axios({
     url: `${baseURL}/posts?_expand=user&_sort=createdAt&_order=desc&_limit=50`,
     method: 'get',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
   })
     .then((response) => response.data)
     .catch((error) => console.error(error));
 
-export const requestSearchPosts = async (value, token) =>
+export const requestSearchPosts = async (value) =>
   axios({
     url: `${baseURL}/posts?_expand=user&_sort=createdAt&_order=desc&_limit=50&q=${value}`,
     method: 'get',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
   })
     .then((response) => response.data)
     .catch((error) => console.error(error));
 
-export const requestPost = async (postId, token) =>
+export const requestGetPost = async (postId) =>
   axios({
     url: `${baseURL}/posts/${postId}?_expand=user`,
     method: 'get',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
   })
     .then((response) => response.data)
     .catch((error) => console.error(error));

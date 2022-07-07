@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { baseURL, loginURL, registerURL } from '../urls';
 
+// AUTHENTICATION
 export const requestAuth = async (
   isLogin,
   email,
@@ -26,17 +27,7 @@ export const requestAuth = async (
   }).catch((error) => console.error(error));
 };
 
-export const requestGetUser = async (userId, token) =>
-  axios({
-    url: `${baseURL}/users/${userId}`,
-    method: 'get',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => response.data)
-    .catch((error) => console.error(error));
-
+// PROFILE EDIT
 export const requestEditUser = async (
   email,
   firstname,
@@ -76,3 +67,12 @@ export const requestChangeAvatar = async (avatar, userId, token) =>
   })
     .then((response) => response.data)
     .catch((error) => console.error(error));
+
+// // TO BE USED (?)
+// export const requestGetUser = async (userId) =>
+//   axios({
+//     url: `${baseURL}/users/${userId}`,
+//     method: 'get',
+//   })
+//     .then((response) => response.data)
+//     .catch((error) => console.error(error));

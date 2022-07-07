@@ -6,7 +6,7 @@ import { EditOutlined } from '@ant-design/icons';
 import is from 'is_js';
 
 const UserProfile = () => {
-  const { user, getUser, editUser } = useContext(UserContext);
+  const { user, editUser } = useContext(UserContext);
 
   // const [activeContent, setActiveContent] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
@@ -73,13 +73,6 @@ const UserProfile = () => {
       },
     },
   });
-
-  // temporary solution?
-  useEffect(() => {
-    getUser(user?.id);
-    // setActiveContent(profileContent);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(user));

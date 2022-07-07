@@ -11,10 +11,10 @@ import {
   requestCreatePost,
   requestDeletePost,
   requestEditPost,
-  requestPost,
-  requestPosts,
+  requestGetPost,
+  requestGetPosts,
   requestSearchPosts,
-} from '../../services/postsService';
+} from '../../requests/postsRequests';
 import UserContext from '../user/userContext';
 import PostsContext from './postsContext';
 
@@ -28,35 +28,41 @@ export const PostsState = ({ children }) => {
   const { token } = useContext(UserContext);
 
   const getPosts = async () => {
-    const posts = await requestPosts(token);
+    const postsFromDB = await requestGetPosts();
     dispatch({
       type: GET_POSTS,
-      posts,
+      posts: postsFromDB,
     });
   };
 
   // full text search
   const searchPosts = async (value) => {
-    const posts = await requestSearchPosts(value, token);
+    const searchedPostsFromDB = await requestSearchPosts(value);
     dispatch({
       type: SEARCH_POSTS,
-      posts,
+      posts: searchedPostsFromDB,
     });
   };
 
   const getPost = async (postId) => {
-    const post = await requestPost(postId, token);
+    const postFromDB = await requestGetPost(postId);
     dispatch({
       type: GET_POST,
-      post,
+      post: postFromDB,
     });
   };
 
   const editPost = async (title, body, updatedAt, postId) => {
-    const post = await requestEditPost(title, body, updatedAt, postId, token);
+    const postFromDB = await requestEditPost(
+      title,
+      body,
+      updatedAt,
+      postId,
+      token
+    );
     dispatch({
       type: EDIT_POST,
-      post,
+      post: postFromDB,
     });
     getPosts();
   };

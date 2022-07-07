@@ -12,7 +12,7 @@ import {
   requestDeleteAnnouncement,
   requestEditAnnouncement,
   requestGetAnnouncements,
-} from '../../services/announcementsService';
+} from '../../requests/announcementsRequests';
 
 export const AnnouncementsState = ({ children }) => {
   const initialState = {
@@ -22,10 +22,10 @@ export const AnnouncementsState = ({ children }) => {
   const { token } = useContext(UserContext);
 
   const getAnnouncements = async () => {
-    const announcements = await requestGetAnnouncements(token);
+    const announcementsFromDB = await requestGetAnnouncements();
     dispatch({
       type: GET_ANNOUNCEMENTS,
-      announcements,
+      announcements: announcementsFromDB,
     });
   };
 

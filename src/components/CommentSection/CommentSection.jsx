@@ -5,7 +5,7 @@ import { Loader, Comment, Button, Input } from '../index';
 import UserContext from '../../context/user/userContext';
 import PostsContext from '../../context/posts/postsContext';
 import LoadingContext from '../../context/loading/loadingContext';
-import { requestAddComment } from '../../services/commentsService';
+import { requestAddComment } from '../../requests/commentsRequests';
 
 const CommentSection = ({ comments, setComments, getComments }) => {
   const { user, token } = useContext(UserContext);
@@ -83,14 +83,7 @@ const CommentSection = ({ comments, setComments, getComments }) => {
   };
 
   const addComment = async (body, createdAt, postId, userId) => {
-    const response = await requestAddComment(
-      body,
-      createdAt,
-      postId,
-      userId,
-      token
-    );
-    setComments(response.data);
+    await requestAddComment(body, createdAt, postId, userId, token);
     getComments(postId);
     setFormControls({ ...formControls }, (formControls.body.value = ''));
   };

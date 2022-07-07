@@ -2,7 +2,7 @@ import styles from './Post.module.css';
 import dayjs from 'dayjs';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { requestGetComments } from '../../services/commentsService';
+import { requestGetComments } from '../../requests/commentsRequests';
 import { Input, Button, Loader, CommentSection } from '../../components/index';
 import { Modal } from 'antd';
 import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';

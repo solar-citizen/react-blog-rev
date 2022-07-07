@@ -8,7 +8,7 @@ import UserContext from '../../context/user/userContext';
 import {
   requestDeleteComment,
   requestEditComment,
-} from '../../services/commentsService';
+} from '../../requests/commentsRequests';
 
 const Comment = ({ comments, setComments, getComments, comment, i }) => {
   const { user, token } = useContext(UserContext);

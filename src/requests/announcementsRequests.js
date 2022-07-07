@@ -1,13 +1,10 @@
 import axios from 'axios';
 import { baseURL } from '../urls';
 
-export const requestGetAnnouncements = async (token) =>
+export const requestGetAnnouncements = async () =>
   axios({
     method: 'get',
     url: `${baseURL}/announcements?_sort=createdAt&_order=desc&_limit=10`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
   })
     .then((response) => response.data)
     .catch((error) => console.error(error));

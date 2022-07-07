@@ -5,10 +5,10 @@ import { Loader, Comment, Button, Input } from '../index';
 import UserContext from '../../context/user/userContext';
 import PostsContext from '../../context/posts/postsContext';
 import LoadingContext from '../../context/loading/loadingContext';
-import { onAddComment } from '../../services/commentsService';
+import { requestAddComment } from '../../services/commentsService';
 
 const CommentSection = ({ comments, setComments, getComments }) => {
-  const { user } = useContext(UserContext);
+  const { user, token } = useContext(UserContext);
   const { loading } = useContext(LoadingContext);
   const { post } = useContext(PostsContext);
 
@@ -83,7 +83,13 @@ const CommentSection = ({ comments, setComments, getComments }) => {
   };
 
   const addComment = async (body, createdAt, postId, userId) => {
-    const response = await onAddComment(body, createdAt, postId, userId);
+    const response = await requestAddComment(
+      body,
+      createdAt,
+      postId,
+      userId,
+      token
+    );
     setComments(response.data);
     getComments(postId);
     setFormControls({ ...formControls }, (formControls.body.value = ''));

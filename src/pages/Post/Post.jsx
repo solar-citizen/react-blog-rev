@@ -2,7 +2,7 @@ import styles from './Post.module.css';
 import dayjs from 'dayjs';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { onGetComments } from '../../services/commentsService';
+import { requestGetComments } from '../../services/commentsService';
 import { Input, Button, Loader, CommentSection } from '../../components/index';
 import { Modal } from 'antd';
 import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
@@ -54,8 +54,8 @@ const Post = () => {
   }, []);
 
   const getComments = async (postId) => {
-    const response = await onGetComments(postId);
-    setComments(response.data);
+    const commentsFromDB = await requestGetComments(postId);
+    setComments(commentsFromDB);
   };
 
   if (loading) {

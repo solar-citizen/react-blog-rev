@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom';
 import { Button, Input, Avatar } from '../index';
 import PostsContext from '../../context/posts/postsContext';
 import UserContext from '../../context/user/userContext';
-import { onDeleteComment, onEditComment } from '../../services/commentsService';
+import {
+  requestDeleteComment,
+  requestEditComment,
+} from '../../services/commentsService';
 
 const Comment = ({ comments, setComments, getComments, comment, i }) => {
-  const { user } = useContext(UserContext);
+  const { user, token } = useContext(UserContext);
   const { post } = useContext(PostsContext);
 
   const [isEditInputVisible, setIsEditInputVisible] = useState(false);
@@ -83,8 +86,7 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
   };
 
   const editComment = async (body, updatedAt, commentId, postId) => {
-    const response = await onEditComment(body, updatedAt, commentId);
-    setComments(response.data);
+    await requestEditComment(body, updatedAt, commentId, token);
     getComments(postId);
   };
 
@@ -106,7 +108,7 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     setComments(
       comments.filter((commentItem) => commentItem?.id !== comment?.id)
     );
-    onDeleteComment(comment?.id);
+    requestDeleteComment(comment?.id, token);
   };
 
   // buttons

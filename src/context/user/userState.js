@@ -76,6 +76,8 @@ export const UserState = ({ children }) => {
       updateAccessToken(data.accessToken);
       autoLogout(tokenExpiresIn);
       navigate('/', { replace: true });
+    } else {
+      alert(data);
     }
   };
 

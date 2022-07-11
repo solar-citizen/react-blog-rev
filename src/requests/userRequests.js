@@ -24,7 +24,15 @@ export const requestAuth = async (
     url,
     method: 'post',
     data,
-  }).catch((error) => console.error(error));
+  }).catch((error) => {
+    if (error.response) {
+      return error.response;
+    } else if (error.request) {
+      return error.request;
+    } else {
+      return error;
+    }
+  });
 };
 
 // PROFILE EDIT

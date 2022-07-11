@@ -58,3 +58,13 @@ a:active {
 .bg-white {
   background-color: #fff;
 }
+
+/* form inputs */
+.label {
+  font-weight: 500;
+}
+
+.error-msg {
+  color: #d91709;
+  font-weight: 500;
+}

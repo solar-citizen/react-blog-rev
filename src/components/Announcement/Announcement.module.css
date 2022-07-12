@@ -1,7 +1,7 @@
 .Announcement {
   display: flex;
   flex-direction: column;
-  width: 20rem;
+  width: 18rem;
   padding: 4px 12px 12px 12px;
   margin: 5px 0;
   position: relative;

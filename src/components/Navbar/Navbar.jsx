@@ -20,12 +20,12 @@ const Navbar = () => {
 
   // buttons
   const loginBtn = (
-    <Button type='login' onClick={loginRedirrectHandler}>
+    <Button type='button' category='login' onClick={loginRedirrectHandler}>
       Login
     </Button>
   );
   const logoutBtn = (
-    <Button type='logout' onClick={logoutHandler}>
+    <Button type='button' category='logout' onClick={logoutHandler}>
       Logout
     </Button>
   );

@@ -78,7 +78,9 @@ const SignIn = () => {
         >
           {renderInputs()}
 
-          <Button type='submit'>Sign in</Button>
+          <Button type='submit' category='submit'>
+            Sign in
+          </Button>
 
           <Link to='/sign-up'>No account yet? Register then!</Link>
         </form>

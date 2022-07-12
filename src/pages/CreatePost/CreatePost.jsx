@@ -130,7 +130,8 @@ const CreatePost = () => {
         {renderInputs()}
 
         <Button
-          type='create'
+          type='submit'
+          category='create'
           onClick={createPostHandler}
           disabled={!isFormValid}
         >

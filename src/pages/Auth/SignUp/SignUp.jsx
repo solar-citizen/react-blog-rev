@@ -147,7 +147,7 @@ const SignUp = () => {
             setProfileImage={setProfileImage}
           />
 
-          <Button type='submit' disabled={!isValid}>
+          <Button type='submit' category='submit' disabled={!isValid}>
             Sign up
           </Button>
         </form>

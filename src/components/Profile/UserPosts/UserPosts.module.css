@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.UserPosts > button:hover > a {
+  color: #fff;
+}
+
 .UserPosts > div > article {
   padding: 1rem;
   margin: 1rem 0;

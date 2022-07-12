@@ -129,7 +129,7 @@ const SignUp = () => {
     <div className={styles.SignUp}>
       <Link to='/'>
         {<RollbackOutlined />}
-        {` back to main`}
+        {` back to Blog`}
       </Link>
       <div>
         <h2>Register a new account</h2>

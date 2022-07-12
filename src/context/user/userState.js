@@ -29,24 +29,8 @@ export const UserState = ({ children }) => {
   const storedToken = JSON.parse(localStorage.getItem('token'));
 
   // AUTHENTICATION
-  const auth = async (
-    isLogin,
-    email,
-    password,
-    firstname,
-    lastname,
-    age,
-    avatar
-  ) => {
-    const response = await requestAuth(
-      isLogin,
-      email,
-      password,
-      firstname,
-      lastname,
-      age,
-      avatar
-    );
+  const auth = async (isLogin, ...inputValues) => {
+    const response = await requestAuth(isLogin, ...inputValues);
     const data = response?.data;
 
     // success: register 201; login 200

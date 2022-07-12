@@ -66,7 +66,7 @@ const SignIn = () => {
     <div className={styles.SignIn}>
       <Link to='/'>
         {<RollbackOutlined />}
-        {` back to main`}
+        {` back to Blog`}
       </Link>
       <div>
         <h2>Log In</h2>

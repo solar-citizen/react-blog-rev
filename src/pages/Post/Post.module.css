@@ -23,16 +23,6 @@
   width: 100%;
 }
 
-.Post > div > div > input {
-  margin-top: 1rem;
-}
-
-.Post > div > div > textarea {
-  width: 100%;
-  height: 8rem;
-  resize: none;
-}
-
 .Post div > div > div:last-of-type {
   display: inline-block;
 }
@@ -44,6 +34,65 @@
 .Post button:last-of-type {
   margin-left: 3px;
 }
+
+.Post > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 3rem;
+}
+
+.postButtons {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Post > form > span {
+  align-self: flex-start;
+}
+
+.Post > form > label {
+  margin-top: 1.5rem;
+}
+
+.Post > form > button {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.Post > form > input,
+.Post > form > textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  outline: none;
+  font-size: 1rem;
+  resize: none;
+}
+
+.Post form > input:hover,
+.Post form > textarea:hover,
+.Post form > input:focus,
+.Post form > textarea:focus {
+  box-shadow: 0px 0px 2px 1px #ccc;
+}
+
+/* .Post > form > input {
+  width: 100%;
+  height: 2.5rem;
+  margin-top: 1rem;
+}
+
+.Post > form > textarea {
+  width: 100%;
+  height: 8rem;
+  resize: none;
+} */
 
 @media screen and (max-width: 638px) {
   .Post > div {

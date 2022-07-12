@@ -27,7 +27,8 @@ const Tab = ({ children, active }) => {
       <li key={i}>
         <Button
           active={i === activeTab ? true : false}
-          type='primary'
+          type='button'
+          category='primary'
           onClick={() => setActiveTab(i)}
         >
           {tab}

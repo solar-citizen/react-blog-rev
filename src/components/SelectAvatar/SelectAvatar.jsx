@@ -53,7 +53,7 @@ const SelectAvatar = ({
 
   // buttons
   const selectAvatarButton = (
-    <Button onClick={showModalHandler} type='primary'>
+    <Button onClick={showModalHandler} type='button' category='primary'>
       Select Avatar
     </Button>
   );

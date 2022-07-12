@@ -141,7 +141,8 @@ const UserAnnouncements = () => {
   const createButton = (
     <Button
       size='small'
-      type='primary-filled'
+      type='button'
+      category='primary-filled'
       onClick={createHandler}
       disabled={!isFormValid}
     >

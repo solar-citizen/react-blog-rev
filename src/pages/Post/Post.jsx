@@ -3,52 +3,39 @@ import dayjs from 'dayjs';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { requestGetComments } from '../../requests/commentsRequests';
-import { Input, Button, Loader, CommentSection } from '../../components/index';
+import { Button, Loader, CommentSection } from '../../components/index';
 import { Modal } from 'antd';
 import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import UserContext from '../../context/user/userContext';
 import PostsContext from '../../context/posts/postsContext';
 import LoadingContext from '../../context/loading/loadingContext';
+import { useForm } from 'react-hook-form';
 
 const Post = () => {
+  const [comments, setComments] = useState([]);
+  const [isEditInputVisible, setIsEditInputVisible] = useState(false);
+
   const { user } = useContext(UserContext);
   const { post, getPost, deletePost, editPost } = useContext(PostsContext);
   const { loading } = useContext(LoadingContext);
   const { confirm } = Modal;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      postTitle: post?.title,
+      postBody: post?.body,
+    },
+  });
 
   const params = useParams();
   const urlId = params.id;
 
-  const [comments, setComments] = useState([]);
-  const [isEditInputVisible, setIsEditInputVisible] = useState(false);
-  const [isFormValid, setIsFormValid] = useState(true);
-  const [formControls, setFormControls] = useState({
-    title: {
-      value: post?.title || '',
-      type: 'text',
-      label: 'Edit title',
-      errorMessage: 'This field cannot be empty.',
-      valid: false,
-      touched: false,
-      validation: {
-        required: true,
-      },
-    },
-    body: {
-      value: post?.body || '',
-      type: 'textarea',
-      label: 'Edit post',
-      errorMessage: 'This field cannot be empty.',
-      valid: false,
-      touched: false,
-      validation: {
-        required: true,
-      },
-    },
-  });
-
   useEffect(() => {
-    getPost(urlId, user);
+    getPost(urlId);
     getComments(urlId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -85,97 +72,71 @@ const Post = () => {
     setIsEditInputVisible(true);
   };
 
-  const acceptEditHandler = () => {
+  const submitEditHandler = (data) => {
+    const { postTitle, postBody } = data;
+    editPost(postTitle, postBody, dayjs(), urlId);
     setIsEditInputVisible(false);
-    editPost(
-      formControls?.title?.value,
-      formControls?.body?.value,
-      dayjs(),
-      urlId
-    );
   };
 
   const cancelEditHandler = () => {
     setIsEditInputVisible(false);
   };
 
-  // validation of input field
-  const validateControl = (value, validation) => {
-    if (!validation) {
-      return true;
-    }
+  const renderForm = () => (
+    <form onSubmit={handleSubmit((data) => submitEditHandler(data))}>
+      <label htmlFor='postTitle' className='label'>
+        Edit Title
+      </label>
+      <input
+        id='postTitle'
+        {...register('postTitle', {
+          required: 'This field cannot be empty.',
+        })}
+      />
+      <span className='error-msg' role='alert'>
+        {errors?.postTitle?.message}
+      </span>
 
-    let isValid = true;
+      <label htmlFor='postBody' className='label'>
+        Edit Body
+      </label>
+      <textarea
+        // type='textarea'
+        id='postBody'
+        {...register('postBody', {
+          required: 'This field cannot be empty.',
+        })}
+      />
+      <span className='error-msg' role='alert'>
+        {errors?.postBody?.message}
+      </span>
 
-    // invalid if empty
-    if (validation?.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-
-    return isValid;
-  };
-
-  // fixation of changes of input field
-  const onChangeHandler = (event, controlName) => {
-    const clonedFormControls = { ...formControls };
-    const control = { ...clonedFormControls[controlName] };
-
-    control.value = event.target.value;
-    control.touched = true;
-    control.valid = validateControl(control.value, control.validation);
-
-    clonedFormControls[controlName] = control;
-
-    let isFormValid = true;
-
-    Object.keys(clonedFormControls).forEach((nameOfControl) => {
-      isFormValid = formControls[nameOfControl].valid && isFormValid;
-    });
-
-    setFormControls(clonedFormControls);
-    setIsFormValid(isFormValid);
-  };
-
-  const renderInputs = () => {
-    return Object.keys(formControls).map((controlName, index) => {
-      const control = formControls[controlName];
-
-      return (
-        <div key={index}>
-          <Input
-            type={control.type}
-            value={control.value}
-            valid={control.valid}
-            touched={control.touched}
-            label={control.label}
-            errorMessage={control.errorMessage}
-            shouldValidate={!!control.validation}
-            onChange={(event) => onChangeHandler(event, controlName)}
-          />
-        </div>
-      );
-    });
-  };
+      <div className={styles.postButtons}>
+        {user?.id === post?.userId && acceptButton}
+        {user?.id === post?.userId && cancelButton}
+      </div>
+    </form>
+  );
 
   // buttons
   const deletePostBtn = (
-    <Button onClick={showDeleteConfirm} type='danger-filled'>
+    <Button onClick={showDeleteConfirm} type='button' category='danger-filled'>
       <DeleteOutlined />
       &nbsp; Delete Post
     </Button>
   );
   const editPostBtn = (
-    <Button type='primary' onClick={showEditInput}>
+    <Button type='button' category='primary' onClick={showEditInput}>
       Edit Post
     </Button>
   );
   const acceptButton = (
-    <Button type='primary' onClick={acceptEditHandler} disabled={!isFormValid}>
+    <Button type='submit' category='primary' disabled={!isValid}>
       Accept
     </Button>
   );
   const cancelButton = (
-    <Button type='primary' onClick={cancelEditHandler}>
+    <Button type='button' category='primary' onClick={cancelEditHandler}>
       Cancel
     </Button>
   );
@@ -192,7 +153,7 @@ const Post = () => {
     <>
       <div className={`${styles.Post} bg-white`}>
         {isEditInputVisible ? (
-          renderInputs()
+          renderForm()
         ) : (
           <>
             <h2>{post?.title}</h2>
@@ -201,8 +162,8 @@ const Post = () => {
           </>
         )}
 
-        <div>
-          {!isEditInputVisible && (
+        {!isEditInputVisible && (
+          <div>
             <div>
               <div>
                 {`Created: ${postCreationDate} by ${post?.user?.firstname} ${post?.user?.lastname}`}
@@ -210,13 +171,13 @@ const Post = () => {
 
               {post?.updatedAt && <div>{`Updated: ${postUpdateDate}`}</div>}
             </div>
-          )}
 
-          {user?.id === post?.userId &&
-            (isEditInputVisible ? acceptButton : editPostBtn)}
-          {user?.id === post?.userId &&
-            (isEditInputVisible ? cancelButton : deletePostBtn)}
-        </div>
+            <div className={styles.postButtons}>
+              {user?.id === post?.userId && editPostBtn}
+              {user?.id === post?.userId && deletePostBtn}
+            </div>
+          </div>
+        )}
       </div>
 
       {loading ? (

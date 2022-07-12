@@ -187,7 +187,12 @@ const UserProfile = () => {
 
   // buttons
   const editProfileButton = (
-    <Button type='primary' size='x-small' onClick={editProfileHandler}>
+    <Button
+      type='button'
+      category='primary'
+      size='x-small'
+      onClick={editProfileHandler}
+    >
       <EditOutlined />
       Edit
     </Button>
@@ -195,7 +200,8 @@ const UserProfile = () => {
 
   const acceptProfileEditButton = (
     <Button
-      type='primary-filled'
+      type='button'
+      category='primary-filled'
       onClick={acceptEditHandler}
       disabled={!isFormValid}
     >
@@ -204,7 +210,7 @@ const UserProfile = () => {
   );
 
   const cancelProfileEditButton = (
-    <Button type='primary' onClick={cancelEditHandler}>
+    <Button type='button' category='primary' onClick={cancelEditHandler}>
       Cancel
     </Button>
   );

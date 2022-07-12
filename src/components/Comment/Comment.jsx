@@ -113,13 +113,19 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
 
   // buttons
   const editButton = (
-    <Button type='primary' size='small' onClick={editCommentHandler}>
+    <Button
+      type='button'
+      category='primary'
+      size='small'
+      onClick={editCommentHandler}
+    >
       Edit
     </Button>
   );
   const acceptButton = (
     <Button
-      type='primary'
+      type='button'
+      category='primary'
       size='small'
       onClick={acceptEditHandler}
       disabled={!isFormValid}
@@ -128,12 +134,22 @@ const Comment = ({ comments, setComments, getComments, comment, i }) => {
     </Button>
   );
   const cancelButton = (
-    <Button type='primary' size='small' onClick={cancelEditHandler}>
+    <Button
+      type='button'
+      category='primary'
+      size='small'
+      onClick={cancelEditHandler}
+    >
       Cancel
     </Button>
   );
   const deleteCommentButton = (
-    <Button type='danger' size='small' onClick={deleteCommentHandler}>
+    <Button
+      type='button'
+      category='danger'
+      size='small'
+      onClick={deleteCommentHandler}
+    >
       Delete
     </Button>
   );

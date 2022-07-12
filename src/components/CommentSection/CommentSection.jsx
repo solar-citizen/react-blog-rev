@@ -126,7 +126,8 @@ const CommentSection = ({ comments, setComments, getComments }) => {
           <h3>Write a comment</h3>
           {renderInputs()}
           <Button
-            type='primary-filled'
+            type='button'
+            category='primary-filled'
             onClick={writeCommentHandler}
             disabled={!isFormValid}
           >

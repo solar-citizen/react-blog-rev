@@ -10,17 +10,19 @@ import { AnnouncementsState } from './context/announcements/announcementsState';
 import { LoadingState } from './context/loading/loadingState';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <UserState>
-      <LoadingState>
-        <AnnouncementsState>
-          <PostsState>
-            <App />
-          </PostsState>
-        </AnnouncementsState>
-      </LoadingState>
-    </UserState>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <BrowserRouter>
+      <UserState>
+        <LoadingState>
+          <AnnouncementsState>
+            <PostsState>
+              <App />
+            </PostsState>
+          </AnnouncementsState>
+        </LoadingState>
+      </UserState>
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

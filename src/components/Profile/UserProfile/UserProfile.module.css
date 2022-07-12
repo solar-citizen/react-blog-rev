@@ -29,6 +29,6 @@
   width: 100px;
 }
 
-.UserProfile button[type='primary-filled'] {
+.UserProfile button[category='primary-filled'] {
   margin-left: 3px;
 }

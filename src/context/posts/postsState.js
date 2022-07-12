@@ -64,6 +64,7 @@ export const PostsState = ({ children }) => {
       type: EDIT_POST,
       post: postFromDB,
     });
+    getPost(postId);
     getPosts();
   };
 

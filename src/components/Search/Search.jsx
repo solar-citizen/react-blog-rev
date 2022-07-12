@@ -40,7 +40,7 @@ const Search = () => {
         onChange={(event) => setValue(event.target.value)}
       />
 
-      <Button type='primary' onClick={searchHandler}>
+      <Button type='button' category='primary' onClick={searchHandler}>
         <SearchOutlined />
       </Button>
     </div>

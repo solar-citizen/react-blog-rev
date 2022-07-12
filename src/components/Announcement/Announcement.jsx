@@ -115,13 +115,14 @@ const Announcement = ({ announcement, isNotification }) => {
 
   // buttons
   const editButton = (
-    <Button type='primary' size='small' onClick={editHandler}>
+    <Button type='button' category='primary' size='small' onClick={editHandler}>
       Edit
     </Button>
   );
   const acceptButton = (
     <Button
-      type='primary'
+      type='button'
+      category='primary'
       size='small'
       onClick={acceptEditHandler}
       disabled={!isFormValid}
@@ -130,12 +131,22 @@ const Announcement = ({ announcement, isNotification }) => {
     </Button>
   );
   const cancelButton = (
-    <Button type='primary' size='small' onClick={cancelEditHandler}>
+    <Button
+      type='button'
+      category='primary'
+      size='small'
+      onClick={cancelEditHandler}
+    >
       Cancel
     </Button>
   );
   const deleteCommentButton = (
-    <Button type='danger' size='small' onClick={deleteHandler}>
+    <Button
+      type='button'
+      category='danger'
+      size='small'
+      onClick={deleteHandler}
+    >
       Delete
     </Button>
   );

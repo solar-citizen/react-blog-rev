@@ -6,22 +6,32 @@ import {
   maxLength,
   minValue,
   maxValue,
+  numberTypeErrorMessage,
+  numberPositiveMessage,
+  numberIntegerMessage,
 } from './rules';
+
+const minLen = minLength();
+const maxLen = maxLength();
+
+const minVal = minValue();
+const maxVal = maxValue();
 
 export const signUpSchema = yup.object().shape({
   email: yup.string().email(emailMessage).required(requiredMessage),
   password: yup
     .string()
-    .min(minLength().min, minLength().message)
-    .max(maxLength().max, maxLength().message)
+    .min(minLen.value, minLen.message)
+    .max(maxLen.value, maxLen.message)
     .required(requiredMessage),
   firstName: yup.string().required(requiredMessage),
   lastName: yup.string().required(requiredMessage),
   age: yup
     .number()
-    .positive()
-    .integer()
-    .min(minValue().min, minValue().message)
-    .max(maxValue().max, maxValue().message)
+    .typeError(numberTypeErrorMessage)
+    .positive(numberPositiveMessage)
+    .integer(numberIntegerMessage)
+    .min(minVal.value, minVal.message)
+    .max(maxVal.value, maxVal.message)
     .required(requiredMessage),
 });

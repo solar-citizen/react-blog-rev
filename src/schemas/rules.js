@@ -1,6 +1,9 @@
 // messages
 const requiredMessage = 'This is a required field.';
 const emailMessage = 'Email must be a valid email.';
+const numberTypeErrorMessage = 'Must be a number.';
+const numberPositiveMessage = 'Must be a positive number.';
+const numberIntegerMessage = 'Must be an integer.';
 
 // string
 const minLength = (value = 8) => ({
@@ -15,11 +18,11 @@ const maxLength = (value = 24) => ({
 // num
 const minValue = (value = 1) => ({
   value,
-  message: `Must be less than or equal to ${value}`,
+  message: `Must be more than or equal to ${value}.`,
 });
 const maxValue = (value = 150) => ({
   value,
-  message: `Must be less than or equal to ${value}`,
+  message: `Must be less than or equal to ${value}.`,
 });
 
 export {
@@ -29,4 +32,7 @@ export {
   emailMessage,
   minValue,
   maxValue,
+  numberTypeErrorMessage,
+  numberPositiveMessage,
+  numberIntegerMessage,
 };

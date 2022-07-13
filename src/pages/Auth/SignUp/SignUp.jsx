@@ -183,9 +183,9 @@ const SignUp = () => {
         min={1}
         max={150}
         {...register('age')}
-        // onKeyDown={(e) =>
-        //   ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault()
-        // }
+        onKeyDown={(e) =>
+          ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault()
+        }
       />
       <span className='error-msg' role='alert'>
         {errors?.age?.message}

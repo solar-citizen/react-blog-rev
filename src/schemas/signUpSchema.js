@@ -7,7 +7,6 @@ import {
   minValue,
   maxValue,
   numberTypeErrorMessage,
-  numberPositiveMessage,
   numberIntegerMessage,
 } from './rules';
 
@@ -29,7 +28,6 @@ export const signUpSchema = yup.object().shape({
   age: yup
     .number()
     .typeError(numberTypeErrorMessage)
-    .positive(numberPositiveMessage)
     .integer(numberIntegerMessage)
     .min(minVal.value, minVal.message)
     .max(maxVal.value, maxVal.message)

@@ -2,7 +2,6 @@
 const requiredMessage = 'This is a required field.';
 const emailMessage = 'Email must be a valid email.';
 const numberTypeErrorMessage = 'Must be a number.';
-const numberPositiveMessage = 'Must be a positive number.';
 const numberIntegerMessage = 'Must be an integer.';
 
 // string
@@ -33,6 +32,5 @@ export {
   minValue,
   maxValue,
   numberTypeErrorMessage,
-  numberPositiveMessage,
   numberIntegerMessage,
 };

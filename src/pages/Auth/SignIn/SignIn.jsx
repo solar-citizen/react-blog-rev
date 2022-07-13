@@ -5,22 +5,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../../components/index';
 import { RollbackOutlined } from '@ant-design/icons';
 import UserContext from '../../../context/user/userContext';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
-const minLength = 8;
-const maxLength = 24;
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Email must be a valid email.')
-    .required('Email is a required field.'),
-  password: yup
-    .string()
-    .min(minLength, `Password must be at least ${minLength} characters.`)
-    .max(maxLength, `Password must be at most ${maxLength} characters.`)
-    .required('Password is a required field.'),
-});
+import { signInSchema } from '../../../schemas';
 
 const SignIn = () => {
   const { auth } = useContext(UserContext);
@@ -29,7 +15,7 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(signInSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -78,8 +64,7 @@ const SignIn = () => {
         {` back to Blog`}
       </Link>
       <div>
-        <h2>Log In</h2>
-
+        <h2>Log in</h2>
         {renderForm()}
       </div>
     </div>

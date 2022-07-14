@@ -1,20 +1,47 @@
 .CreatePost {
   max-width: 600px;
   width: 100%;
-  margin: 100px auto 0;
-}
-
-.CreatePost form {
-  width: 100%;
+  margin: 3rem auto 0;
 }
 
 .CreatePost h1 {
   text-align: center;
 }
 
-.CreatePost form > div textarea {
-  min-height: 200px;
-  resize: none;
+.CreatePost form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.CreatePost form label {
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.CreatePost form input,
+.CreatePost form textarea {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #bebebe;
+  padding: 10px;
+  margin-top: 0.5rem;
+  width: 100%;
+  outline: none;
+  transition: all 300ms ease-in-out;
+  border-radius: 3px;
+  font-size: 1rem;
+}
+
+.CreatePost form input:hover,
+.CreatePost form textarea:hover,
+.CreatePost form input:focus,
+.CreatePost form textarea:focus {
+  box-shadow: 0px 0px 2px 1px #ccc;
+}
+
+.CreatePost form textarea {
+  height: 20rem;
 }
 
 .CreatePost form button {

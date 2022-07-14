@@ -6,7 +6,7 @@ import { Button } from '../../../components/index';
 import { RollbackOutlined } from '@ant-design/icons';
 import UserContext from '../../../context/user/userContext';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signInSchema } from '../../../schemas';
+import { signInSchema } from '../../../schemas/index';
 
 const SignIn = () => {
   const { auth } = useContext(UserContext);

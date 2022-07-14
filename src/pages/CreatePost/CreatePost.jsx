@@ -7,7 +7,7 @@ import UserContext from '../../context/user/userContext';
 import PostsContext from '../../context/posts/postsContext';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createPostSchema } from '../../schemas/createPostSchema';
+import { createPostSchema } from '../../schemas/index';
 
 const CreatePost = () => {
   const { user } = useContext(UserContext);

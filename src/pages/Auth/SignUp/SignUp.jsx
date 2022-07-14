@@ -6,7 +6,7 @@ import { Button, SelectAvatar } from '../../../components/index';
 import { RollbackOutlined } from '@ant-design/icons';
 import UserContext from '../../../context/user/userContext';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signUpSchema } from '../../../schemas';
+import { signUpSchema } from '../../../schemas/index';
 
 const SignUp = () => {
   const [profileImage, setProfileImage] = useState('');

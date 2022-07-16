@@ -106,14 +106,14 @@ export const UserState = ({ children }) => {
         JSON.parse(localStorage.getItem('tokenExpirationDate'))
       );
 
-      if (tokenExpirationDate <= dayjs()) {
+      if (tokenExpirationDate <= dayjs().valueOf()) {
         logout();
       } else {
+        login(storedUser);
         updateAccessToken(storedToken);
         autoLogout(
-          (dayjs(tokenExpirationDate).get('ms') - dayjs().valueOf()) / 1000
+          (dayjs(tokenExpirationDate).valueOf() - dayjs().valueOf()) / 1000
         );
-        login(storedUser);
       }
     }
   };

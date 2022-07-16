@@ -1,7 +1,7 @@
 // AUTHENTICATION
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
-export const UPDATE_ACCESSTOKEN = 'AUTH_SUCCESS';
+export const UPDATE_ACCESSTOKEN = 'UPDATE_ACCESSTOKEN';
 // PROFILE EDIT
 export const GET_USER = 'GET_USER';
 export const EDIT_USER = 'EDIT_USER';
